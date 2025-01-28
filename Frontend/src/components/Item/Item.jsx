@@ -67,60 +67,6 @@ const PrevArrow = (props) => {
 const Item = ({ property }) => {
   const [isFavorited, setIsFavorited] = useState(false);
 
-  const toggleFavorite = async () => {
-    try {
-      const product = {
-        id: property.id,
-        name: property.publication_title || property.address || 'Producto sin nombre',
-        price: property.operations[0]?.prices[0]?.price || 0,
-        photos: property.photos?.[0]?.image || 'default-image.jpg'
-      };
-  
-      if (!isFavorited) {
-        const response = await fetch('/api/cookies/set-product', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ product }),
-          credentials: 'include',
-        });
-        if (!response.ok) {
-          throw new Error('Error al guardar el producto en la cookie');
-        }
-      } else {
-        const response = await fetch(`/api/cookies/delete-product/${product.id}`, {
-          method: 'DELETE',
-          credentials: 'include',
-        });
-        if (!response.ok) {
-          throw new Error('Error al eliminar el producto de la cookie');
-        }
-      }
-      setIsFavorited(!isFavorited);
-    } catch (error) {
-      console.error('Error al manejar la cookie del producto:', error);
-    }
-  };
-
-  useEffect(() => {
-    const checkIfFavorited = async () => {
-      try {
-        const response = await fetch('/api/cookies/get-products');
-        if (!response.ok) {
-          throw new Error('Error al obtener las cookies de productos');
-        }
-        const data = await response.json();
-        const favoritedProducts = data.products || [];
-        const isFav = favoritedProducts.some(prod => prod.id === property.id);
-        setIsFavorited(isFav);
-      } catch (error) {
-        console.error('Error al obtener las cookies de productos:', error);
-      }
-    };
-    checkIfFavorited();
-  }, [property.id]);
-
   const mainImages = property.photos?.slice(0, 5) || [{ image: 'default-image.jpg' }];
   const price = property.operations[0]?.prices[0]?.price 
   ? `${property.operations[0].prices[0].currency === 'USD' ? 'USD' : '$'} ${property.operations[0].prices[0].price.toLocaleString('es-ES')}`
@@ -176,13 +122,7 @@ const Item = ({ property }) => {
               <h5 className="barrio-item">{barrio}</h5>
               <p className="direccion-item">{address}</p>
             </div>
-            <FaHeart
-              className={`heart-icon ${isFavorited ? 'favorited' : ''}`}
-              onClick={(e) => {
-                e.preventDefault(); // Evitar que el enlace redirija
-                toggleFavorite();
-              }}
-            />
+            
           </div>
           <div className="property-info d-flex justify-content-around">
             {size > 0 && (

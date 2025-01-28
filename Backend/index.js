@@ -28,10 +28,10 @@ const numCPUs = cpus().length;
 connectDB();
 
 if (isPrimary) {
-  cron.schedule('*/5 * * * *', () => {
-    console.log('Ejecutando sincronización con Tokko cada 5 minutos');
-    syncWithTokko();
-  });
+  // cron.schedule('*/5 * * * *', () => {
+  //   console.log('Ejecutando sincronización con Tokko cada 5 minutos');
+  //   syncWithTokko();
+  // });
   for (let i = 1; i <=numCPUs; i++){
     cluster.fork();
   }
@@ -56,10 +56,6 @@ app.use(express.static('public'));
 app.use('/api', router);
 app.get('/propiedad/:id', renderPropertySEO);
 app.get('/noticia/:id', renderArticuleSEO);
-
-
-// Configurar los cron jobs para sincronización
-// Configurar los cron jobs para sincronización cada 5 minutos
 
 
 // Configurar los cron jobs para sincronización Development

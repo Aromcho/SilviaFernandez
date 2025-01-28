@@ -170,25 +170,12 @@ const SearchHomeForm = ({ handleSubmit }) => {
                 </div>
               )}
             </div>
+            
           </Col>
         </Row>
 
         <Row className="filter-row">
-          <Col>
-            <div className="price-range-wrapper">
-              <MultiRangeSlider
-                min={0}
-                max={3000000}
-                step={20000}
-                defaultValue={[filters.price_from || 0, filters.price_to || 3000000]} // Inicializa con valores del contexto
-                onChange={(newValue) => {
-                  handleFormChange('price_from', newValue[0]); // Actualiza el filtro mínimo
-                  handleFormChange('price_to', newValue[1]);   // Actualiza el filtro máximo
-                }}
-              />
-
-            </div>
-          </Col>
+         
           <Col md="auto">
             <Button className="search-button" type="submit">
               BUSCAR
@@ -196,9 +183,7 @@ const SearchHomeForm = ({ handleSubmit }) => {
           </Col>
         </Row>
 
-        <Button as={Link} to={"/quiero-vender"} className="button--vender me-3 px-5" variant="outline-light">
-          quiero vender
-        </Button>
+        
       </Form>
     </Container>
   );

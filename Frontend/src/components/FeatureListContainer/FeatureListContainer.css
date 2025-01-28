@@ -1,0 +1,68 @@
+
+.feature-list-container {
+    width: 100%;
+    position: relative;
+    top: -30px;
+
+  }
+  
+  /* Sección alterna entre colores */
+  .feature-section {
+    padding: 40px 40px ;
+
+    overflow: hidden;
+  }
+  
+  .primary-bg {
+    background: linear-gradient(135deg, var(--primary-color) 50%, #ffffff 50%);
+   color: #ffffff;
+  }
+  
+  .white-bg {
+    background: linear-gradient(135deg, #ffffff 50%, var(--primary-color) 50%);
+  color: var(--primary-color);
+  }
+  
+  
+  /* Título */
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: start;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Carrusel */
+  .carousel-card {
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  /* Estilo vacío */
+  .empty-text {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .feature-list-container {
+      top: -140px;
+    }
+    .feature-section {
+      padding: 40px 10px ;
+  
+      overflow: hidden;
+    }
+    .section-title {
+      font-size: 20px;
+    }
+  
+    .carousel-card {
+      padding: 5px;
+    }
+  }
+  

@@ -78,14 +78,14 @@
   font-weight: 500;
   color: #000000;
   width: 100vw;
-  height: 65px;
+  height: 90px;
   padding: 0;
   margin: 0;
   background-color: transparent;
   transition: all 0.4s cubic-bezier(0.74, 0.04, 0.24, 1.04);
   z-index: 10000000;
   position: fixed;
-  top: 32px; /* Ajustado para la franja */
+  top: 0; /* Ajustado para la franja */
   left: 0;
 }
 
@@ -108,9 +108,11 @@
 }
 
 .logo-img {
-  width: 150px;
+  width: 250px;
 }
-
+.logo-scrolled {
+  width: 75px;
+}
 .isobrand--img {
   width: 50px;
   height: 50px;
@@ -119,12 +121,12 @@
 
 .menu-brand-wrapper {
   width: 380px !important;
-  height: 65px;
+  height: 90px;
   display: flex;
   max-width: none !important;
   justify-content: center;
   align-items: center;
-  background-color: #F1B332;
+  background-color: var(--primary-color);
   margin-left: 10px;
   transition: all 0.4s cubic-bezier(0.74, 0.04, 0.24, 1.04);
   cursor: pointer;
@@ -133,7 +135,7 @@
   height: 55px;
 }
 .menu-brand-wrapper:hover {
-  background-color: #F1B332;
+  background-color: #279475;
 }
 .menu-nav {
   width: 100%;

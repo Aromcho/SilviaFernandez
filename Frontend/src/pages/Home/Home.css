@@ -1,98 +1,114 @@
+/* General Styles */
 .hero-wrapper {
   width: 100%;
-  height: 100vh;
+  height: 85vh;
+  border-radius: 0 0 80% 80% / 10% 10% 20% 20%; /* Mejorado con valores separados para ancho y alto */
   overflow: hidden;
   position: relative;
 }
 
-/* Video y imagen de fondo */
+
+/* Video and Background Image */
 .hero-wrapper video, .hero-wrapper img {
   position: fixed;
   top: 0;
   right: 0;
   width: 100%;
-  height: 100%;
+  height: 85vh;
+  border-radius: 0 0 80% 80% / 10% 10% 20% 20%; /* Mejorado con valores separados para ancho y alto */
   object-fit: cover;
+  z-index: -1;
+
 }
 
-/* Overlay que oscurece el fondo */
+/* Overlay */
 .hero-wrapper .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0);
+  height: 85vh;
+  border-radius: 0 0 80% 80% / 10% 10% 20% 20%; /* Mejorado con valores separados para ancho y alto */
+  background-color: rgba(0, 0, 0, 0.555);
   z-index: 2;
 }
 
-/* Imagen de superposición que cubre el fondo (video o imagen) */
-.overlay-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0; /* Siempre encima del video o imagen */
-}
-
-/* Contenedor del formulario de búsqueda */
+/* Form Container */
 .container-form-serch {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 85vh;
   padding: 0 15px;
   box-sizing: border-box;
-  z-index: 4; /* Para estar por encima de la superposición */
+  z-index: 4;
 }
 
-/* Mapa de la sección de abajo */
+/* Contact Section */
+.contact-section {
+  margin: 0 !important;
+  background-color: #000000;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 6;
+}
+
+/* Contact Section - Mobile */
+@media screen and (max-width: 992px) {
+  .contact-section {
+    height: 100%;
+    flex-direction: column;
+    z-index: 9999999;
+  }
+  .hero-wrapper .overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Map Section */
 .mapa {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #fff;
-  position: relative;
-  z-index: 99999999;
   width: 100%;
   height: 100vh;
   padding: 80px 0;
   margin: 0 auto;
 }
 
-.register-home {
+/* Selection Section */
+.seleccion-section {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  z-index: 999999999999;
-  padding: 80px 0;
+  background-color: #ffffff;
   margin: 0 auto;
+  position: relative;
 }
 
+/* Buttons */
+.seleccion-section .button--mobile {
+  display: none;
+}
 
 @media screen and (max-width: 992px) {
-  .hero-wrapper video {
-    display: none; /* Ocultar el video en pantallas pequeñas */
+  .seleccion-section {
+    padding: 60px 0;
   }
-
-  .hero-wrapper .background-image {
-    display: block;
-  }
-
-  .hero-wrapper .overlay {
-    display: block;
+  .seleccion-section .button--mobile {
+    display: flex;
+    margin: 60px auto 0;
   }
 }
 
-/* Sección de la lista de propiedades destacadas */
+/* List of Properties */
 .prop-list {
   width: 100%;
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -110,10 +126,17 @@
   }
 }
 
-/* Sección de inversiones */
+/* Investment Section */
+.inversion-section {
+  width: 100%;
+  padding: 80px 0;
+  background-color: #f8f8f8;
+  margin: 0 auto;
+  position: relative;
+}
+
 .inversion-item {
   width: 30%;
-  height: 100%;
   text-transform: uppercase;
 }
 
@@ -124,7 +147,6 @@
 @media screen and (max-width: 992px) {
   .inversion-item {
     width: 48%;
-    align-items: center;
     display: flex;
     justify-content: center;
   }
@@ -142,115 +164,7 @@
   }
 }
 
-/* Listado de inversiones */
-.inversion-list {
-  width: 100%;
-  height: 730px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-@media screen and (max-width: 992px) {
-  .inversion-list {
-    flex-flow: row wrap;
-    height: auto;
-  }
-}
-
-@media screen and (max-width: 740px) {
-  .inversion-list {
-    justify-content: center;
-  }
-}
-
-.inversion-section {
-  width: 100%;
-  padding: 80px 0;
-  background-color: #f8f8f8;
-  margin: 0 auto;
-  position: relative;
-}
-
-.inversion-section .inversion--container {
-  z-index: 6;
-  position: relative;
-}
-
-.inversion-section .button--mobile {
-  display: none;
-}
-
-@media screen and (max-width: 992px) {
-  .inversion-section {
-    padding: 60px 0;
-  }
-  .inversion-section .button--mobile {
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    margin: 60px auto 0;
-  }
-}
-
-/* Selección de propiedades */
-.seleccion {
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-  position: absolute;
-  clip: rect(0, auto, auto, 0);
-  top: 0;
-  left: 0;
-}
-
-.seleccion-section {
-  width: 100%;
-  background-color: #ffffff;
-  margin: 0 auto;
-  padding: 80px 0;
-  position: relative;
-}
-
-.seleccion-section .seleccion--container {
-  z-index: 6;
-  position: relative;
-}
-
-.seleccion-section .button--mobile {
-  display: none;
-}
-
-@media screen and (max-width: 992px) {
-  .seleccion-section {
-    padding: 60px 0;
-  }
-  .seleccion-section .button--mobile {
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    margin: 60px auto 0;
-  }
-}
-
-/* Capas para superposiciones oscuras */
-.black-layer {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  content: " ";
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-@media screen and (max-width: 992px) {
-  .black-layer {
-    background-color: rgba(0, 0, 0, 0.75);
-  }
-}
-
-/* Rango de precios */
+/* Price Range */
 .price-range {
   width: 100%;
   height: 40px;
@@ -264,38 +178,11 @@
   background-color: #ffffff;
 }
 
-.price-input-wrapper {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.input--price {
-  pointer-events: none;
-  margin-bottom: 0;
-}
-
-.input--price input {
-  height: 25px !important;
-  font-size: 13px;
-}
-
 .price-text {
   color: #ffffff;
   font-size: 14px;
   font-weight: 500;
   margin: 0 30px;
-}
-
-.range-wrapper {
-  width: 100%;
-  height: 40px;
-  align-items: center;
-  display: flex;
-  justify-content: flex-start;
-  position: relative;
-  top: -1px;
 }
 
 @media screen and (max-width: 992px) {
@@ -304,78 +191,7 @@
   }
 }
 
-.range--home {
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-}
-
-.range--home > div:first-of-type {
-  position: relative;
-  top: 5px;
-}
-
-.search-row {
-  width: 100%;
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-}
-
-@media screen and (max-width: 992px) {
-  .search-row {
-    flex-flow: column;
-  }
-}
-
-.search-row.first--row .first--row-input,
-.search-row.second--row .second--row-input {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 0 15px 0;
-}
-
-.search-row.first--row input,
-.search-row.second--row input {
-  height: 45px;
-  background-color: transparent;
-  border: 2px solid #ffffff;
-  color: #ffffff;
-}
-
-.search-row.first--row input:focus,
-.search-row.first--row input:focus-within,
-.search-row.first--row input:not(:placeholder-shown),
-.search-row.second--row input:focus,
-.search-row.second--row input:focus-within,
-.search-row.second--row input:not(:placeholder-shown) {
-  color: #ffffff;
-}
-
-.search-row.first--row input::placeholder,
-.search-row.second--row input::placeholder {
-  color: #ffffff;
-}
-
-.search-row.first--row input[type="number"],
-.search-row.second--row input[type="number"] {
-  border: 1px solid #000000;
-  color: #000000;
-}
-
-.search-form-wrapper {
-  width: 100%;
-  max-width: 688px;
-  margin: 0 auto;
-  z-index: 6;
-}
-
-@media screen and (max-width: 992px) {
-  .search-form-wrapper {
-    max-width: 500px;
-  }
-}
-
+/* Dropdown Row */
 .dropdown-row {
   display: flex;
   align-items: center;
@@ -384,55 +200,8 @@
 
 .input--general {
   width: 100px;
-  margin: 0;
-}
-
-.input--general input {
-  appearance: none;
-  border-radius: 0;
 }
 
 .dropdown-row + .dropdown-row {
   margin-top: 10px;
-}
-
-.row-label {
-  font-size: 14px;
-  font-weight: 300;
-}
-
-/* Sección de contacto */
-.contact-section {
-  margin: 0 !important;
-  background-color: #000000;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 6;
-}
-/* mobile de seccion de contacto */
-
-@media screen and (max-width: 992px) {
-  .contact-section {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-    z-index: 9999999;
-  }
-  .hero-wrapper .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 2;
-  }
 }

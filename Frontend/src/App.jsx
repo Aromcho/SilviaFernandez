@@ -11,6 +11,7 @@ import ConoceBelga from "./pages/ConoceBelga/ConoceBelga.jsx";
 import Emprendimientos from "./pages/Emprendimientos/Emprendimientos.jsx";
 import Favorites from "./pages/Favorites/Favorites.jsx";
 import QuieroVender from "./pages/QuieroVender/QuieroVender.jsx";
+import TemporaryList from "./pages/Lists/TemporaryList.jsx";
 import ItemListSelectedContainer from "./components/ItemSelectedListContainer/ItemSelectedListContainer.jsx";
 import TerminosYCondiciones from "./pages/Terminos/TerminosYCondiciones.jsx";
 import Error404 from "./pages/404/404.jsx";
@@ -37,10 +38,10 @@ function App() {
   return (
     <>
       <Helmet>
-        <title>Belga Inmobiliaria</title>
-        <meta name="description" content="Encuentra las mejores propiedades en Belga Inmobiliaria." />
-        <meta property="og:title" content="Belga Inmobiliaria" />
-        <meta property="og:description" content="Encuentra las mejores propiedades en Belga Inmobiliaria." />
+        <title>Silvia Fernandez</title>
+        <meta name="description" content="Encuentra las mejores propiedades en Silvia Fernandez." />
+        <meta property="og:title" content="Silvia Fernandez" />
+        <meta property="og:description" content="Encuentra las mejores propiedades en Silvia Fernandez." />
         <meta property="og:image" content="/path/to/default-image.jpg" />
       </Helmet>
       <AuthProvider>
@@ -50,6 +51,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/propertylist" element={<ItemListContainer />} />
+              <Route path="/temporarylist" element={<TemporaryList />} />
               <Route path="/propiedad/:id" element={<ItemDetailContainer />} />
               <Route path="/propertyDetail/:id" element={<ItemDetailContainer />} />
               <Route path="/404" element={<Error404 />} />

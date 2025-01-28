@@ -7,14 +7,10 @@ import FooterInfo from "../../components/FooterInfo/FooterInfo.jsx"
 import Title from "../../components/Title/Title.jsx";
 import BackToTop from "../../components/BackToTop/BackToTop.jsx";
 import SearchHomeForm from "../../components/SearchHomeForm/SearchHomeForm.jsx";
-import SelectionListContainer from "../../components/SelectionListContainer/SelectionListContainer.jsx";
-import Button from "../../components/Button/Button.jsx";
-import ContactForm from "../../components/Forms/ContactForm/ContactForm.jsx";
+import FeatureListContainer from "../../components/FeatureListContainer/FeatureListContainer.jsx";
 import HomeMap from "../../components/HomeMap/HomeMap.jsx";
-import { Container } from "react-bootstrap";
-import InversionSection from "../../components/InvertionHome/InvertionHome.jsx";
 import FromContact from "../../components/FormContact/FormContact.jsx";
-import Register from "../Register/Register.jsx";
+import SuggestionCards from "../../components/SuggestionCards/SuggestionCards.jsx";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -55,29 +51,7 @@ const Home = () => {
     }
   }, [location]);
 
-  const data = [
-    {
-      id: 1,
-      name: "Casa Central LA IMPRENTA",
-      direction: "Gorostiaga 1601",
-      direction_b: "(Esquina Migueletes)",
-      loc: { lat: -34.5652519, lon: -58.4364415 },
-    },
-    {
-      id: 2,
-      name: "BELGRANO C",
-      direction: "Juramento 2102",
-      direction_b: "1426 CABA",
-      loc: { lat: -34.56051641836724, lon: -58.45384234503877 },
-    },
-    {
-      id: 3,
-      name: "BELGRANO R",
-      direction: "Superí 1485",
-      direction_b: "(Esquina Av. de los Incas)",
-      loc: { lat: -34.5735786974359, lon: -58.46109912564103 },
-    },
-  ];
+  
   return (
     <div className="layout transparent">
       <div className="hero-wrapper">
@@ -99,28 +73,15 @@ const Home = () => {
           <SearchHomeForm formData={filters} setFormData={updateFilters} handleSubmit={handleSubmit} />
         </div>
       </div>
-
+      
       <div className="seleccion-section">
-        <div className="seleccion">
-          <BackToTop color="red" />
-        </div>
-
-        <div className="container seleccion--container">
-          <Title
-            title="NUESTRA SELECCIÓN"
-            buttonStyle="outline red"
-            linkButton="/destacados"
-          />
-            <SelectionListContainer/>
-
-        </div>
+      <SuggestionCards/>
       </div>
-      {/*inversion sectin*/}
-      <InversionSection />
+      <div className="suggested-properties-section">
+  <FeatureListContainer />
+</div>
       <div id="contact-section" className="contact-section">
-        <FooterInfo/>
         <HomeMap/>
-        <FromContact/>
       </div>
     </div>
   );

@@ -62,35 +62,26 @@ export const Menu = () => {
   return (
     <Navbar
       expand="lg"
-      bg={sticky || !isHome ? "white" : "transparent"}
-      fixed="top"
+      style={{
+        backgroundColor: sticky || !isHome ? "white" : "var(--primary-color)",
+      }}fixed="top"
       className={`menu-container ${sticky  ? "sticky" : ""}`}
     >
-      <div className={`menu-info ${sticky ? "hidden" : ""}`}>
-        <div className="menu-info-list">
-          <div className="menu-info-item">La imprenta</div>
-          <div className="menu-info-item">Belgrano C</div>
-          <div className="menu-info-item">Belgrano R</div>
-          <div className="menu-info-item-phone ">
-           <a
-          href="https://api.whatsapp.com/send?phone=5491152633393&text=Hola%20Belga!%20%F0%9F%91%8B%20Quisiera%20hacerles%20una%20consulta."
-          className="menu-info-item-phone-a"
-          target="_blank"
-          rel="noopener noreferrer"
-        ><WhatsappIcon className="logo-ws" /> +54 11 5263 3393</a> 
-          </div>
-        </div>
-      </div>
+      
       <div className="nav-flex-container">
         <Navbar.Brand className={`menu-brand-wrapper w-100 ${sticky  ? "sticky" : ""}`} as={Link} to="/">
           {!sticky  ? (
             <img
               className="logo-img"
-              src="/images/brand_red.svg"
+              src="/images/logo-sf.png"
               alt="Belga inmobiliaria"
             />
           ) : (
-            <BelgaIsoIcon className="isobrand--img" />
+            <img
+              className="logo-scrolled"
+              src="/images/icon-logo-sf.png"
+              alt="Belga inmobiliaria"
+            />
           )}
         </Navbar.Brand>
 
