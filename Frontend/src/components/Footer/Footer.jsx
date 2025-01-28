@@ -104,7 +104,7 @@ export const Footer = ({ small = true, id, backToTopFooter }) => {
         <div className="footer-center">
           <img
             className="brand-footer"
-            src="/images/brand_red.svg"
+            src="/images/icon-logo-sf.png"
             alt="Belga inmobiliaria"
             title="Belga inmobiliaria"
             loading="lazy"

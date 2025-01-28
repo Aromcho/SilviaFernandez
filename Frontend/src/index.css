@@ -1,6 +1,6 @@
 :root {
-    --primary-color: #F1B332;
-    --secondary-color: #C62025;
+    --primary-color: #00815c;
+    --secondary-color: #7bdcb5;
     --white-color: #ffffff;
     --black-color: #000000;
     --gray30-color: #b0b0b0;  
@@ -25,6 +25,7 @@ time, mark, audio, video {
     font-size: 100%;
     vertical-align: baseline;
 }
-a:hover {
-    background-color: transparent;
+a {
+    text-decoration: none;
+    color: inherit;
 }

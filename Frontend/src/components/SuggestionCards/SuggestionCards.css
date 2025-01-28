@@ -1,0 +1,80 @@
+/* Contenedor general */
+.suggestion-cards {
+    position: relative;
+    top: -80px;
+    width: 100%;
+    z-index: 5;
+    overflow: hidden;
+}
+
+/* Fila de tarjetas */
+.suggestion-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    overflow-x: auto; /* Scroll horizontal */
+    padding: 10px;
+    -webkit-overflow-scrolling: touch; /* Mejora la experiencia de scroll en iOS */
+}
+
+/* Tarjetas */
+.suggestion-card {
+    flex: 0 0 auto;
+    width: 250px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: black;
+}
+
+.suggestion-card:hover {
+    background-color: white !important;
+
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Iconos */
+.icon-suggestion-cards {
+    font-size: 40px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+/* Títulos */
+.titulo {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+}
+
+/* Diseño móvil: scroll horizontal */
+@media (max-width: 992px) {
+    .suggestion-cards {
+        top: -150px;
+    }
+
+    .suggestion-row {
+        justify-content: start;
+
+        gap: 10px;
+    }
+
+    .suggestion-card {
+        width: 140px;
+        border-radius: 8px;
+    }
+
+    .icon-suggestion-cards {
+        font-size: 30px;
+    }
+
+    .titulo {
+        font-size: 14px;
+    }
+}
