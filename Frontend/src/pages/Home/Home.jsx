@@ -11,12 +11,19 @@ import FeatureListContainer from "../../components/FeatureListContainer/FeatureL
 import HomeMap from "../../components/HomeMap/HomeMap.jsx";
 import FromContact from "../../components/FormContact/FormContact.jsx";
 import SuggestionCards from "../../components/SuggestionCards/SuggestionCards.jsx";
+import ChatBubble from "../../components/ChatBubble/ChatBubble.jsx";
+import ChatModal from "../../components/ChatModal/ChatModal.jsx";
+import { FaWhatsapp } from "react-icons/fa";
+import HeroCard from "../../components/HeroCard/HeroCard.jsx";
+import ContactForm from "../../components/Forms/ContactForm/ContactForm.jsx";
 
 const Home = () => {
   const navigate = useNavigate();
   const { filters, updateFilters } = useContext(FiltersContext);
   const [isMobile, setIsMobile] = useState(false); // Nuevo estado para detectar si es mobile
   const location = useLocation();
+  const [showChatModal, setShowChatModal] = useState(false);
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -77,12 +84,28 @@ const Home = () => {
       <div className="seleccion-section">
       <SuggestionCards/>
       </div>
+      <div className="primary-section">
+        <HeroCard />
+      </div>
       <div className="suggested-properties-section">
   <FeatureListContainer />
 </div>
+
       <div id="contact-section" className="contact-section">
-        <HomeMap/>
+      <HomeMap/>
+        <ContactForm />
       </div>
+      <div className="floating-icons">
+        <a href="https://wa.me/542255509408" target="_blank" rel="noopener noreferrer" className="whatsapp-float">
+        <FaWhatsapp />
+        </a>
+      </div>
+      {/* Burbuja de Chat */}
+      <ChatBubble onClick={() => setShowChatModal(true)} />
+
+      {/* Modal de Chat */}
+      <ChatModal show={showChatModal} onHide={() => setShowChatModal(false)} />
+    
     </div>
   );
 };

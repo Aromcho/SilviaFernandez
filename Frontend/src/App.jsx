@@ -14,6 +14,7 @@ import QuieroVender from "./pages/QuieroVender/QuieroVender.jsx";
 import TemporaryList from "./pages/Lists/TemporaryList.jsx";
 import ItemListSelectedContainer from "./components/ItemSelectedListContainer/ItemSelectedListContainer.jsx";
 import TerminosYCondiciones from "./pages/Terminos/TerminosYCondiciones.jsx";
+import TemporalItemList from "./components/TemporalItemList/TemporalItemList.jsx";
 import Error404 from "./pages/404/404.jsx";
 import Error500 from "./pages/500/500.jsx";
 import { FiltersProvider } from './context/FiltersContext';
@@ -21,7 +22,6 @@ import { AuthProvider } from './context/AuthContext';
 import DevelopmentsDetail from "./components/DevelopmentsDetail/DevelopmentsDetail.jsx";
 import Admin from "./pages/Admin/Admin.jsx";
 import Blog from "./pages/Blog/Blog.jsx";
-import Layout from "./components/Layout/Layout.jsx";
 import BlogDetail from "./pages/Blog/BlogDetail/BlogDetail.jsx";
 import Print from "./components/Print/Print.jsx";
 import Login from "./pages/Login/Login.jsx";
@@ -37,23 +37,16 @@ function App() {
 
   return (
     <>
-      <Helmet>
-        <title>Silvia Fernandez</title>
-        <meta name="description" content="Encuentra las mejores propiedades en Silvia Fernandez." />
-        <meta property="og:title" content="Silvia Fernandez" />
-        <meta property="og:description" content="Encuentra las mejores propiedades en Silvia Fernandez." />
-        <meta property="og:image" content="/path/to/default-image.jpg" />
-      </Helmet>
       <AuthProvider>
         <FiltersProvider>
           <Menu />
-          <Layout>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/propertylist" element={<ItemListContainer />} />
               <Route path="/temporarylist" element={<TemporaryList />} />
               <Route path="/propiedad/:id" element={<ItemDetailContainer />} />
               <Route path="/propertyDetail/:id" element={<ItemDetailContainer />} />
+              <Route path="/temporal" element={<TemporalItemList />} />
               <Route path="/404" element={<Error404 />} />
               <Route path="/500" element={<Error500 />} /> 
               <Route path="/quiero-vender" element={<QuieroVender />} />
@@ -73,7 +66,6 @@ function App() {
               <Route path="/favorites" element={<Favorites />} />  
               <Route path="/destacados" element={<ItemListSelectedContainer/>} />
             </Routes>
-          </Layout>
           <Footer />
         </FiltersProvider>
       </AuthProvider>

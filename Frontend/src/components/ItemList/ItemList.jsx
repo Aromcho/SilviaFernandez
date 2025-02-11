@@ -7,6 +7,7 @@ import { FiltersContext } from '../../context/FiltersContext';
 import Skeleton from '@mui/material/Skeleton'; 
 import './ItemList.css';
 import FormList from '../Forms/FormList/FormList.jsx';
+import ContactForm from '../Forms/ContactForm/ContactForm.jsx';
 
 const ItemList = () => {
   const { properties, loading, updateFilters, totalProperties, limit, offset, setOffset } = useContext(FiltersContext);
@@ -138,7 +139,7 @@ const ItemList = () => {
           </Col>
         </Row>
       </Container>
-      <FormList className="my-5" />
+      <ContactForm className="my-5" />
     </>
   );
 };

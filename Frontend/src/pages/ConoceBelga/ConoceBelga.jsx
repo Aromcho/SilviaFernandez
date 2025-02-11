@@ -11,11 +11,9 @@ import SocialSidebar from "../../components/SocialSidebar/SocialSidebar.jsx";
 import BackToTop from "../../components/BackToTop/BackToTop.jsx";
 import { MemberCard } from "./MemberCard/MemberCard.jsx";
 import { QuoteCard } from "./QuoteCard/QuoteCard.jsx";
-import FormContact from "../../components/FormContact/FormContact.jsx";
-import ContactForm from "../../components/Forms/ContactForm/ContactForm.jsx";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Container } from "react-bootstrap";
-import { VenderForm } from "../../components/Forms/VenderForm/VenderForm.jsx";
+import ContactForm from "../../components/Forms/ContactForm/ContactForm.jsx";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -38,7 +36,7 @@ const ConoceBelga = observer(() => {
   return (
     <Layout menuTheme="light" footerSmall backToTopFooter>
       <div className="cb-container">
-        <div className="cb-hero-wrapper" style={{ backgroundImage: `url(/images/nosotros_hero.jpg)` }}>
+        <div className="cb-hero-wrapper" style={{ backgroundImage: `url(/images/portada.jpg)` }}>
           <div className="cb-black-layer"></div>
           <div className="cb-hero">
             <SocialSidebar />
@@ -291,7 +289,7 @@ const ConoceBelga = observer(() => {
             </Container>
 
             <div className="cb-main-office">
-              <div className="cb-main-office-img" style={{ backgroundImage: `url(/images/oficina_la_imprenta.jpg)` }}></div>
+              <div className="cb-main-office-img" style={{ backgroundImage: `url(/images/local.png)` }}></div>
               <div className="cb-office-main-text">
                 <div className="cb-office-text-wrapper">
                   <div className="cb-office-text-name">La Imprenta</div>

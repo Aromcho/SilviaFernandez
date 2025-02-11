@@ -178,7 +178,7 @@
   width: 0;
   height: 2px;
   background-color: #fff; /* Color predeterminado */
-  left: 37px;
+  left: 5px;
   bottom: 1px;
   transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }

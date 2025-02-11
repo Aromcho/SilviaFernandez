@@ -1,147 +1,168 @@
-import React, { useState, useEffect } from "react";
-import Button from "../../Button/Button.jsx";
-import { Input } from "../../Input/Input.jsx";
-import { Textarea } from "../../Textarea/Textarea.jsx";
-import FeedbackMsg from "../FeedbackMsg/FeedbackMsg.jsx";
-import { TitleWithIcon } from "../../TitleWithIcon/TitleWithIcon.jsx";
-import axios from 'axios'; // Importamos axios para la solicitud
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { Typography } from "@mui/material";
 import "./ContactForm.css";
 
-export const VenderForm = ({ className = "" }) => {
-  const [data, setData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    direction: "",
-    property: "",
-    message: "",
-    url: "",
-    subject: "Quiero vender",
-  });
-
-  const [error, setError] = useState({
-    name: false,
-    email: false,
-    phone: false,
-  });
-
-  const [status, setStatus] = useState({
-    status: "",
-    text: "",
-  });
-
-  useEffect(() => {
-    setData({ ...data, url: window.location.href });
-  }, []);
-
-  // Función para enviar el formulario al backend
-  const sendContact = async (contactData) => {
-    try {
-      const response = await axios.post('/api/contact', contactData);
-      return response.data;
-    } catch (error) {
-      console.error("Error al enviar el formulario de contacto:", error);
-      throw error;
-    }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError({
-      name: data.name === "",
-      email: data.email === "",
-      phone: data.phone === "",
+const ContactForm = () => {
+    const sectionRef = useRef(null);
+    
+    const [data, setData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        url: "",
+        subject: "Quiero vender",
     });
-    if (data.name === "" || data.email === "" || data.phone === "") {
-      setStatus({
-        status: "error",
-        text: "Revise los campos requeridos",
-      });
-      return;
-    }
-    sendContact(data)
-      .then(() => {
-        setStatus({
-          status: "success",
-          text: "Tu contacto ha sido enviado",
+
+    const [error, setError] = useState({
+        name: false,
+        email: false,
+        phone: false,
+    });
+
+    const [status, setStatus] = useState({
+        status: "",
+        text: "",
+    });
+
+    useEffect(() => {
+        setData((prevData) => ({ ...prevData, url: window.location.href }));
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            },
+            { threshold: 0.3 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
+    const sendContact = async (contactData) => {
+        try {
+            const response = await axios.post("/api/contact", contactData);
+            return response.data;
+        } catch (error) {
+            console.error("Error al enviar contacto:", error);
+            throw error;
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setError({
+            name: data.name === "",
+            email: data.email === "",
+            phone: data.phone === "",
         });
-        setData({
-          name: "",
-          email: "",
-          phone: "",
-          direction: "",
-          property: "",
-          message: "",
-          url: window.location.href,
-          subject: "Quiero vender",
-        });
-      })
-      .catch(() => {
-        setStatus({
-          status: "error",
-          text: "Ha ocurrido un error, reintente en unos minutos",
-        });
-      });
-  };
 
-  return (
-    <div className={`form-container ${className}`}>
-      <div className="form-wrapper-v2">
-        <TitleWithIcon text="¿Cómo te podemos ayudar?" className="black" />
+        if (data.name === "" || data.email === "" || data.phone === "") {
+            setStatus({ status: "error", text: "Revise los campos requeridos" });
+            return;
+        }
 
-        <div className="wrapper-inputs">
-          <Input
-            className="input--from-v2"
-            placeHolder="Nombre *"
-            type="text"
-            value={data.name}
-            onChange={(e) => setData({ ...data, name: e.currentTarget.value })}
-            error={error.name}
-            onBlur={(e) => setError({ ...error, name: e.currentTarget.value === "" })}
-          />
+        sendContact(data)
+            .then(() => {
+                setStatus({ status: "success", text: "Tu contacto ha sido enviado" });
+                setData({
+                    name: "",
+                    email: "",
+                    phone: "",
+                    message: "",
+                    url: window.location.href,
+                    subject: "Quiero vender",
+                });
+            })
+            .catch(() => {
+                setStatus({ status: "error", text: "Ha ocurrido un error, reintente en unos minutos" });
+            });
+    };
 
-          <Input
-            className="input--from"
-            placeHolder="Email *"
-            type="email"
-            value={data.email}
-            onChange={(e) => setData({ ...data, email: e.currentTarget.value })}
-            error={error.email}
-            onBlur={(e) => setError({ ...error, email: e.currentTarget.value === "" })}
-          />
+    return (
+        <section ref={sectionRef} className="section-contact">
+            {/* 🌟 Información de Contacto */}
+            <div className="contact-header">
+                <Typography variant="h3" className="contact-title">Contáctanos</Typography>
+                <Typography variant="body1" className="contact-subtitle">
+                    Estamos aquí para ayudarte. ¡Envíanos un mensaje y nos pondremos en contacto contigo lo antes posible!
+                </Typography>
+            </div>
 
-          <Input
-            className="input--from"
-            placeHolder="Teléfono *"
-            type="tel"
-            value={data.phone}
-            onChange={(e) => setData({ ...data, phone: e.currentTarget.value })}
-            error={error.phone}
-            onBlur={(e) => setError({ ...error, phone: e.currentTarget.value === "" })}
-          />
-        </div>
+            <div className="contact-content">
+                {/* 🌟 Formulario */}
+                <div className="contact-form">
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            type="text"
+                            placeholder="Nombre Completo *"
+                            value={data.name}
+                            onChange={(e) => setData({ ...data, name: e.target.value })}
+                            className={error.name ? "input-error" : ""}
+                        />
+                        <input
+                            type="email"
+                            placeholder="Correo Electrónico *"
+                            value={data.email}
+                            onChange={(e) => setData({ ...data, email: e.target.value })}
+                            className={error.email ? "input-error" : ""}
+                        />
+                        <input
+                            type="tel"
+                            placeholder="Teléfono *"
+                            value={data.phone}
+                            onChange={(e) => setData({ ...data, phone: e.target.value })}
+                            className={error.phone ? "input-error" : ""}
+                        />
+                        <textarea
+                            placeholder="Escribe tu mensaje aquí..."
+                            rows="3"
+                            value={data.message}
+                            onChange={(e) => setData({ ...data, message: e.target.value })}
+                        />
+                        {status.status && <Typography variant="body2" className={`feedback-msg ${status.status}`}>{status.text}</Typography>}
+                        <button type="submit" className="cta-button">Enviar Mensaje</button>
+                    </form>
+                </div>
 
-        <Textarea
-          className="textarea--form"
-          placeHolder="Mensaje"
-          value={data.message}
-          onChange={(e) => setData({ ...data, message: e.currentTarget.value })}
-        />
+                {/* 🌟 Línea Divisoria */}
+                <div className="divider"></div>
 
-        {status.status && (
-          <FeedbackMsg className={status.status} msg={status.text} />
-        )}
-      </div>
+                {/* 🌟 Información de Contacto y Botones */}
+                <div className="contact-info">
+                    <button className="info-button">
+                        <FaEnvelope size={20} /> Correo: <span>braicesfernandez@gmail.com</span>
+                    </button>
+                    <button className="info-button">
+                        <FaPhone size={20} /> Teléfono: <span>+542255509408</span>
+                    </button>
+                    <button className="info-button">
+                        <FaMapMarkerAlt size={20} /> Dirección: <span>Calle 34 y Mar del Plata - Mar Azul- Galeria Plaza del Lucero 1° p. Local 9 - Mar de las Pampas</span>
+                    </button>
 
-      {/* Botón posicionado sobre el marco */}
-      <Button
-        text="Enviar"
-        type="button"
-        className="button--send"
-        onClick={handleSubmit}
-      />
-    </div>
-  );
+                    {/* 🌟 Redes Sociales */}
+                    <div className="social-buttons">
+                        <a href="https://www.facebook.com/Silviafernadezpropiedades/" target="_blank" className="social-button"><FaFacebook size={20} /></a>
+                        <a href="https://www.instagram.com/silviafernandezpropiedades/#" target="_blank" className="social-button"><FaInstagram size={20} /></a>
+                        <a href="#" className="social-button"><FaLinkedin size={20} /></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
 };
 
-export default VenderForm;
+export default ContactForm;

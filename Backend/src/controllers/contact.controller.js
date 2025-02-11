@@ -14,12 +14,12 @@ export const sendContactEmail = async (req, res, next) => {
             Messages: [
                 {
                     From: {
-                        Email: 'info@belga.com.ar',
-                        Name: 'Belga Inmobiliaria'
+                        Email: 'barriosarom@gmail.com',
+                        Name: 'Formulario de contacto - Nueva web'
                     },
                     To: [
-                        { Email: 'info@belga.com.ar' },
-                        { Email: 'AR5054@resultadistas.com' }
+                        { Email: 'braicesfernandez@gmail.com' },
+                        { Email: 'barriosarom@gmail.com' }
                     ],
                     Subject: subject || 'Contacto',
                     TextPart: `

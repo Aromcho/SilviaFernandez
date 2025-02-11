@@ -1,0 +1,59 @@
+/* Contenedor de los botones de tipo de operación */
+.operation-type-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Estilo de los botones */
+.operation-type-button {
+  display: flex;
+  flex: 1;
+  padding: 10px 20px;
+  background-color: white;
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Efectos de hover */
+.operation-type-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Botón seleccionado */
+.operation-type-button.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .operation-type-buttons {
+    flex-direction: row;
+    margin-bottom: 0px;
+    gap: 10px;
+  }
+
+  .operation-type-button {
+    width: 100%;
+  }
+
+  /* 🔥 Ocultar el botón de "Alquiler" en mobile 🔥 */
+  .hide-on-mobile {
+    display: none !important;
+  }
+}

@@ -4,6 +4,70 @@ import Fuse from 'fuse.js';
 import fs from 'fs';
 import path from 'path';
 
+
+// Obtener la latitud y longitud de todas las propiedades
+const getPropertyLocations = async (req, res) => {
+  try {
+    const properties = await Property.find(
+      { geo_lat: { $ne: null }, geo_long: { $ne: null } }, // Solo propiedades con coordenadas
+      { id: 1, address: 1, geo_lat: 1, geo_long: 1, publication_title: 1 } // Solo los datos necesarios
+    ).lean();
+
+    if (!properties.length) {
+      return res.status(404).json({ message: "No se encontraron propiedades con ubicación" });
+    }
+
+    const formattedProperties = properties.map((property) => ({
+      id: property.id ? property.id.toString() : "sin-id", // Convertimos el ID a string para evitar errores de tipo
+      name: property.publication_title || "Propiedad sin título",
+      address: property.address || "Dirección no disponible",
+      loc: {
+        lat: property.geo_lat,
+        lon: property.geo_long,
+      },
+    }));
+
+    res.status(200).json(formattedProperties);
+  } catch (error) {
+    console.error("Error al obtener las ubicaciones de propiedades:", error);
+    res.status(500).json({ message: "Error al obtener ubicaciones", error });
+  }
+};
+
+// Crear una nueva propiedad
+
+const createProperty = async (req, res) => {
+  try {
+    // Obtener los datos enviados en el cuerpo de la solicitud
+    const { body } = req.body;
+
+    // Validar datos básicos antes de guardar (puedes ampliar esta validación)
+    if (!body.id || !body.address || !body.operations || !Array.isArray(body.operations)) {
+      return res.status(400).json({ message: 'Datos incompletos. Se requiere al menos: id, address y operations.' });
+    }
+
+    // Crear una nueva instancia de la propiedad
+    const newProperty = new Property(body);
+
+    // Guardar la propiedad en la base de datos
+    await newProperty.save();
+
+    // Responder con el objeto creado
+    res.status(201).json({
+      message: 'Propiedad creada exitosamente',
+      property: newProperty,
+    });
+  } catch (error) {
+    console.error('Error al crear la propiedad:', error);
+
+    // Manejo de errores específicos, como duplicados
+    if (error.code === 11000) {
+      return res.status(409).json({ message: 'La propiedad ya existe', error });
+    }
+
+    res.status(500).json({ message: 'Error al crear la propiedad', error });
+  }
+};
 // Buscar propiedad por ID
 const getpropertyById = async (req, res) => {
   const { id } = req.params;
@@ -353,6 +417,7 @@ const autocompleteProperties = async (req, res) => {
 
 
 export {
+  createProperty,
   getProperties,
   getPropertyById,
   getRelatedProperties,
@@ -362,4 +427,5 @@ export {
   getAllPropertyIds,
   getpropertyById,
   autocompleteProperties,
+  getPropertyLocations,
 };

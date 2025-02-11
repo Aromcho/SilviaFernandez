@@ -93,26 +93,25 @@ export const Menu = () => {
 >
   Quiero comprar
 </Nav.Link>
+<Nav.Link
+  as={Link}
+  to="propertylist"
+  className={`menu--link ${sticky || !isHome ? "black-line sticky-link" : ""}`}
+>
+  Quiero alquilar
+</Nav.Link>
+
 
 <Nav.Link
   as={Link}
-  to="emprendimientos"
+  to="temporal"
   className={`menu--link ${sticky || !isHome ? "black-line sticky-link" : ""}`}
 >
-  Emprendimientos
+  alquiler temporal
 </Nav.Link>
 
           
-          <Button
-            className={` button--menu me-3 ${
-              sticky || !isHome ? "sticky-link" : ""
-            }`}
-            as={Link}
-            to={PATHS.QUIEROVENDER}
-            variant={sticky || !isHome ? "outline-dark" : "outline-light"}
-          >
-            Quiero vender
-          </Button>
+          
         </Nav>
 
         {/* Botón hamburguesa personalizado */}
@@ -135,12 +134,7 @@ export const Menu = () => {
 
       <div className={`burger-menu ${showMenu ? "active" : ""}`}>
         <ul className=" px-5 py-3 burger-menu-list">
-          <li className="emp burger-menu-item">
-            <Link to={PATHS.EMPRENDIMIENTOS} className="burger--menu-link">
-              <EmprendimientosIcon />
-              <span className="link-text">Emprendimientos</span>
-            </Link>
-          </li>
+          
           <li className="burger-menu-item">
             <Link to="/favorites" className="burger--menu-link">
             <FavoriteBorderIcon className="icon" />
@@ -156,24 +150,15 @@ export const Menu = () => {
           <li className="burger-menu-item">
             <Link to={PATHS.CONOCEBELGA} className="burger--menu-link">
               <BelgaIsoIcon />
-              <span className="link-text" spellCheck="false">Conocé Belga</span>
+              <span className="link-text" spellCheck="false">Conocenos</span>
             </Link>
           </li>
           <li
             className="burger-menu-item"
-            onClick={() => {
-              setShowMenu(false); // Cierra el menú hamburguesa
-              if (location.pathname === "/") {
-                // Si ya estás en Home, simplemente desplázate
-                document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" });
-              } else {
-                // Si no estás en Home, navega y luego desplázate
-                navigate("/", { state: { scrollTo: "contact-section" } });
-              }
-            }}
+            
           >
             <Link
-
+            to="/quiero-vender"
               className="burger--menu-link"
             >
               <TelIcon />

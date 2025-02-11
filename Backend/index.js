@@ -28,10 +28,15 @@ const numCPUs = cpus().length;
 connectDB();
 
 if (isPrimary) {
-  // cron.schedule('*/5 * * * *', () => {
-  //   console.log('Ejecutando sincronización con Tokko cada 5 minutos');
-  //   syncWithTokko();
+  cron.schedule('*/1 * * * *', () => {
+    console.log('Ejecutando sincronización con Tokko cada 5 minutos');
+    syncWithTokko();
+  });
+  // cron.schedule('*/1 * * * *', () => {
+  //   console.log('Running cron job to sync with Tokko');
+  //   syncDevelopmentsWithTokko();
   // });
+  
   for (let i = 1; i <=numCPUs; i++){
     cluster.fork();
   }
@@ -52,20 +57,31 @@ app.use(cookieParser(process.env.SECRET));
 // Servir la carpeta de imágenes de manera estática
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.use(express.static('public'));
+app.use(express.static('dist'));
 app.use('/api', router);
+app.get('/propertyDetail/:id', (req, res) => {
+  const userAgent = req.headers["user-agent"] || "";
+  const isBot = /bot|crawl|spider|slurp|facebook|whatsapp|telegram|twitter|linkedin/i.test(userAgent);
+
+  if (isBot) {
+    return renderPropertySEO(req, res); // Llamar directamente a la función SEO
+  }
+
+  res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+});
+
 app.get('/propiedad/:id', renderPropertySEO);
 app.get('/noticia/:id', renderArticuleSEO);
 
 
 // Configurar los cron jobs para sincronización Development
-//cron.schedule('0 * * * *', () => {
-//  console.log('Running cron job to sync with Tokko');
-//  syncDevelopmentsWithTokko();
-//});
+cron.schedule('0 * * * *', () => {
+  console.log('Running cron job to sync with Tokko');
+  syncDevelopmentsWithTokko();
+});
 
 //ejecutar el jsonGenerator.js
-//cron.schedule('0 * * * *', () => {
+//cron.schedule('*/1 * * * *', () => {
 //  console.log('Running cron job to generate JSON');
 //  generateJSON();
 //});
@@ -73,7 +89,7 @@ app.get('/noticia/:id', renderArticuleSEO);
 
 // Ruta catch-all para servir index.html
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "public", "index.html"));
+  res.sendFile(path.resolve(__dirname, "dist", "index.html"));
 });
 
 // Manejo de errores

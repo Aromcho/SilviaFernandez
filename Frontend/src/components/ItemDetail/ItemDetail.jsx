@@ -14,7 +14,6 @@ import './ItemDetail.css';
 import Print from '../Print/Print';
 import FormContact from '../FormContact/FormContact';
 import { HeartIcon, MailIcon, PrintIcon, WhatsappIcon } from '../Icons/Icons';
-import VenderForm from '../Forms/VenderForm/VenderForm';
 import ContacForm from '../Forms/ContactForm/ContactForm';
 import { Skeleton, Dialog, DialogContent, IconButton } from '@mui/material';
 import Lightbox from 'react-spring-lightbox';
@@ -111,14 +110,14 @@ const ItemDetail = ({ property, planos }) => {
     navigate('/propertylist');
   };
   const shareOnWhatsApp = () => {
-    const message = `Mira esta propiedad: ${address}. Precio: ${operations[0].prices[0].currency} ${operations[0].prices[0].price} https://belga.com.ar/propiedad/${idTokko}`;
+    const message = `Mira esta propiedad: ${address}. Precio: ${operations[0].prices[0].currency} ${operations[0].prices[0].price} https://silviafernandez.mi-hogar.online/propiedad/${idTokko}`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   const shareByEmail = () => {
     const subject = `Interesante propiedad en ${address}`;
-    const body = `Te comparto esta propiedad en ${address}. Precio: ${operations[0].prices[0].currency} ${operations[0].prices[0].price}. Mira más detalles aquí: https://belga.com.ar/propiedad/${idTokko}`;
+    const body = `Te comparto esta propiedad en ${address}. Precio: ${operations[0].prices[0].currency} ${operations[0].prices[0].price}. Mira más detalles aquí: https://silviafernandez.mi-hogar.online/propiedad/${idTokko}`;
     const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location = mailtoLink;
   };
