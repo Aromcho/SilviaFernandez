@@ -25,9 +25,8 @@
   width: 100%;
   height: 100%; /* Para asegurarse de que la tarjeta cubra toda la altura */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border: 1px solid #000000;
   transition: all 0.1s ease-in-out;
-  border-radius:0;
+  border-radius:12px;
 }
 
 .card-item:hover {
@@ -59,6 +58,12 @@
   margin-top: 20px;
   padding: 0 !important;
 }
+.info-item svg {
+  width: 20px I !important;
+  height: 20px;
+  margin-right: 10px;
+
+}
 .number-info-item {
   color: #000000;
   font-size: 16px;
@@ -74,9 +79,12 @@
   font-size: 14px;
   font-weight: 500;
 }
-.card-icons {
-  width: 2.5rem;
-  color: #555;
+.card-icons-item {
+    width:30px !important; /* Reduce el tamaño */
+    height:30px !important; /* Asegura que no se expanda */
+    color: var(--secondary-color); /* Usa la variable de color secundario */
+    margin-top: 5px; /* Ajusta la alineación */
+  
 }
 
 .head-prop {

@@ -18,7 +18,8 @@ const Filters = ({ onSubmit }) => {
 
   const operationTypeOptions = [
     { value: 'Venta', label: 'Venta' },
-    { value: 'Alquiler', label: 'Alquiler' }
+    { value: 'Alquiler', label: 'Alquiler' },
+    { value: 'Alquiler temporario', label: 'Alquiler Temporario' },
   ];
 
   const propertyTypeOptions = [
@@ -30,6 +31,7 @@ const Filters = ({ onSubmit }) => {
     { value: 'Cochera', label: 'Cocheras' },
     { value: 'Local', label: 'Locales' },
     { value: 'Edificio', label: 'Edificios' },
+    { value: 'Hotel', label: 'Hoteles' },
   ];
 
   const performSearch = async (query) => {
@@ -85,6 +87,7 @@ const Filters = ({ onSubmit }) => {
     control: (provided, state) => ({
       ...provided,
       boxShadow: 'none',
+      borderRadius: '40px',
       borderColor: state.isFocused ? '#ccc' : '#ddd',
       '&:hover': {
         borderColor: '#ccc',

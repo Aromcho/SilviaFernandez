@@ -1,0 +1,27 @@
+/* Estilo del encabezado */
+.hero-section {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), 
+                url('/images/banner.jpeg') center/cover no-repeat;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+  }
+  
+  .hero-title {
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.3rem;
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    opacity: 0.9;
+  }
+  /* Estilos para la lista de propiedades */
+ 
+  
+  /* Paginación */
+
+  

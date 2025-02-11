@@ -14,7 +14,6 @@ const FeatureListContainer = () => {
     { type: 'Departamento', title: 'Departamentos' },
     { type: 'Terreno', title: 'Terrenos' },
     { type: 'Local', title: 'Locales' },
-    { type: 'Oficina', title: 'Oficinas' },
   ];
 
   useEffect(() => {
@@ -29,7 +28,7 @@ const FeatureListContainer = () => {
       setLoading((prev) => ({ ...prev, [type]: true }));
       try {
         const response = await axios.get('/api/property/properties', {
-          params: { limit: 5, property_type: type },
+          params: { limit: 5, property_type: type, order: 'desc' },
         });
 
         // Guardamos los datos en el cache
@@ -47,6 +46,7 @@ const FeatureListContainer = () => {
 
   const settings = {
     dots: true,
+    initialSlide: -0.1, // Posicionamiento inicial
     infinite: true,
     speed: 500,
     slidesToShow: 2.1,
@@ -55,7 +55,7 @@ const FeatureListContainer = () => {
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.1,
         },
       },
     ],
@@ -77,7 +77,7 @@ const FeatureListContainer = () => {
             <Slider {...settings}>
               {data[type].map((property) => (
                 <div key={property._id} className="carousel-card">
-                  <Item property={property} />
+                  <Item  property={property} />
                 </div>
               ))}
             </Slider>

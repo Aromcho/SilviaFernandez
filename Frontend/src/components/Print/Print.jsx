@@ -17,7 +17,7 @@
           <tr>
             <th colSpan={2} style={{ display: "flex" }}>
               <div className="header">
-                <img src="/images/print_logo.svg" alt="Belga" className="logo" />
+                <img src="/images/logo-sf.png" alt="Belga" className="logo" />
                 <div className="header-content">
                   <span className="address-title">{property.address}</span>
                   <span className="header-subtitle">{property.publication_title}</span>
@@ -51,12 +51,12 @@
                     {photoGallery.slice(1, 3).map((item, index) => (
                       <img key={index} src={item.src} alt={`Small property image ${index + 1}`} style={{ width: '100%', height: '30%' }} />
                     ))}
-                    <QRCode size={80} value={`https://www.belga.com.ar/propiedad/${property.id.toString()}`} style={{ marginBottom: "30px" }} />
-                    <span className="marca-agua">BELGA INMOBILIARIA S.A.</span>
+                    <QRCode size={80} value={`https://silviafernandez.mi-hogar.online/propiedad/${property.id.toString()}`} style={{ marginBottom: "30px" }} />
+                    <span className="marca-agua">SILVIA FERNANDEZ</span>
                   </div>
                 </div>
                 <div className="center-header">
-                  <img src="/images/logo-print-new.png" alt="" className="img-logo" />
+                  <img src="/images/logo-sf.png" alt="" className="img-logo" />
                 </div>
               </div>
             </td>

@@ -1,65 +1,75 @@
-import React from "react";
-import { MapContainer, TileLayer, Marker, Tooltip, Popup } from "react-leaflet";
+import React, { useEffect, useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import { Container } from "react-bootstrap";
-import customIconUrl from "/images/pin.svg";
+import axios from "axios";
+import "leaflet/dist/leaflet.css";
 import "./HomeMap.css";
 
-// Definir un ícono personalizado
-const customIcon = new L.Icon({
-  iconUrl: customIconUrl,
-  iconSize: [38, 40],
-  iconAnchor: [19, 38],
-  popupAnchor: [0, -38],
+// 📌 Icono de pin verde
+const greenIcon = new L.Icon({
+  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+  shadowSize: [41, 41],
 });
 
-// Datos de las ubicaciones
-const data = [
-  {
-    id: 1,
-    name: "Casa Central LA IMPRENTA",
-    direction: "Gorostiaga 1601",
-    direction_b: "(Esquina Migueletes)",
-    loc: { lat: -34.5652519, lon: -58.4364415 },
-  },
-  {
-    id: 2,
-    name: "BELGRANO C",
-    direction: "Juramento 2102",
-    direction_b: "1426 CABA",
-    loc: { lat: -34.56051641836724, lon: -58.45384234503877 },
-  },
-  {
-    id: 3,
-    name: "BELGRANO R",
-    direction: "Superí 1485",
-    direction_b: "(Esquina Av. de los Incas)",
-    loc: { lat: -34.5735786974359, lon: -58.46109912564103 },
-  },
-];
-
 const HomeMap = () => {
-  // Centro inicial del mapa (promedio de todas las ubicaciones)
-  const mapCenter = [-34.565, -58.445];
+  const [locations, setLocations] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/locations")
+      .then(response => {
+        setLocations(response.data);
+      })
+      .catch(error => {
+        console.error("Error cargando las ubicaciones:", error);
+      });
+  }, []);
+
+  // 🔥 CENTRO EN MAR AZUL 🔥
+  const mapCenter = [-37.3195, -57.0228]; // Mar Azul, Buenos Aires
   const zoomLevel = 14;
 
   return (
     <div className="map-section">
       <Container className="home-map-container">
-        {/* Mapa con múltiples pines */}
-        <MapContainer center={mapCenter} zoom={zoomLevel} style={{ height: "100vh"
- }} className="leaflet-map">
+        <MapContainer center={mapCenter} zoom={zoomLevel} style={{ height: "100vh" }} className="leaflet-map">
+          {/* 🌍 MISMA CAPA CARTO */}
           <TileLayer
             url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
             attribution='&copy; <a href="https://carto.com/attributions">CartoDB</a> contributors'
           />
-          
-          {/* Mostrar múltiples marcadores */}
-          {data.map((location) => (
-            <Marker key={location.id} position={[location.loc.lat, location.loc.lon]} icon={customIcon}>
-              <Popup permanent className="custom-tooltip" offset={[0, 0]}>
+
+          {/* 📌 Pines con hover y click */}
+          {locations.map((location) => (
+            <Marker 
+              key={location.id} 
+              position={[location.loc.lat, location.loc.lon]} 
+              icon={greenIcon}
+              eventHandlers={{
+                mouseover: (e) => e.target.openPopup(),
+                click: (e) => e.target.openPopup(),  // 🔥 Permite abrir con click
+                mouseout: (e) => {
+                  if (!e.target.isPopupOpen()) {  // 🔥 Si no hicieron click, se cierra al salir
+                    e.target.closePopup();
+                  }
+                },
+              }}
+            >
+              <Popup className="custom-tooltip">
                 <h4>{location.name}</h4>
-                
+                <p>{location.address}</p>
+                <a 
+                  href={`/propiedad/${location.id}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="map-link"
+                >
+                  🔗 Ver propiedad
+                </a>
               </Popup>
             </Marker>
           ))}
@@ -70,3 +80,4 @@ const HomeMap = () => {
 };
 
 export default HomeMap;
+  

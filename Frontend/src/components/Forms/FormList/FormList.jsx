@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../VenderForm/VenderForm.css";
+import "../ContactForm/ContactForm.css";
 import { TitleWithIcon } from "../../TitleWithIcon/TitleWithIcon.jsx";
 import { Input } from "../../Input/Input.jsx";
 import { Textarea } from "../../Textarea/Textarea.jsx";

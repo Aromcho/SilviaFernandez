@@ -18,7 +18,7 @@ import {
 } from "react-icons/fa";
 import Confetti from "react-confetti";
 import "./QuieroVender.css";
-import VenderForm from "../../components/Forms/VenderForm/VenderForm.jsx"
+import ContactForm from "../../components/Forms/ContactForm/ContactForm.jsx"
 import { FaArrowLeft } from "react-icons/fa";
 
 const steps = [
@@ -101,7 +101,7 @@ const QuieroVender = () => {
         
         <p className="volver"><FaArrowLeft className="me-2" />VOLVER AL INICIO</p>
       </button>
-    <VenderForm className="mt-5 pt-5"/>
+    <ContactForm className="mt-5 pt-5"/>
     {/*
       <div className="quiero-vender-container">
         <Container>

@@ -1,42 +1,8 @@
+/* Formulario principal */
 .search-form {
-  z-index: 9999999;
-  padding: 15px; /* Añadir un poco de padding para dar espacio en mobile */
-  width: 75%; 
-}
-
-.input-icon-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-.input-with-icon {
-  padding-left: 40px; /* Espacio para el ícono */
-}
-
-/* Estilo para los íconos */
-.input-icon-placeholder {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  font-size: 1.2rem;
-  color: #6c757d;
-  z-index: 9999999;
-}
-
-.filter-input {
-  height: 40px;
-  border: 1px #6c757d solid !important;
-  border-radius: 40px !important;
-  font-size: 16px;
-  color: #6c757d;
-  background-color: #fff;
-}
-
-.filter-input:hover,
-.filter-input:focus {
-  border-color: #f1b332;
-  outline: none;
+  z-index: 9;
+  padding: 15px;
+  width: 75%;
 }
 
 /* Botón de búsqueda */
@@ -46,125 +12,29 @@
   font-weight: 600;
   background-color: var(--primary-color);
   border: none;
-  border-radius: 0;
+  border-radius: 40px;
   height: 40px;
-  width: 100%; /* Hacer el botón más ancho en mobile */
+  width: 100%;
   color: #ffffff;
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .search-button:hover {
   background-color: var(--primary-color);
   text-shadow: #ccc 0 2px 10px;
+  transform: translateY(-3px);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Sistema de precios */
-.price-range-wrapper {
-  display: flex;
-  flex-direction: column;
-}
-.button--vender {
-  display: none;
-}
-
-.button--vender:hover {
-  color: #fff;
-  background-color: var(--primary-color);
-  border-color: transparent;
-}
-.dorms-dropdowns, .garages-dropdowns {
-  display: flex;
-  justify-content: space-between;
-  gap: 0; /* Reducir espacio para evitar que se salga */
-}
+/* Ajustes responsive */
 @media screen and (max-width: 1100px) {
   .search-form {
-    padding: 15px; /* Añadir un poco de padding para dar espacio en mobile */
-    width: 100%; 
-  }
-}
-/* Ocultar rango de precios en móviles */
-@media screen and (max-width: 768px) {
-  .price-range-wrapper {
-    display: none;
-  }
-
-  /* Estilo para los campos de selección */
-  .filter-row .col {
-    margin-bottom: 15px; /* Añadir margen entre columnas en mobile */
-  }
-
-  /* Ajuste de los dropdowns para habitaciones */
-  .dorms-dropdowns, .garages-dropdowns {
-    display: flex;
-    justify-content: space-evenly;
-    gap: 0; /* Reducir espacio para evitar que se salga */
-  }
-
-  .min-max-input {
-    width: 45%; /* Ajustar el tamaño en mobile */
-  }
-
-  /* Hacer que los inputs ocupen el ancho completo */
-  .filter-input {
+    padding: 15px;
     width: 100%;
-    font-size: 16px;
-
   }
-
-  /* Alinear el botón de búsqueda centrado */
-  .search-button {
-    width: 100% !important; /* Botón de búsqueda ocupa todo el ancho */
-  }
-
-  /* Asegurar que los elementos ocupen toda la pantalla */
+}
+@media screen and (max-width: 768px) {
   .filter-row {
-    display: block; /* Cada filtro se muestra como un bloque */
+    flex-direction: column;
   }
-  .search-form {
-    width: 100% !important ; /* Asegurar que el formulario ocupe todo el ancho */
-  }
-  .button--vender {
-    margin-top: 50px;
-    width: 100% !important;
-    border-radius: 0;
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    min-width: none;
-    max-width: 100%;
-  }
-  
-  .button--vender:hover {
-    color: #fff;
-    background-color: #C62025;
-    border-color: transparent;
-  }
-}
-
-/* src/components/SearchHomeForm/SearchHomeForm.css */
-.autocomplete-suggestions {
-  background: white;
-  border: 1px solid #ccc;
-  max-height: 200px;
-  overflow-y: auto;
-  position: absolute;
-  width: 100%;
-  z-index: 1000;
-}
-
-.autocomplete-suggestions ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.autocomplete-suggestions li {
-  padding: 10px;
-  cursor: pointer;
-}
-
-.autocomplete-suggestions li:hover {
-  background-color: #f0f0f0;
 }

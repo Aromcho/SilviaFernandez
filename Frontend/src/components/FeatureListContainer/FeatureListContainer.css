@@ -8,7 +8,7 @@
   
   /* Sección alterna entre colores */
   .feature-section {
-    padding: 40px 40px ;
+    padding: 40px 0px 0 0px;
 
     overflow: hidden;
   }
@@ -29,14 +29,15 @@
     font-size: 24px;
     font-weight: bold;
     text-align: start;
-    margin-bottom: 20px;
+    padding: 5px 0 5px 50px;
     color: #333;
   }
   
   /* Carrusel */
   .carousel-card {
     padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 50px 0;
+    box-shadow: none !important;
     border-radius: 10px;
   }
   

@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  createProperty,
   getProperties,
   getPropertyById,
   getRelatedProperties,
@@ -15,6 +16,7 @@ import { autocompleteProperties } from '../../controllers/property.controller.js
 
 const propertyDetail = express.Router();
 
+propertyDetail.post('/', createProperty);
 propertyDetail.get('/autocomplete', autocompleteProperties);
 propertyDetail.get('/properties', getProperties);
 propertyDetail.get('/propertyDetail/:id', getpropertyById);
