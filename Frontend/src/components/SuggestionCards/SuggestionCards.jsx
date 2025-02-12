@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaHome, FaBuilding, FaHotel, FaKey, FaStore } from 'react-icons/fa';
+import { FaHome, FaBuilding, FaHotel, FaKey, FaTree } from 'react-icons/fa';
 import { FiltersContext } from '../../context/FiltersContext';
 import './SuggestionCards.css';
 
@@ -10,9 +10,10 @@ const SuggestionCards = () => {
 
     const cards = [
         { title: 'Alquiler Temporal', icon: <FaKey />,  path: '/temporal' },
+        { title: 'Lotes - Terrenos', icon: <FaTree />, path: '/terrenos' },
         { title: 'Casas', icon: <FaHome />, filter: { property_type: ['Casa'] }, path: '/propertylist' },
         { title: 'Departamentos', icon: <FaBuilding />, filter: { property_type: ['Departamento'] }, path: '/propertylist' },
-        { title: 'Locales', icon: <FaStore />, filter: { property_type: ['Local'] }, path: '/propertylist' },
+        
         { title: 'Hoteles', icon: <FaHotel />, filter: { property_type: ['Hotel'] }, path: '/propertylist' },
     ];
 
