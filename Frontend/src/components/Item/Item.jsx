@@ -69,10 +69,22 @@ const Item = ({ property }) => {
   const [isFavorited, setIsFavorited] = useState(false);
 
   const mainImages = property.photos?.slice(0, 5) || [{ image: "default-image.jpg" }];
-  const price = property.operations[0]?.prices[0]?.price
-    ? `${property.operations[0].prices[0].currency === "USD" ? "USD" : "$"} ${property.operations[0].prices[0].price.toLocaleString("es-ES")}`
-    : "Precio no disponible";
-  const operationType = property.operations[0]?.operation_type;
+
+  // Obtener todas las operaciones disponibles y formatear nombres
+  const operations = property.operations.map(op => 
+    op.operation_type === "Alquiler temporario" ? "Temporario" : op.operation_type
+  );
+
+  const operationType = operations.length > 0 ? operations.join(" - ") : "Operación no disponible";
+
+  // Determinar el precio
+  const hasTemporaryRent = property.operations.some(op => op.operation_type === "Alquiler temporario");
+  const price = hasTemporaryRent
+    ? "CONSULTAR PRECIO"
+    : property.operations[0]?.prices[0]?.price
+      ? `${property.operations[0].prices[0].currency === "USD" ? "USD" : "$"} ${property.operations[0].prices[0].price.toLocaleString("es-ES")}`
+      : "Precio no disponible";
+
   const bedrooms = property.suite_amount || 0;
   const bathrooms = property.bathroom_amount || 0;
   const parkingLots = property.parking_lot_amount || 0;

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { Typography } from '@mui/material';
-import Item from '../Item/Item.jsx';
+import Item from '../../components/Item/Item.jsx';
 import Skeleton from '@mui/material/Skeleton'; 
 import "./TerrenosItemList.css";
-import ContactForm from '../Forms/ContactForm/ContactForm.jsx';
+import ContactForm from '../../components/Forms/ContactForm/ContactForm.jsx';
 
 const TerrenosItemList = () => {
   const [properties, setProperties] = useState([]);
