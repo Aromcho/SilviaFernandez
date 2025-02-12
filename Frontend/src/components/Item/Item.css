@@ -88,9 +88,13 @@
 }
 
 .head-prop {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 10px;
   color: #333;
 }
-
+d-flex justify-content-between m-2 px-2 py-2
 .location-text {
   color: #666;
 }
@@ -137,5 +141,24 @@
     height: 250px;
     object-fit: cover;
   }
-
+  .head-prop {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 5px;
+    padding:10px 5px ;
+    color: #333;
+  }
+  .type-item {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #000000;
+  
+  }
+  .price-item {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #000000;
+  }
 }
