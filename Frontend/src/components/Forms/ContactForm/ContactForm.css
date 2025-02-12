@@ -1,12 +1,14 @@
 /* 🌟 Contenedor Principal */
 .section-contact {
+  width: 100%;
+  max-width: 100vw;
   min-height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: start;
-  padding: 60px 20px;
+  padding: 60px 0px;
   margin: 50px 0;
   opacity: 0;
   overflow: hidden;
@@ -207,7 +209,7 @@
   .contact-content {
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      padding: 10px;
   }
 
   .divider {
