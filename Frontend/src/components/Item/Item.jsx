@@ -72,7 +72,7 @@ const Item = ({ property }) => {
 
   // Obtener todas las operaciones disponibles y formatear nombres
   const operations = property.operations.map(op => 
-    op.operation_type === "Alquiler temporario" ? "Temporario" : op.operation_type
+    op.operation_type === "Alquiler temporario" ? "Alquiler temporario" : op.operation_type
   );
 
   const operationType = operations.length > 0 ? operations.join(" - ") : "Operación no disponible";
@@ -107,7 +107,7 @@ const Item = ({ property }) => {
   return (
     <Card className="card-item shadow-lg overflow-hidden text-black">
       <Link to={`/propiedad/${propertyId}`} state={{ property }} className="link-full">
-        <div className="head-prop d-flex justify-content-between m-2 px-4 py-2">
+        <div className="head-prop">
           <span className="type-item">{operationType.toUpperCase()}</span>
           <span className="price-item">{price}</span>
         </div>

@@ -1,5 +1,6 @@
 .primary-section {
   background-color: #ffffff;
+  padding-top: 20px;
 }
 
 .hero-card-container {
@@ -98,7 +99,7 @@
     position: relative;
     top: -180px;
     flex-direction: column;
-    padding: 20px;
+    padding: 0px;
     margin: 0 20px;
   }
 

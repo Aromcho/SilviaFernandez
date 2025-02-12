@@ -16,7 +16,7 @@ import ChatModal from "../../components/ChatModal/ChatModal.jsx";
 import { FaWhatsapp } from "react-icons/fa";
 import HeroCard from "../../components/HeroCard/HeroCard.jsx";
 import ContactForm from "../../components/Forms/ContactForm/ContactForm.jsx";
-
+import PozoConstruccion from "../../components/PozoConstruccion/PozoConstruccion.jsx";
 const Home = () => {
   const navigate = useNavigate();
   const { filters, updateFilters } = useContext(FiltersContext);
@@ -84,6 +84,11 @@ const Home = () => {
       <div className="seleccion-section">
       <SuggestionCards/>
       </div>
+      {
+      /*"<div className="pozo-section">
+        <PozoConstruccion />
+      </div>"*/
+      }
       <div className="primary-section">
         <HeroCard />
       </div>
