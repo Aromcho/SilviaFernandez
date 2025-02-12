@@ -110,14 +110,14 @@ const ItemDetail = ({ property, planos }) => {
     navigate('/propertylist');
   };
   const shareOnWhatsApp = () => {
-    const message = `Mira esta propiedad: ${address}. Precio: ${operations[0].prices[0].currency} ${operations[0].prices[0].price} https://silviafernandez.mi-hogar.online/propiedad/${idTokko}`;
+    const message = `Mira esta propiedad: ${address}. Precio: ${operations[0].prices[0].currency} ${operations[0].prices[0].price} https://www.silviafernandezpropiedades.com.ar/propiedad/${idTokko}`;
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   const shareByEmail = () => {
     const subject = `Interesante propiedad en ${address}`;
-    const body = `Te comparto esta propiedad en ${address}. Precio: ${operations[0].prices[0].currency} ${operations[0].prices[0].price}. Mira más detalles aquí: https://silviafernandez.mi-hogar.online/propiedad/${idTokko}`;
+    const body = `Te comparto esta propiedad en ${address}. Precio: ${operations[0].prices[0].currency} ${operations[0].prices[0].price}. Mira más detalles aquí: https://www.silviafernandezpropiedades.com.ar/propiedad/${idTokko}`;
     const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location = mailtoLink;
   };
@@ -278,10 +278,17 @@ const ItemDetail = ({ property, planos }) => {
               />
             </div>
             <h2 className="price-details">
-            {operationType}
-              {operations[0].prices[0].currency === 'USD' ? ' USD' : ' $'}{' '}
-              {operations[0].prices[0].price.toLocaleString('es-ES')}
-            </h2>
+  {operationType}
+  {operationType === 'Alquiler temporario' ? (
+    <span className="consultar-precio"> - Consultar precio</span>
+  ) : (
+    <>
+      {operations[0].prices[0].currency === 'USD' ? ' USD' : ' $'}{' '}
+      {operations[0].prices[0].price.toLocaleString('es-ES')}
+    </>
+  )}
+</h2>
+
           </div>
         </Col>
         <Col className="barrio-compartir-container">
