@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import Button from '../../Button/Button.jsx';
 import { Dialog, DialogContent, IconButton } from '@mui/material';
 import { ArrowBackIos, ArrowForwardIos, Close as CloseIcon } from '@mui/icons-material';
+import { FaHome, FaRulerCombined, FaBed, FaBath, FaCar, FaToilet, FaMoneyBillWave } from "react-icons/fa";
+import { MdOutlineCalendarToday } from "react-icons/md";
+import {  FaCompass, FaCheckCircle, FaTag } from "react-icons/fa";
+import { MdOutlineBathroom, MdOutlineAspectRatio } from "react-icons/md";
+import BookingCalendar from '../BookingCalendar/BookingCalendar.jsx';
+
 import './Contenido.css';
 
 const Contenido = ({
+  operationType,
     age,
     total_surface,
     bathroom_amount,
@@ -41,64 +48,71 @@ const Contenido = ({
       <div className="property-container">
       <div className="property-features bg-white">
       <div className="property-info flex-row-wrap">
-      {age > 0 && (
-        <div className="info-item text-center  d-flex flex-column mb-5">
-        <span ><strong>{age === 0 ? 'A estrenar' : `${age}`}</strong></span>
-        <img className="icon-image" src='/images/icons/prop_antiguedad.svg' alt="Antigüedad" />
-        <p className="text-muted">Antigüedad</p>
-        </div>
-      )}
-      {roofed_surface > 0 && (
-        <div className="info-item text-center d-flex flex-column mb-5">
-        <span><strong>{roofed_surface.slice(0, -3)}</strong></span>
-        <img className="icon-image" src='/images/icons/prop_m2.svg' alt="Superficie Total" />
-        <p className="text-muted">Sup. Cub.</p>
-        </div>
-      )}
+     
+{age > 0 && (
+  <div className="info-item text-center d-flex flex-column mb-5">
+    <MdOutlineCalendarToday className="info-icon" aria-label="Antigüedad" />
+    <span><strong>{age === 0 ? "A estrenar" : `${age}`}</strong></span>
+    <p className="text-muted">Antigüedad</p>
+  </div>
+)}
 
-      {total_surface > 0 && (
-        <div className="info-item text-center d-flex flex-column mb-5">
-        <span><strong>{Math.round(total_surface)}</strong></span>
-        <img className="icon-image" src='/images/icons/prop_m2.svg' alt="Superficie Total" />
-        <p className="text-muted">sub. Total</p>
-        </div>
-      )}
+{roofed_surface > 0 && (
+  <div className="info-item text-center d-flex flex-column mb-5">
+    <FaRulerCombined className="info-icon" aria-label="Superficie Cubierta" />
+    <span><strong>{roofed_surface.slice(0, -3)}</strong></span>
+    <p className="text-muted">Sup. Cub.</p>
+  </div>
+)}
 
-      {bedrooms > 0 && (
-        <div className="info-item text-center  d-flex flex-column mb-5">
-        <span><strong>{bedrooms}</strong></span>
-        <img className="icon-image" src='/images/icons/prop_cuarto.svg' alt="Dormitorios" />
-        <p className="text-muted">{bedrooms > 1 ? 'Dormitorios' : 'Dormitorio'}</p>
-        </div>
-      )}
-      {bathroom_amount > 0 && (
-        <div className="info-item text-center  d-flex flex-column mb-5">
-        <span><strong>{bathroom_amount}</strong></span>
-        <img className="icon-image" src='/images/icons/prop_ducha.svg' alt="Baños" />
-        <p className="text-muted">{bathroom_amount > 1 ? 'Baños' : 'Baño'}</p>
-        </div>
-      )}
-      {parking_lot_amount > 0 && (
-        <div className="info-item text-center  d-flex flex-column mb-5">
-        <span><strong>{parking_lot_amount}</strong></span>
-        <img className="icon-image" src='/images/icons/prop_cochera.svg' alt="Cochera" />
-        <p className="text-muted">{parking_lot_amount > 1 ? 'Cocheras' : 'Cochera'}</p>
-        </div>
-      )}
-      {toilet_amount > 0 && (
-        <div className="info-item text-center  d-flex flex-column mb-5">
-        <span ><strong>{toilet_amount}</strong></span>
-        <img className="icon-image" src='/images/icons/prop_toilette.svg' alt="Toilettes" />
-        <p className="text-muted">Toilettes</p>
-        </div>
-      )}
-      {expenses > 0 && (
-        <div className="info-item text-center  d-flex flex-column mb-5">
-        <span><strong>{expenses.toLocaleString("es-ES")}</strong></span>
-        <img className="icon-image" src="/images/icons/prop_expensas.svg" alt="Expensas" />
-        <p className="text-muted">Expensas</p>
-        </div>
-      )}
+{total_surface > 0 && (
+  <div className="info-item text-center d-flex flex-column mb-5">
+    <FaRulerCombined className="info-icon" aria-label="Superficie Total" />
+    <span><strong>{Math.round(total_surface)}</strong></span>
+    <p className="text-muted">Sup. Total</p>
+  </div>
+)}
+
+{bedrooms > 0 && (
+  <div className="info-item text-center d-flex flex-column mb-5">
+    <FaBed className="info-icon" aria-label="Dormitorios" />
+    <span><strong>{bedrooms}</strong></span>
+    <p className="text-muted">{bedrooms > 1 ? "Dormitorios" : "Dormitorio"}</p>
+  </div>
+)}
+
+{bathroom_amount > 0 && (
+  <div className="info-item text-center d-flex flex-column mb-5">
+    <FaBath className="info-icon" aria-label="Baños" />
+    <span><strong>{bathroom_amount}</strong></span>
+    <p className="text-muted">{bathroom_amount > 1 ? "Baños" : "Baño"}</p>
+  </div>
+)}
+
+{parking_lot_amount > 0 && (
+  <div className="info-item text-center d-flex flex-column mb-5">
+    <FaCar className="info-icon" aria-label="Cochera" />
+    <span><strong>{parking_lot_amount}</strong></span>
+    <p className="text-muted">{parking_lot_amount > 1 ? "Cocheras" : "Cochera"}</p>
+  </div>
+)}
+
+{toilet_amount > 0 && (
+  <div className="info-item text-center d-flex flex-column mb-5">
+    <FaToilet className="info-icon" aria-label="Toilettes" />
+    <span><strong>{toilet_amount}</strong></span>
+    <p className="text-muted">Toilettes</p>
+  </div>
+)}
+
+{expenses > 0 && (
+  <div className="info-item text-center d-flex flex-column mb-5">
+    <FaMoneyBillWave className="info-icon" aria-label="Expensas" />
+    <span><strong>{expenses.toLocaleString("es-ES")}</strong></span>
+    <p className="text-muted">Expensas</p>
+  </div>
+)}
+
       </div>
       {/* Botón para abrir el modal de planos */}
       {planos && planos.length > 0 && (
@@ -161,38 +175,79 @@ const Contenido = ({
       </div>
 
       {/* Información de detalles y descripción */}
-      <div className="property-details p-4 ">
-      <div className="info-section">
-      <p className="mb-4 text-info-cont">INFORMACIÓN</p>
-      <div className="info-details">
-        {bathroom_amount > 0 && <p className='info-details-item'><div className='strong'>Ambientes: </div>{bathroom_amount}</p>}
-        {orientation && <p className='info-details-item'><p className='strong'>Orientación: </p>{orientation}</p>}
-        {property_condition && <p className='info-details-item'><p className='strong'>Condición: </p>{property_condition}</p>}
-      </div>
-      </div>
-      
-      <div className="info-section">
-      <p className="mb-4 text-info-cont">SUPERFICIES</p>
-      <div className="info-details">
-        {roofed_surface > 0 && <p className='info-details-item'><p className='strong'>Sup. Cubierta: </p> {roofed_surface.slice(0, -3)} m2</p>}
-        {semiroofed_surface > 0 && <p className='info-details-item'><p className='strong'>Sup. Semicubierta:</p> {semiroofed_surface.slice(0, -3)} m2</p>}
-        {total_surface > 0 && <p className='info-details-item'><p className='strong'>Sup. Total:</p> {total_surface.slice(0, -3)} m2</p>}
-      </div>
-      </div>
-      </div>
-      
-      {tags && tags.length > 0 && (
-      <div className="property-tags bg-white p-4">
-      <p className="mb-4 text-info-cont">ADICIONALES</p>
-      <div className="tags-container flex-row-wrap">
-          {tags.map((tag, index) => (
-          <div key={index} className="tag-item">{tag.name}</div>
-          ))}
-        </div>
+      <div className="property-details p-0">
+  {/* 🔹 INFORMACIÓN */}
+  <div className="info-section card">
+    <h3 className="section-title">Información</h3>
+    <div className="info-details">
+      {bathroom_amount > 0 && (
+        <div className="info-details-item">
+          <MdOutlineBathroom className="info-icon" />
+          <span className="strong">Ambientes:</span> {bathroom_amount}
         </div>
       )}
+      {orientation && (
+        <div className="info-details-item">
+          <FaCompass className="info-icon" />
+          <span className="strong">Orientación:</span> {orientation}
+        </div>
+      )}
+      {property_condition && (
+        <div className="info-details-item">
+          <FaCheckCircle className="info-icon" />
+          <span className="strong">Condición:</span> {property_condition}
+        </div>
+      )}
+    </div>
+  </div>
+
+  {/* 🔹 SUPERFICIES */}
+  <div className="info-section card">
+    <h3 className="section-title">Superficies</h3>
+    <div className="info-details">
+      {roofed_surface > 0 && (
+        <div className="info-details-item">
+          <MdOutlineAspectRatio className="info-icon" />
+          <span className="strong">Sup. Cubierta:</span> {roofed_surface.slice(0, -3)} m²
+        </div>
+      )}
+      {semiroofed_surface > 0 && (
+        <div className="info-details-item">
+          <MdOutlineAspectRatio className="info-icon" />
+          <span className="strong">Sup. Semicubierta:</span> {semiroofed_surface.slice(0, -3)} m²
+        </div>
+      )}
+      {total_surface > 0 && (
+        <div className="info-details-item">
+          <FaRulerCombined className="info-icon" />
+          <span className="strong">Sup. Total:</span> {total_surface.slice(0, -3)} m²
+        </div>
+      )}
+    </div>
+  </div>
+</div>
+
+{/* 🔹 ADICIONALES */}
+{tags && tags.length > 0 && (
+  <div className="property-tags card">
+    <h3 className="section-title">Adicionales</h3>
+    <div className="tags-container">
+      {tags.map((tag, index) => (
+        <div key={index} className="tag-item">
+          <FaTag className="tag-icon" />
+          {tag.name}
+        </div>
+      ))}
+    </div>
+  </div>
+)}
       
       <div className="property-description bg-white p-4 rounded-3">
+      {operationType === "Alquiler temporario" && (
+        <div className="calendar-section">
+          <BookingCalendar />
+        </div>
+      )}
         <p className='mb-3 text-info-cont'>DESCRIPCION</p>
         <p dangerouslySetInnerHTML={{ __html: rich_description }}></p>
       </div>

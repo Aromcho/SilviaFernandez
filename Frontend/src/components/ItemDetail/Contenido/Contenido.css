@@ -10,6 +10,12 @@
     margin-top: 20px;
     
 }
+.info-icon {
+    font-size: 32px;
+    color: var(--secundary-color);
+    margin-bottom: 8px;
+}
+
 .text-info-cont {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
@@ -92,6 +98,84 @@
     align-items: center;
     text-align:center; /* Alineación de texto a la izquierda en elementos */
 }
+/* Contenedor general */
+.property-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Tarjetas de contenido */
+  .info-section {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Títulos */
+  .section-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  /* Información */
+  .info-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .info-details-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .strong {
+    font-weight: 700;
+  }
+  
+  /* Íconos */
+  .info-icon {
+    font-size: 20px;
+    color: var(--primary-color);
+  }
+  
+  /* Adicionales */
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .tag-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tag-item:hover {
+    background-color: var(--primary-color);
+  }
+  
+  .tag-icon {
+    font-size: 14px;
+  }
+  
 @media (max-width: 768px) {
     .property-container {
         grid-template-columns: 1fr; /* Una sola columna */
