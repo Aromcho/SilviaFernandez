@@ -71,7 +71,7 @@ const TerrenosItemList = () => {
       </header>
       
       <Container className='px-0 mt-5'>
-        <div className="item-list">
+        <div className="item-list-terrenos">
           {loading ? (
             [...Array(4)].map((_, index) => (
               <div className="Item mb-2" key={index}>

@@ -1,0 +1,83 @@
+.btn-go-back {
+    background-color: transparent !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+/* Botón de compartir */
+.compartir-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background-color: var(--primary-color) !important;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Efecto hover */
+.compartir-button:hover {
+    background-color: var(--secondary-color) !important;
+    color: black;
+    transform: scale(1.05);
+}
+
+/* Icono de WhatsApp dentro del botón */
+.whatsapp-icon {
+    font-size: 18px;
+}
+
+
+.encabezado h4 {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.encabezado h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.barra {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000000;
+    
+}
+.nombre-precio-container, .barrio-compartir-container, .compartir-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.address-title-details {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+}
+.price-details {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+.property-type-details {
+    font-family: 'Roboto', sans-serif;
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+@media (max-width: 768px) {
+
+    .nombre-precio-container, .barrio-compartir-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}

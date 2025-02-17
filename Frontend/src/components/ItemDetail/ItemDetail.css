@@ -1,19 +1,10 @@
-.nombre-precio-container, .barrio-compartir-container, .compartir-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
 .img-thumbnail-small {
   width: 20%;
   margin-bottom: 1rem;
   cursor: pointer;
 }
-.barra {
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #000000;
-  
-}
+
 .img-thumbnail-small.active {
   border: 2px solid #F2D8A7;
 }
@@ -31,22 +22,6 @@
   height: auto;
 }
 
-.custom-button {
-  background-color: transparent !important;
-  color: black !important;
-  border-radius: 0 !important;
-  border: none !important;
-}
-
-.custom-button:hover {
-  background-color: transparent !important;
-}
-.btn-go-back {
-  background-color: transparent !important;
-  font-family:'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-}
 .property-price {
   justify-content: end;
 }
@@ -59,21 +34,9 @@
   line-height: 20px;
 }
 
-.address-title-details {
-  font-family: 'Montserrat', sans-serif;
-  font-size:24px;
-  font-weight: 500;
-}
-.price-details {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-}
-.property-type-details {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-}
+
+
+
 .property-detail h2 {
   font-size: 1.5rem;
 }
@@ -162,15 +125,7 @@
 
 
 
-.encabezado h4 {
-  font-size: 1.8rem;
-  font-weight: 500;
-}
 
-.encabezado h2 {
-  font-size: 1.5rem;
-  font-weight: 400;
-}
 
 .raya {
   color: black;
