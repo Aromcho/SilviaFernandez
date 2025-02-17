@@ -1,7 +1,9 @@
 .filter-form {
-  padding-top: 3rem;
+  padding-top: 2rem;
 }
-
+.search-button-filter {
+  width: 25vw;
+}
 .input-icon-wrapper {
   position: relative;
   width: 100%;
