@@ -2,11 +2,13 @@ import React, { useContext, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { FiltersContext } from '../../context/FiltersContext';
 import ItemList from '../ItemList/ItemList';
+import SearchBar from '../SearchHomeForm/SearchBar/SearchBar';
+import ContactForm from '../Forms/ContactForm/ContactForm';
 import './ItemListContainer.css';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const ItemListContainer = () => {
-  const { properties } = useContext(FiltersContext);
+  const { properties, filters, updateFilters } = useContext(FiltersContext);
   const { tipo } = useParams();
   const navigate = useNavigate();
 
@@ -39,7 +41,9 @@ const ItemListContainer = () => {
 
   return (
     <Container className="item-list-container">
+      <SearchBar filters={filters} updateFilters={updateFilters}  />
       <ItemList properties={properties} onPropertyClick={handlePropertyClick} />
+      <ContactForm className="my-5" />
     </Container>
   );
 };

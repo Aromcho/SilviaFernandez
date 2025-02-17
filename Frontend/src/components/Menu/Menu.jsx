@@ -91,7 +91,7 @@ export const Menu = () => {
   to="propertylist"
   className={`menu--link ${sticky || !isHome ? "black-line sticky-link" : ""}`}
 >
-  Quiero comprar
+  Propiedades
 </Nav.Link>
 <Nav.Link
   as={Link}
