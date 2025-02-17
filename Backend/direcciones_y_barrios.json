@@ -192,10 +192,6 @@
     "secundvalue": "Villa Gesell"
   },
   {
-    "value": "Las Gabiotas",
-    "secundvalue": "Mar Azul"
-  },
-  {
     "value": "Calle 38 entre Punta del Este y Copacabana",
     "secundvalue": "Mar Azul"
   },
@@ -220,7 +216,7 @@
     "secundvalue": "Mar Azul"
   },
   {
-    "value": "calle 32 y calle 32 y calle mar del platacalle mar del plata",
+    "value": "Calle 32 y calle mar del plata",
     "secundvalue": "Las Gaviotas"
   },
   {
@@ -290,14 +286,6 @@
   {
     "value": "Av El Lucero 400",
     "secundvalue": "Mar De Las Pampas"
-  },
-  {
-    "value": "Calle 30 y Punta del Indio",
-    "secundvalue": "Villa Crespo"
-  },
-  {
-    "value": "Villa Crespo",
-    "secundvalue": ""
   },
   {
     "value": "Calle 33 entre Mar Azul y Mar del Plata",
@@ -436,10 +424,6 @@
     "secundvalue": "Mar Azul"
   },
   {
-    "value": "Cul de Sac Amalia",
-    "secundvalue": "Mar De Las Pampas"
-  },
-  {
     "value": "Calle Viña del Mar entre 43 y 44",
     "secundvalue": "Mar Azul"
   },
@@ -486,5 +470,61 @@
   {
     "value": "Calle Ranqueles",
     "secundvalue": "Mar De Las Pampas"
+  },
+  {
+    "value": "Calle 40 entre Punta del Este y Mar del Plata",
+    "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Calle 42 y Viña del Mar",
+    "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Copacabana entre 34 y 35",
+    "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Punta del Indio entre 40 y 41",
+    "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Calle 36 entre Viña del Mar y Punta del Indio",
+    "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Calle 36 entre Necochea y Miramar",
+    "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Copacabana entre 35 y 36",
+    "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Calle Lola Mora y Storni",
+    "secundvalue": "Mar De Las Pampas"
+  },
+  {
+    "value": "Petrel entre Albatros y Brown",
+    "secundvalue": "Mar De Las Pampas"
+  },
+  {
+    "value": "Calle 32 entre Miramar y Necochea",
+    "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Calle 32 entre Necochea y Miramar",
+    "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Calle 38 entre Necochea y Miramar",
+    "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Calle 40 entre Pinamar y Necoche",
+    "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Calle 44 entre Punta del Indio y Pinamar",
+    "secundvalue": "Mar Azul"
   }
 ]
