@@ -526,5 +526,21 @@
   {
     "value": "Calle 44 entre Punta del Indio y Pinamar",
     "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Miramar entre calles 38 y 39",
+    "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Alma Fuerte entre Guerrero y Bunge",
+    "secundvalue": "Mar De Las Pampas"
+  },
+  {
+    "value": "Calle 39 y Mar del Plata",
+    "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Calle 40 entre Punta del Este y Copacabana",
+    "secundvalue": "Mar Azul"
   }
 ]
