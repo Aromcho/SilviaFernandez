@@ -542,5 +542,17 @@
   {
     "value": "Calle 40 entre Punta del Este y Copacabana",
     "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Calle 38 casi playa",
+    "secundvalue": "Mar Azul"
+  },
+  {
+    "value": "Calle 31 entre Mar del Plata y Mar Azul",
+    "secundvalue": "Las Gaviotas"
+  },
+  {
+    "value": "Avenida 3 entre 171 y 172",
+    "secundvalue": "Villa Gesell"
   }
 ]

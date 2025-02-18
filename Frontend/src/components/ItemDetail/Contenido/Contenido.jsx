@@ -28,7 +28,8 @@ const Contenido = ({
     property_condition,
     planos = [],
     occupation,
-    idTokko
+    idTokko,
+    room_amount
   }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -185,7 +186,7 @@ const Contenido = ({
       {bathroom_amount > 0 && (
         <div className="info-details-item">
           <MdOutlineBathroom className="info-icon" />
-          <span className="strong">Ambientes:</span> {bathroom_amount}
+          <span className="strong">Ambientes:</span> {room_amount}
         </div>
       )}
       {orientation && (

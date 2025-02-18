@@ -22,7 +22,7 @@ const ItemDetail = ({ property, planos }) => {
   const [isFavorited, setIsFavorited] = useState(false);
   const [isOpen, setIsOpen] = useState(false); // Estado para controlar Lightbox
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-
+console.log(property)
   const { photos,  rich_description } = property;
   const totalImages = photos.length;
 
