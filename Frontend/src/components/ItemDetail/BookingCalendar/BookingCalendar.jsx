@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import { Button } from "react-bootstrap";
 import { FaWhatsapp } from "react-icons/fa";
-import "react-calendar/dist/Calendar.css";
 import "./BookingCalendar.css"; // Estilos personalizados
 
 const BookingCalendar = () => {

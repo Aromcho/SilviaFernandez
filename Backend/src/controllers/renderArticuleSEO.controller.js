@@ -20,12 +20,12 @@ const renderArticuleSEO = async (req, res) => {
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${articule.title} | Blog Belga Inmobiliaria</title>
-        <meta property="og:title" content="${articule.title} | Blog Belga Inmobiliaria">
+        <title>${articule.title} | Blog Silvia Fernandez</title>
+        <meta property="og:title" content="${articule.title} | Blog Silvia Fernandez">
         <meta property="og:description" content="${articule.subtitle}">
         <meta property="og:url" content="http://www.belga.com.ar:8080/blog/${articule._id}">
         <meta property="og:type" content="article">
-        <meta property="og:site_name" content="Belga Inmobiliaria" />
+        <meta property="og:site_name" content="Silvia Fernandez" />
         <meta property="og:image" content="${ogImage}">
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
