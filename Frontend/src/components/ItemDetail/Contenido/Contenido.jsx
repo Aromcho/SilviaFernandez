@@ -26,7 +26,9 @@ const Contenido = ({
     disposition,
     orientation,
     property_condition,
-    planos = []
+    planos = [],
+    occupation,
+    idTokko
   }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -46,7 +48,7 @@ const Contenido = ({
 
     return (
       <div className="property-container">
-      <div className="property-features bg-white">
+      <div className="property-features info-section bg-white card">
       <div className="property-info flex-row-wrap">
      
 {age > 0 && (
@@ -242,14 +244,17 @@ const Contenido = ({
   </div>
 )}
       
-      <div className="property-description bg-white p-4 rounded-3">
+      <div className="property-description bg-white  rounded-3">
       {operationType === "Alquiler temporario" && (
-        <div className="calendar-section">
-          <BookingCalendar />
+        <div className="calendar-section ">
+          <BookingCalendar occupation={occupation} idTokko={idTokko} />
         </div>
       )}
+      <div className="info-section mb-5 card">
         <p className='mb-3 text-info-cont'>DESCRIPCION</p>
-        <p dangerouslySetInnerHTML={{ __html: rich_description }}></p>
+      <p dangerouslySetInnerHTML={{ __html: rich_description }}></p>
+      </div>
+        
       </div>
       </div>
     );

@@ -3,11 +3,12 @@
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 0 20px 20px;
+    margin: 0 0px 20px 0;
     text-align: center;
   }
   
   .calendar-title {
+    color: var(--primary-color);
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 10px;
@@ -17,6 +18,7 @@
     border: none;
     font-family: "Montserrat", sans-serif;
     width: 100%;
+    
   }
   
   .react-calendar__tile--active {
@@ -24,14 +26,23 @@
     color: white !important;
     border-radius: 5px;
   }
-  
   .react-calendar__tile:hover {
     background: var(--secondary-color) !important;
+
     color: white !important;
+  }
+  .reserved-date {
+    background: #ffcccc !important; /* Rojo claro para indicar no disponible */
+    color: #888 !important;
+    text-decoration: line-through;
+    pointer-events: none;
+    font-weight: bold;
   }
   .btn-reservar {
     background-color: var(--primary-color);
     color: white;
+    margin-top: 10px;
+
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -40,8 +51,18 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
+
+
   .btn-reservar:hover {
     background-color: var(--secondary-color);
+  }
+  .react-calendar__month-view__days button {
+    border: 0.1px solid var(--primary-color);
+  }
+  .react-calendar__tile--now {
+    background: var(--secondary-color) !important;
+    color: white !important;
+    border-radius: 5px;
   }
   .icon-ws {
     font-size: 20px;

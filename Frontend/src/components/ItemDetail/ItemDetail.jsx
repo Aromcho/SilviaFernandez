@@ -47,6 +47,7 @@ const ItemDetail = ({ property, planos }) => {
   const orientation = property?.orientation;
   const property_condition = property?.property_condition;
   const operationType = property.operations[0]?.operation_type;
+  const occupation = property?.occupation || [];
 
   const handlePrint = () => {
     const printContent = printRef.current.innerHTML;
@@ -96,6 +97,7 @@ const ItemDetail = ({ property, planos }) => {
       <PropertyGallery photos={photos} videos={videos} />
       {/* Detalles de la propiedad */}
       <Contenido
+      idTokko={idTokko}
         age={age}
         total_surface={total_surface}
         room_amount={room_amount}
@@ -115,6 +117,7 @@ const ItemDetail = ({ property, planos }) => {
         property
         planos={planos}
         operationType={operationType}
+        occupation={occupation}
       />
       
       {/* Ubicación */}
