@@ -39,7 +39,6 @@
 }
 .property-features {
     grid-area: features;
-    border-bottom: 1px solid #000000;
 }
 
 .property-details {

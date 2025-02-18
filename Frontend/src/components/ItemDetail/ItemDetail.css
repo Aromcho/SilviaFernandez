@@ -26,14 +26,6 @@
   justify-content: end;
 }
 
-.property-features, .property-info, .property-description {
-  margin-top: 20px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-}
-
 
 
 
@@ -118,8 +110,8 @@
 }
 
 .info-item svg {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
 }
 
 
@@ -149,7 +141,7 @@
 
 
 
-.property-features, .property-info, .property-description {
+.property-features, .property-info {
   margin-top: 20px;
 }
 
