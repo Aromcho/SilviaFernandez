@@ -32,31 +32,30 @@
               <div className="center-column">
                 <div className="main-title-container">
                   <div className="title-new">
-                    <span className="address-title">{property.address}</span>
-                    <p className="address-secundary-title">{property.type.name}<span></span> {property.location?.name}</p>
+                  <img src="/images/logo-sf.png" alt="" className="img-logo" />
                   </div>
+                  
+                </div>
+                <div className="grid-container">
+                  <div className="main-image">
+                    <img src={photoGallery[0]?.src} alt="Main property image" style={{ width: '100%', height: '100%' }} />
+                  </div>
+                  
+                </div>
+                <div className="center-header">
+                  <span className="address-title">{property.address}</span>
+                  <span className="header-subtitle">{property.publication_title}</span>
                   <div className="main-price-container">
                     <span className="main-price">
                       <span className="main-price-coin">{property?.operations[0]?.prices[0]?.currency}</span> 
                       <span className="price">{formatToMoney(property?.operations[0]?.prices[0]?.price)}</span>
                     </span>
                     <p className="rooms">{property.room_amount} {property.room_amount === 1 ? "Ambiente" : "Ambientes"} + {Math.round(property?.parking_lot_amount)} Cocheras</p>
-                  </div>
-                </div>
-                <div className="grid-container">
-                  <div className="main-image">
-                    <img src={photoGallery[0]?.src} alt="Main property image" style={{ width: '100%', height: '100%' }} />
-                  </div>
                   <div className="small-images">
-                    {photoGallery.slice(1, 3).map((item, index) => (
-                      <img key={index} src={item.src} alt={`Small property image ${index + 1}`} style={{ width: '100%', height: '30%' }} />
-                    ))}
                     <QRCode size={80} value={`https://silviafernandez.mi-hogar.online/propiedad/${property.id.toString()}`} style={{ marginBottom: "30px" }} />
-                    <span className="marca-agua">SILVIA FERNANDEZ</span>
                   </div>
-                </div>
-                <div className="center-header">
-                  <img src="/images/logo-sf.png" alt="" className="img-logo" />
+                  </div>
+                  
                 </div>
               </div>
             </td>
