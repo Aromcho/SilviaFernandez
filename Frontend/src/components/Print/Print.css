@@ -40,13 +40,13 @@
   }
   
   .title-new {
-    padding-left: 35px;
+    padding-top: 35px;
     font-size: 24px;
     line-height: 26px;
     font-weight: 500;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: center;
   }
   
@@ -58,14 +58,14 @@
   }
   
   .img-logo {
-    width: 135px;
-    height: 40px;
+    width: 155px;
+    height: 50px;
   }
   
   .main-price-coin {
     font-size: 25px;
     font-weight: 600;
-    color: black;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -83,7 +83,7 @@
   .main-price {
     font-size: 30px;
     font-weight: 600;
-    color: black;
+    color: white;
     display: flex;
     align-items: end;
     justify-content: end;
@@ -91,19 +91,21 @@
   }
   
   .main-title-container {
+    margin-left: 40px;
     position: relative;
     z-index: 2;
     top: -200px;
     display: flex;
     justify-content: center;
     background-color: white;
-    width: 20vw;
-    padding:50px;
+    width: 15vw;
+    padding:30px;
+    border-radius: 0 0 10px 10px ;
   }
   
   .grid-container {
     position: relative;
-    top: -988px;
+    top: -970px;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -116,10 +118,13 @@
   
   .center-header {
     position: absolute;
+    margin-bottom: 30px;
+    padding: 20px;
     bottom: 0;
-    width: 100%;
+    width: 70%;
     height: 210px;
-    background: #00815c81;
+    border-radius: 0 100px 100px  0;
+    background: #00815c9f;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -165,11 +170,24 @@
   
   .small-images {
     position: absolute;
-    width: 100%;
+    bottom: -50px;
+    width: 97vw;
+    height: 100%;
     flex: 1;
     display: flex;
+    justify-content: center;
+    align-items: end;
     flex-direction: column;
-    gap: 30px;
+  }
+  .fondo-planco {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 180px;
+    height: 180px;
+    padding: 0px;
+    border-radius: 10px 10px 0 0;
   }
   
   .rooms {
