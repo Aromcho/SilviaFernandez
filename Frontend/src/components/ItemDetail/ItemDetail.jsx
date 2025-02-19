@@ -28,7 +28,7 @@ console.log(property)
 
   const videos = Array.isArray(property.videos) ? property.videos : [];
   const idTokko = property.id;
-  const total_surface = property.total_surface;
+  const total_surface = property.surface;
   const roofed_surface = property.roofed_surface;
   const semiroofed_surface = property?.semiroofed_surface || 0;
   const room_amount = property.room_amount;
@@ -48,6 +48,8 @@ console.log(property)
   const property_condition = property?.property_condition;
   const operationType = property.operations[0]?.operation_type;
   const occupation = property?.occupation || [];
+  const depth_measure = property?.depth_measure || 0;
+  const front_measure = property?.front_measure || 0;
 
   const handlePrint = () => {
     const printContent = printRef.current.innerHTML;
@@ -118,6 +120,8 @@ console.log(property)
         planos={planos}
         operationType={operationType}
         occupation={occupation}
+        depth_measure={depth_measure}
+        front_measure={front_measure}
       />
       
       {/* Ubicación */}

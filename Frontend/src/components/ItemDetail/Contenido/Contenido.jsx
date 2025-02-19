@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from '../../Button/Button.jsx';
 import { Dialog, DialogContent, IconButton } from '@mui/material';
 import { ArrowBackIos, ArrowForwardIos, Close as CloseIcon } from '@mui/icons-material';
-import { FaHome, FaRulerCombined, FaBed, FaBath, FaCar, FaToilet, FaMoneyBillWave } from "react-icons/fa";
+import { FaHome, FaRulerCombined, FaBed, FaBath, FaCar, FaToilet, FaMoneyBillWave,FaArrowsAltH, FaArrowsAltV } from "react-icons/fa";
 import { MdOutlineCalendarToday } from "react-icons/md";
 import {  FaCompass, FaCheckCircle, FaTag } from "react-icons/fa";
 import { MdOutlineBathroom, MdOutlineAspectRatio } from "react-icons/md";
@@ -29,7 +29,9 @@ const Contenido = ({
     planos = [],
     occupation,
     idTokko,
-    room_amount
+    room_amount,
+    front_measure,
+    depth_measure
   }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -71,8 +73,24 @@ const Contenido = ({
 {total_surface > 0 && (
   <div className="info-item text-center d-flex flex-column mb-5">
     <FaRulerCombined className="info-icon" aria-label="Superficie Total" />
-    <span><strong>{Math.round(total_surface)}</strong></span>
+    <span><strong>{Math.round(total_surface)} m²</strong></span>
     <p className="text-muted">Sup. Total</p>
+  </div>
+)}
+
+{front_measure > 0 && (
+  <div className="info-item text-center d-flex flex-column mb-5">
+    <FaArrowsAltH className="info-icon" aria-label="Frente" />
+    <span><strong>{front_measure} m</strong></span>
+    <p className="text-muted">Frente</p>
+  </div>
+)}
+
+{depth_measure > 0 && (
+  <div className="info-item text-center d-flex flex-column mb-5">
+    <FaArrowsAltV className="info-icon" aria-label="Fondo" />
+    <span><strong>{depth_measure} m</strong></span>
+    <p className="text-muted">Fondo</p>
   </div>
 )}
 
