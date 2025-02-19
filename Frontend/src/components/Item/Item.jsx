@@ -158,21 +158,21 @@ const Item = ({ property }) => {
             {total_surface > 0 && (
               <div className="info-item d-flex flex-column">
                 <span className="number-info-item">{Math.round(total_surface)} m²</span>
-                <FaRulerCombined className="info-icon" aria-label="Superficie Total" />
+                <FaRulerCombined className="card-icons-item" aria-label="Superficie Total" />
               </div>
             )}
             
             {front_measure > 0 && (
               <div className="info-item d-flex flex-column">
                 <span className="number-info-item">{front_measure} m</span>
-                <FaArrowsAltH className="info-icon" aria-label="Frente" />
+                <FaArrowsAltH className="card-icons-item" aria-label="Frente" />
               </div>
             )}
             
             {depth_measure > 0 && (
               <div className="info-item d-flex flex-column">
                 <span className="number-info-item">{depth_measure} m</span>
-                <FaArrowsAltV className="info-icon" aria-label="Fondo" />
+                <FaArrowsAltV className="card-icons-item" aria-label="Fondo" />
               </div>
             )}
           </div>
