@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { Card } from "react-bootstrap";
-import { FaHeart, FaBed, FaBath, FaCar, FaRulerCombined } from "react-icons/fa";
+import { FaHeart, FaBed, FaBath, FaCar, FaRulerCombined,FaArrowsAltV, FaArrowsAltH  } from "react-icons/fa";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import "./Item.css";
 import "slick-carousel/slick/slick.css";
@@ -92,7 +92,10 @@ const Item = ({ property }) => {
   const address = property.address || "Dirección no disponible";
   const barrio = property.location.name || "Barrio no disponible";
   const propertyId = property.id;
-
+  const total_surface = property.surface || 0;
+  const front_measure = property.front_measure || 0;
+  const depth_measure = property.depth_measure || 0;
+  
   const settings = {
     dots: false,
     infinite: true,
@@ -150,6 +153,26 @@ const Item = ({ property }) => {
               <div className="info-item d-flex flex-column">
                 <span className="number-info-item">{parkingLots}</span>
                 <FaCar size={16} className="card-icons-item" />
+              </div>
+            )}
+            {total_surface > 0 && (
+              <div className="info-item d-flex flex-column">
+                <span className="number-info-item">{Math.round(total_surface)} m²</span>
+                <FaRulerCombined className="info-icon" aria-label="Superficie Total" />
+              </div>
+            )}
+            
+            {front_measure > 0 && (
+              <div className="info-item d-flex flex-column">
+                <span className="number-info-item">{front_measure} m</span>
+                <FaArrowsAltH className="info-icon" aria-label="Frente" />
+              </div>
+            )}
+            
+            {depth_measure > 0 && (
+              <div className="info-item d-flex flex-column">
+                <span className="number-info-item">{depth_measure} m</span>
+                <FaArrowsAltV className="info-icon" aria-label="Fondo" />
               </div>
             )}
           </div>
