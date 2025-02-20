@@ -2,6 +2,11 @@ import React from "react";
 import QRCode from "react-qr-code";
 import "./Print.css";
 import { formatToMoney } from "../../helpers/index.js";
+import { FaHeart, FaBed, FaBath, FaCar, FaRulerCombined,FaArrowsAltV, FaArrowsAltH  } from "react-icons/fa";
+import { MdPhoneAndroid } from "react-icons/md";
+import { IoIosMail, IoLogoWhatsapp } from "react-icons/io";
+
+
 
 const Print = React.forwardRef(({ property, photoAmount }, ref) => {
   const photoGallery = property?.photos
@@ -10,7 +15,6 @@ const Print = React.forwardRef(({ property, photoAmount }, ref) => {
       src: `${item.image}`,
       loading: "lazy",
     }));
-
   return (
     <table className="property-pdf" id="pdfItem" ref={ref}>
       <thead>
@@ -38,37 +42,78 @@ const Print = React.forwardRef(({ property, photoAmount }, ref) => {
                 </div>
               </div>
               <div className="contact-new">
-                  <span className="">Silvia Fernandez</span>
-                  <span className="">Martillera Pública</span>
+                  <span className="">
+                  <MdPhoneAndroid size={26} /> 2255463051
+                  </span>
+                  <span>
+                  <IoLogoWhatsapp size={26} /> +5492255509408
+                  </span>
+                  <span className="">
+                  <IoIosMail size={26} /> braicesfernandez@gmail.com
+                  </span>
+
               </div>
               <div className="grid-container">
                 <div className="main-image">
                   <img
                     src={photoGallery[0]?.src}
                     alt="Main property image"
-                    style={{ width: "100%", height: "100%" }}
+                    style={{ width: "100vw", height: "100vh" }}
                   />
                 </div>
               </div>
               <div className="center-header">
                 <span className="address-title">{property.address}</span>
-                <span className="header-subtitle">
-                  {property.publication_title}
-                </span>
+                <span className="header-subtitle-2"> {property.publication_title}</span>
                 <div className="main-price-container">
                   <span className="main-price">
                     <span className="main-price-coin">
                       {property?.operations[0]?.prices[0]?.currency}
-                    </span>
-                    <span className="price">
+                      <span> </span>
                       {formatToMoney(property?.operations[0]?.prices[0]?.price)}
                     </span>
+                    <span>|</span>
+                    <p className="rooms">
+  {[
+    Math.round(property?.surface) > 0 && (
+      <div className="icon-item" key="surface">
+        <span className="icon-label">{Math.round(property?.surface)}</span>
+        <FaRulerCombined size={26} />
+      </div>
+    ),
+    Math.round(property?.suite_amount) > 0 && (
+      <div className="icon-item" key="suite">
+        <span className="icon-label">{Math.round(property?.suite_amount)}</span>
+        <FaBed size={26} />
+      </div>
+    ),
+    Math.round(property?.bathroom_amount) > 0 && (
+      <div className="icon-item" key="bathroom">
+        <span className="icon-label">{Math.round(property?.bathroom_amount)}</span>
+        <FaBath size={26} />
+      </div>
+    ),
+    Math.round(property?.parking_lot_amount) > 0 && (
+      <div className="icon-item" key="parking">
+        <span className="icon-label">{Math.round(property?.parking_lot_amount)}</span>
+        <FaCar size={26} />
+      </div>
+    ),
+  ]
+    .filter(Boolean) // Filtra los valores falsos para evitar elementos vacíos
+    .map((item, index, array) => (
+      <React.Fragment key={index}>
+        {item}
+        {index < array.length - 1 && <span className="sep">|</span>}
+      </React.Fragment>
+    ))}
+</p>
+
                   </span>
-                  <p className="rooms">
-                    {property.room_amount}{" "}
-                    {property.room_amount === 1 ? "Ambiente" : "Ambientes"} +{" "}
-                    {Math.round(property?.parking_lot_amount)} Cocheras
-                  </p>
+                  <div className="icon-list">
+                  
+                </div>
+                  
                 </div>
                 <div className="small-images">
                   <div className="fondo-planco bg-white ">
