@@ -10,6 +10,28 @@
     margin-top: 20px;
     
 }
+.consult-button-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.consult-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.consult-button:hover {
+  background-color: var(--secondary-color);
+}
+
 .info-icon {
     font-size: 32px;
     color: var(--secundary-color);

@@ -65,7 +65,7 @@ const TerrenosItemList = () => {
     <>
       <header className="hero-section mt-5 pt-5">
         <Container className="text-center text-white mt-5 pt-5">
-          <Typography variant="h3" className="hero-title">Lotes - Terrenos en Venta en Mar Azul</Typography>
+          <Typography variant="h3" className="hero-title">Lotes - Terrenos en Venta en Mar Azul, Mar de las Pampas y Villa Gesell</Typography>
           <p className="hero-subtitle">Encuentra el terreno ideal para construir tu sueño.</p>
         </Container>
       </header>
