@@ -3,13 +3,14 @@
     background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), 
                 url('/images/banner.jpeg') center/cover no-repeat;
     color: white;
-    padding: 100px 0;
+    padding: 200px 0 100px 0;
+    border-radius: 0 0  30% 30%;
     text-align: center;
     position: relative;
   }
   
   .hero-title {
-    margin-bottom: 10px;
+    margin-bottom: 20px !important; /* Reduce el margen */
     letter-spacing: 1px;
   }
   
@@ -24,9 +25,24 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
   }
-  /* Estilos para la lista de propiedades */
- 
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: 120px 0 10px 0; /* Reduce el padding */
+      border-radius: 0 0 0 0;
+
+  }
+  .hero-title {
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-size: 30px !important; 
+    margin-bottom: 20px !important; 
+  }
   
-  /* Paginación */
+  .item-list-temporal {
+      padding: 10px 0;
+      grid-template-columns: 1fr;
+      gap: 20px;
+  }
+  }
 
   

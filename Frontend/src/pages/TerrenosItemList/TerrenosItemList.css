@@ -3,3 +3,10 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
 }
+@media (max-width: 768px) {
+.item-list-terrenos {
+    padding: 10px 0;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+}

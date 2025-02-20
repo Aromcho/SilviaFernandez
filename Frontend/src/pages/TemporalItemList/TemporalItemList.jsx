@@ -63,9 +63,9 @@ const TemporalItemList = () => {
 
   return (
     <>
-      <header className="hero-section mt-5 pt-5">
-        <Container className="text-center text-white mt-5 pt-5">
-          <Typography variant="h3" className="hero-title">Alquileres Temporales Exclusivos en Mar Azul</Typography>
+      <header className="hero-section ">
+        <Container className="text-center text-white">
+          <Typography variant="h3" className="hero-title">Alquileres Temporales Exclusivos en Mar Azul, Mar de las Pampas y Villa Gesell</Typography>
           <p className="hero-subtitle">Desconectate y viví el viaje que soñás. Tenemos el espacio perfecto para tus vacaciones.</p>
         </Container>
       </header>

@@ -7,6 +7,9 @@ import { MdOutlineCalendarToday } from "react-icons/md";
 import {  FaCompass, FaCheckCircle, FaTag } from "react-icons/fa";
 import { MdOutlineBathroom, MdOutlineAspectRatio } from "react-icons/md";
 import BookingCalendar from '../BookingCalendar/BookingCalendar.jsx';
+import {
+  FaWhatsapp
+} from "react-icons/fa";
 
 import './Contenido.css';
 
@@ -48,7 +51,12 @@ const Contenido = ({
     const handleNextImage = () => {
         setSelectedImageIndex((prevIndex) => (prevIndex === planos.length - 1 ? 0 : prevIndex + 1));
     };
-
+    const handleWhatsApp = () => {
+      const phoneNumber = "5492255626092"; // Cambia esto por el número de WhatsApp de la inmobiliaria
+      const message = `Hola, quisiera consultar la disponibilidad de esta propiedad https://www.silviafernandezpropiedades.com.ar/propiedad/${idTokko}.`;
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank");
+    };
     return (
       <div className="property-container">
       <div className="property-features info-section bg-white card">
@@ -264,9 +272,19 @@ const Contenido = ({
 )}
       
       <div className="property-description bg-white  rounded-3">
-      {operationType === "Alquiler temporario" && (
+      {operationType === "Alquiler temporario" ? (
         <div className="calendar-section ">
           <BookingCalendar occupation={occupation} idTokko={idTokko} />
+        </div>
+      ): (
+        <div className="consult-button-section">
+          <button 
+            className="consult-button" 
+            onClick={() => handleWhatsApp(idTokko)}
+          >
+            <FaWhatsapp className="whatsapp-icon mx-2" />
+            Consultar por esta propiedad
+          </button>
         </div>
       )}
       <div className="info-section mb-5 card">

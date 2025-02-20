@@ -55,7 +55,7 @@ const BookingCalendar = ({ occupation = [], idTokko }) => {
       return;
     }
 
-    const phoneNumber = "5492255622841"; // Cambia esto por el número de WhatsApp de la inmobiliaria
+    const phoneNumber = "5492255626092"; // Cambia esto por el número de WhatsApp de la inmobiliaria
     const message = `Hola, quisiera consultar la disponibilidad de esta propiedad https://www.silviafernandezpropiedades.com.ar/propiedad/${idTokko} para las fechas del ${formatDate(selectedRange[0])} al ${formatDate(selectedRange[1])}.`;
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
