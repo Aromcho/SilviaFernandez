@@ -74,13 +74,13 @@ export const Menu = () => {
             <img
               className="logo-img"
               src="/images/logo-sf.png"
-              alt="Belga inmobiliaria"
+              alt="Silvia Fernandez"
             />
           ) : (
             <img
               className="logo-scrolled"
               src="/images/icon-logo-sf.png"
-              alt="Belga inmobiliaria"
+              alt="Silvia Fernandez"
             />
           )}
         </Navbar.Brand>
