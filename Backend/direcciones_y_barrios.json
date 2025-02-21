@@ -144,10 +144,6 @@
     "secundvalue": "Villa Gesell"
   },
   {
-    "value": "El Lucero",
-    "secundvalue": "Mar De Las Pampas"
-  },
-  {
     "value": "Av Del Lucero  y Av del Plata",
     "secundvalue": "Mar De Las Pampas"
   },
@@ -396,10 +392,6 @@
     "secundvalue": "Villa Gesell"
   },
   {
-    "value": "Paseo 144 entre avenidas 3 y 4",
-    "secundvalue": "Villa Gesell"
-  },
-  {
     "value": "Calle 38 entre Punta del Indio y Pinamar",
     "secundvalue": "Mar Azul"
   },
@@ -553,6 +545,10 @@
   },
   {
     "value": "Avenida 3 entre 171 y 172",
-    "secundvalue": "Villa Gesell"
+    "secundvalue": "Mar De Las Pampas"
+  },
+  {
+    "value": "Calle 39 y Copacabana",
+    "secundvalue": "Mar Azul"
   }
 ]
