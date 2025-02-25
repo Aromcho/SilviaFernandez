@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./FormContact.css";
-import { BelgaIsoIcon } from "../Icons/Icons.jsx";
 import { TitleWithIcon } from "../TitleWithIcon/TitleWithIcon.jsx";
 import { Input } from "../Input/Input.jsx";
 import { Textarea } from "../Textarea/Textarea.jsx";

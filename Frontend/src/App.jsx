@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { Helmet } from 'react-helmet-async';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import Home from "./pages/Home/Home.jsx";
 import Menu from "./components/Menu/Menu.jsx";
 import Footer from "./components/Footer/Footer.jsx";
@@ -37,7 +37,11 @@ function App() {
   }, [location]);
 
   return (
-    <>
+    <HelmetProvider>
+      <Helmet>
+      <title>Silvia Fernandez - Propiedades</title>
+      <meta name="description" content="Silvia Fernandez Propiedades - Encuentra propiedades en venta y alquiler temporario." />
+      </Helmet>
       <AuthProvider>
         <FiltersProvider>
           <Menu />
@@ -71,7 +75,7 @@ function App() {
           <Footer />
         </FiltersProvider>
       </AuthProvider>
-    </>
+    </HelmetProvider>
   );
 }
 
