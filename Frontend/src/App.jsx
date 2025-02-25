@@ -16,6 +16,7 @@ import ItemListSelectedContainer from "./components/ItemSelectedListContainer/It
 import TerminosYCondiciones from "./pages/Terminos/TerminosYCondiciones.jsx";
 import TemporalItemList from "./pages/TemporalItemList/TemporalItemList.jsx";
 import TerrenosItemList from "./pages/TerrenosItemList/TerrenosItemList.jsx";
+import ComplejosItemList from "./pages/ComplejosItemList/ComplejosItemList.jsx";
 import Error404 from "./pages/404/404.jsx";
 import Error500 from "./pages/500/500.jsx";
 import { FiltersProvider } from './context/FiltersContext';
@@ -53,6 +54,7 @@ function App() {
               <Route path="/propertyDetail/:id" element={<ItemDetailContainer />} />
               <Route path="/temporal" element={<TemporalItemList />} />
               <Route path="/terrenos" element={<TerrenosItemList />} />
+              <Route path="/complejos" element={<ComplejosItemList />} />
               <Route path="/404" element={<Error404 />} />
               <Route path="/500" element={<Error500 />} /> 
               <Route path="/quiero-vender" element={<QuieroVender />} />

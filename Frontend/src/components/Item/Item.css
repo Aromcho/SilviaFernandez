@@ -61,13 +61,17 @@
 .info-item svg {
   width: 20px I !important;
   height: 20px;
-  margin-right: 10px;
 
 }
 .number-info-item {
   color: #000000;
   font-size: 16px;
   font-weight: 600;
+}
+.text-bajo-item {
+  font-size: 14px !important;
+  font-weight: 500;
+
 }
 .barrio-item {
   color: #000000;

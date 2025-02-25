@@ -14,7 +14,7 @@ const SuggestionCards = () => {
         { title: 'Casas', icon: <FaHome />, filter: { property_type: ['Casa'] }, path: '/propertylist' },
         { title: 'Departamentos', icon: <FaBuilding />, filter: { property_type: ['Departamento'] }, path: '/propertylist' },
         
-        { title: 'Hoteles', icon: <FaHotel />, filter: { property_type: ['Hotel'] }, path: '/propertylist' },
+        { title: 'Complejos', icon: <FaHotel />, filter: { property_type: ['Hotel'] }, path: '/propertylist' },
     ];
 
     const handleCardClick = (filter, path) => {
