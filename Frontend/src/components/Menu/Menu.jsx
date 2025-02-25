@@ -110,6 +110,13 @@ export const Menu = () => {
   alquiler temporal
 </Nav.Link>
 
+<Nav.Link
+  as={Link}
+  to="complejos"
+  className={`menu--link ${sticky || !isHome ? "black-line sticky-link" : ""}`}
+>
+  complejos
+</Nav.Link>
           
           
         </Nav>

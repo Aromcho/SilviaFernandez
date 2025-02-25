@@ -95,6 +95,7 @@ const Item = ({ property }) => {
   const total_surface = property.surface || 0;
   const front_measure = property.front_measure || 0;
   const depth_measure = property.depth_measure || 0;
+  const roofed_surface = property.roofed_surface || 0;
   
   const settings = {
     dots: false,
@@ -131,41 +132,25 @@ const Item = ({ property }) => {
             </div>
           </div>
           <div className="property-info d-flex justify-content-around">
-            {size > 0 && (
-              <div className="info-item d-flex flex-column">
-                <span className="number-info-item">{size.toString().slice(0, -3)}</span>
-                <FaRulerCombined size={16} className="card-icons-item" />
-              </div>
-            )}
-            {bedrooms > 0 && (
-              <div className="info-item d-flex flex-column">
-                <span className="number-info-item">{bedrooms}</span>
-                <FaBed size={16} className="card-icons-item" />
-              </div>
-            )}
-            {bathrooms > 0 && (
-              <div className="info-item d-flex flex-column">
-                <span className="number-info-item">{bathrooms}</span>
-                <FaBath size={16} className="card-icons-item" />
-              </div>
-            )}
-            {parkingLots > 0 && (
-              <div className="info-item d-flex flex-column">
-                <span className="number-info-item">{parkingLots}</span>
-                <FaCar size={16} className="card-icons-item" />
-              </div>
-            )}
-            {total_surface > 0 && (
+          {total_surface > 0 && (
               <div className="info-item d-flex flex-column">
                 <span className="number-info-item">{Math.round(total_surface)} m²</span>
                 <FaRulerCombined className="card-icons-item" aria-label="Superficie Total" />
+                <p className="text-bajo-item" >Lote</p>
               </div>
             )}
-            
+            {roofed_surface > 0 && (
+              <div className="info-item text-center d-flex flex-column mb-5">
+                <span className="number-info-item">{roofed_surface.slice(0, -3)} m²</span>
+                <FaRulerCombined className="card-icons-item" aria-label="Superficie Cubierta" />
+                <p className="text-bajo-item" >Sup. Cub.</p>
+              </div>
+            )}
             {front_measure > 0 && (
               <div className="info-item d-flex flex-column">
                 <span className="number-info-item">{front_measure} m</span>
                 <FaArrowsAltH className="card-icons-item" aria-label="Frente" />
+                <p className="text-bajo-item" >Frente</p>
               </div>
             )}
             
@@ -173,8 +158,32 @@ const Item = ({ property }) => {
               <div className="info-item d-flex flex-column">
                 <span className="number-info-item">{depth_measure} m</span>
                 <FaArrowsAltV className="card-icons-item" aria-label="Fondo" />
+                <p className="text-bajo-item" >Fondo</p>
               </div>
             )}
+            
+            {bedrooms > 0 && (
+              <div className="info-item d-flex flex-column">
+                <span className="number-info-item">{bedrooms}</span>
+                <FaBed size={16} className="card-icons-item" />
+                <p className="text-bajo-item" >Dorm.</p>
+              </div>
+            )}
+            {bathrooms > 0 && (
+              <div className="info-item d-flex flex-column">
+                <span className="number-info-item">{bathrooms}</span>
+                <FaBath size={16} className="card-icons-item" />
+                <p className="text-bajo-item" >Baños</p>
+              </div>
+            )}
+            {parkingLots > 0 && (
+              <div className="info-item d-flex flex-column">
+                <span className="number-info-item">{parkingLots}</span>
+                <FaCar size={16} className="card-icons-item" />
+                <p className="text-bajo-item" >Cochera</p>
+              </div>
+            )}
+           
           </div>
 
         </Card.Body>
