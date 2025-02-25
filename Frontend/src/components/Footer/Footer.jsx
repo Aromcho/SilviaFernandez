@@ -14,9 +14,6 @@ import {
   WhatsappIcon,
   YoutubeCircleIcon,
 } from "../Icons/Icons.jsx";
-import HomeMap from "../HomeMap/HomeMap.jsx";
-import BackToTop from "../BackToTop/BackToTop.jsx";
-import ContactForm from "../Forms/ContactForm/ContactForm.jsx";
 import './Footer.css';
 
 export const Footer = ({ small = true, id, backToTopFooter }) => {
@@ -28,49 +25,16 @@ export const Footer = ({ small = true, id, backToTopFooter }) => {
   };
 
   const socialInfo = [
-    { link: `${SOCIAL.INSTA}`, icon: <InstaCircleIcon /> },
-    { link: `${SOCIAL.FACEBOOK}`, icon: <FacebookCircleIcon /> },
-    { link: `${SOCIAL.YOUTUBE}`, icon: <YoutubeCircleIcon /> },
-    { link: `${SOCIAL.LINKEDIN}`, icon: <LinkedinCircleIcon /> },
-    { link: `${SOCIAL.MESSENGER}`, icon: <MessengerCircleIcon /> },
+    { link: "https://www.instagram.com/silviafernandezpropiedades/", icon: <InstaCircleIcon /> },
+    { link: `https://www.facebook.com/Silviafernadezpropiedades/`, icon: <FacebookCircleIcon /> },
+    { link: ``, icon: <YoutubeCircleIcon /> },
+    { link: ``, icon: <LinkedinCircleIcon /> },
+    { link: ``, icon: <MessengerCircleIcon /> },
   ];
 
-  const [high, setHighB] = useState(0);
-  const [center, setCenter] = useState({
-    lat: -34.5608544,
-    lon: -58.4557807,
-    zoom: 13,
-  });
+ 
 
-  const setHigh = (n) => {
-    setHighB(n);
-    const item = data.find((item) => item.id === n);
-    if (item) setCenter(item?.loc);
-  };
 
-  const data = [
-    {
-      id: 1,
-      name: "Casa Central LA IMPRENTA",
-      direction: "Gorostiaga 1601",
-      direction_b: "(Esquina Migueletes)",
-      loc: { lon: -58.4364415, lat: -34.5652519, zoom: 15.5 },
-    },
-    {
-      id: 2,
-      name: "Sucursal BELGRANO C",
-      direction: "Juramento 2102",
-      direction_b: "1426 CABA",
-      loc: { lat: -34.56051641836724, lon: -58.45384234503877, zoom: 15.5 },
-    },
-    {
-      id: 3,
-      name: "Sucursal BELGRANO R",
-      direction: "Superí 1485",
-      direction_b: "(Esquina Av. de los Incas)",
-      loc: { lat: -34.5735786974359, lon: -58.46109912564103, zoom: 15.5 },
-    },
-  ];
 
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
   useEffect(() => {
@@ -105,8 +69,8 @@ export const Footer = ({ small = true, id, backToTopFooter }) => {
           <img
             className="brand-footer"
             src="/images/icon-logo-sf.png"
-            alt="Belga inmobiliaria"
-            title="Belga inmobiliaria"
+            alt="Silvia Fernandez Inmobiliaria"
+            title="Silvia Fernandez Inmobiliaria"
             loading="lazy"
           />
         </div>

@@ -11,7 +11,7 @@ const renderArticuleSEO = async (req, res) => {
     }
 
     // Seleccionar la imagen adecuada
-    const ogImage = articule.photos?.[0] || "https://belga.com.ar/images/og_image.png";
+    const ogImage = articule.photos?.[0] || "https://www.silviafernandezpropiedades.com.ar/images/og_image.png";
 
     // Genera el HTML con metaetiquetas dinámicas y redirige al frontend
     const html = `
@@ -23,7 +23,7 @@ const renderArticuleSEO = async (req, res) => {
         <title>${articule.title} | Blog Silvia Fernandez</title>
         <meta property="og:title" content="${articule.title} | Blog Silvia Fernandez">
         <meta property="og:description" content="${articule.subtitle}">
-        <meta property="og:url" content="http://www.belga.com.ar:8080/blog/${articule._id}">
+        <meta property="og:url" content="https://www.silviafernandezpropiedades.com.ar/blog/${articule._id}">
         <meta property="og:type" content="article">
         <meta property="og:site_name" content="Silvia Fernandez" />
         <meta property="og:image" content="${ogImage}">

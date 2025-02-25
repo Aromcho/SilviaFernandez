@@ -21,7 +21,7 @@ const Print = React.forwardRef(({ property, photoAmount }, ref) => {
         <tr>
           <th colSpan={2} style={{ display: "flex" }}>
             <div className="header">
-              <img src="/images/logo-sf.png" alt="Belga" className="logo" />
+              <img src="/images/logo-sf.png" alt="Silvia" className="logo" />
               <div className="header-content">
                 <span className="address-title">{property.address}</span>
                 <span className="header-subtitle">

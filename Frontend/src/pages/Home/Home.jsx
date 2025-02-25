@@ -3,7 +3,6 @@ import { useNavigate, Link, useLocation } from "react-router-dom"; // Corregir e
 import { FiltersContext } from '../../context/FiltersContext';
 import 'leaflet/dist/leaflet.css';
 import "./Home.css";
-import FooterInfo from "../../components/FooterInfo/FooterInfo.jsx"
 import Title from "../../components/Title/Title.jsx";
 import BackToTop from "../../components/BackToTop/BackToTop.jsx";
 import SearchHomeForm from "../../components/SearchHomeForm/SearchHomeForm.jsx";

@@ -1,171 +1,171 @@
 .footer-container {
-  width: 100%;
-  height: 30vh; /* Ajustar altura automáticamente */
-  position: relative;
-  background-color: #000; /* Fondo negro */
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0px 0; /* Añadir padding para espacio */
-}
-
-.footer-wrapper {
-  width: 100%;
-  height: 30vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
-}
-
-.footer-left,
-.footer-center,
-.footer-right {
-  font-family: 'Montserrat', sans-serif;
-
-  height: 30vh;
-  flex: 1; /* Espacio equitativo para cada columna */
-  padding: 0 20px;
-}
-
-.footer-center {
-  width: 100%;
-  height: 30vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: var(--primary-color);
-  padding: 50px 20px; /* Reducir padding */
-}
-
-.footer-center img {
-  width: 60%;
-  height: auto; /* Ajustar altura automáticamente */
-}
-
-.footer-right .legal-text {
-  font-size: 10px;
-  margin-bottom: 10px;
-  margin-top: 20px;
-}
-
-.social-list {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  height: 100%;
-  margin-bottom: 20px;
-}
-
-.social-list a {
-  min-width: 0 !important;
-}
-
-.social--link svg {
-  color: #fff ;
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-}
-
-.social--link:hover {
-  color: #f00; /* Cambia de color cuando el usuario pasa el mouse */
-}
-
-.legal-link .text-white {
-  text-decoration: none !important;
-  text-transform: none;
-  justify-content: start;
-  font-size: 14px;
-}
-
-.legal-link a:hover {
-  text-decoration: underline;
-  color: #F1B332;
-}
-.footer-right .mp {
-  font-size: 12px;
-}
-
-/* Ajustes para pantallas medianas (max-width: 768px) */
-@media (max-width: 768px) {
+    width: 100%;
+    height: 30vh; /* Ajustar altura automáticamente */
+    position: relative;
+    background-color: #000; /* Fondo negro */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 0; /* Añadir padding para espacio */
+  }
+  
   .footer-wrapper {
-    flex-direction: column; /* Para pantallas más pequeñas, organizar en una sola columna */
-    text-align: center;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
   }
-
+  
   .footer-left,
   .footer-center,
   .footer-right {
-    order: unset; /* Permitir que los elementos se intercalen */
+    font-family: 'Montserrat', sans-serif;
+  
+    height: 30vh;
+    flex: 1; /* Espacio equitativo para cada columna */
+    padding: 0 20px;
   }
-  .footer-right
-   {
-    order: 1; /* Asegurar que footer-left esté arriba */
+  
+  .footer-center {
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--primary-color);
+    padding: 50px 20px; /* Reducir padding */
   }
-
-  .footer-center,
-  .footer-left
-   {
-    order: 2; /* Ordenar footer-center y footer-right después */
-  }
-
-  .footer-left,
-  .footer-center,
-  .footer-right {
-    padding: 20px;
-    flex: 100%;
-    height: auto; /* Ajustar la altura automáticamente */
-  }
-
-  .social-list {
-    width: 85vw;
-    justify-content:space-between;
-  }
-
+  
   .footer-center img {
-    width: 70%; /* Ajustar el tamaño de la imagen */
+    width: 60%;
+    height: auto; /* Ajustar altura automáticamente */
   }
+  
   .footer-right .legal-text {
-    text-align: start;
     font-size: 10px;
     margin-bottom: 10px;
     margin-top: 20px;
   }
+  
+  .social-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .social-list a {
+    min-width: 0 !important;
+  }
+  
+  .social--link svg {
+    color: #fff ;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .social--link:hover {
+    color: #f00; /* Cambia de color cuando el usuario pasa el mouse */
+  }
+  
   .legal-link .text-white {
     text-decoration: none !important;
     text-transform: none;
     justify-content: start;
-    margin-bottom: 10px;
     font-size: 14px;
   }
+  
+  .legal-link a:hover {
+    text-decoration: underline;
+    color: #F1B332;
+  }
   .footer-right .mp {
-    text-align: start;
-
+    font-size: 12px;
   }
-}
-
-/* Ajustes para pantallas muy pequeñas (max-width: 480px) */
-@media (max-width: 480px) {
-  .footer-container {
-    padding: 10px 0; /* Reducir padding para pantallas muy pequeñas */
-    height: auto; /* Ajustar la altura automáticamente */
+  
+  /* Ajustes para pantallas medianas (max-width: 768px) */
+  @media (max-width: 768px) {
+    .footer-wrapper {
+      flex-direction: column; /* Para pantallas más pequeñas, organizar en una sola columna */
+      text-align: center;
+    }
+  
+    .footer-left,
+    .footer-center,
+    .footer-right {
+      order: unset; /* Permitir que los elementos se intercalen */
+    }
+    .footer-right
+     {
+      order: 1; /* Asegurar que footer-left esté arriba */
+    }
+  
+    .footer-center,
+    .footer-left
+     {
+      order: 2; /* Ordenar footer-center y footer-right después */
+    }
+  
+    .footer-left,
+    .footer-center,
+    .footer-right {
+      padding: 20px;
+      flex: 100%;
+      height: auto; /* Ajustar la altura automáticamente */
+    }
+  
+    .social-list {
+      width: 85vw;
+      justify-content:space-between;
+    }
+  
+    .footer-center img {
+      width: 70%; /* Ajustar el tamaño de la imagen */
+    }
+    .footer-right .legal-text {
+      text-align: start;
+      font-size: 10px;
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+    .legal-link .text-white {
+      text-decoration: none !important;
+      text-transform: none;
+      justify-content: start;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .footer-right .mp {
+      text-align: start;
+  
+    }
   }
-
-  .footer-wrapper {
-    height: auto; /* Ajustar la altura automáticamente */
+  
+  /* Ajustes para pantallas muy pequeñas (max-width: 480px) */
+  @media (max-width: 480px) {
+    .footer-container {
+      padding: 10px 0; /* Reducir padding para pantallas muy pequeñas */
+      height: auto; /* Ajustar la altura automáticamente */
+    }
+  
+    .footer-wrapper {
+      height: auto; /* Ajustar la altura automáticamente */
+    }
+  
+    .footer-center {
+      padding: 30px 10px; /* Reducir padding */
+    }
+  
+    .footer-center img {
+      width: 60%; /* Ajustar tamaño de la imagen para pantallas muy pequeñas */
+    }
+  
+    .social--link {
+      font-size: 1.2rem; /* Reducir tamaño de los iconos sociales */
+    }
   }
-
-  .footer-center {
-    padding: 30px 10px; /* Reducir padding */
-  }
-
-  .footer-center img {
-    width: 60%; /* Ajustar tamaño de la imagen para pantallas muy pequeñas */
-  }
-
-  .social--link {
-    font-size: 1.2rem; /* Reducir tamaño de los iconos sociales */
-  }
-}
