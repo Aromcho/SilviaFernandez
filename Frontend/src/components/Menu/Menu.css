@@ -121,18 +121,22 @@
 
 .menu-brand-wrapper {
   width: 380px !important;
-  height: 90px;
+  height: 110px;
+  border-radius: 10px;
+
   display: flex;
   max-width: none !important;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary-color);
+  background-color: white;
   margin-left: 10px;
   transition: all 0.4s cubic-bezier(0.74, 0.04, 0.24, 1.04);
   cursor: pointer;
 }
 .menu-brand-wrapper.sticky {
-  height: 55px;
+  height: 75px;
+  border-radius: 10px;
+  background-color: var(--primary-color);
 }
 .menu-brand-wrapper:hover {
   background-color: #279475;
