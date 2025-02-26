@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import { Card } from "react-bootstrap";
 import { FaHeart, FaBed, FaBath, FaCar, FaRulerCombined,FaArrowsAltV, FaArrowsAltH  } from "react-icons/fa";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import MapaInteractivo from "../MapaInteractivo/MapaInteractivo";
 import "./Item.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -66,7 +68,7 @@ const PrevArrow = (props) => {
 };
 
 const Item = ({ property }) => {
-  const [isFavorited, setIsFavorited] = useState(false);
+  const [showMap, setShowMap] = useState(false);
 
   const mainImages = property.photos?.slice(0, 5) || [{ image: "default-image.jpg" }];
 
@@ -96,7 +98,9 @@ const Item = ({ property }) => {
   const front_measure = property.front_measure || 0;
   const depth_measure = property.depth_measure || 0;
   const roofed_surface = property.roofed_surface || 0;
-  
+  const geo_lat = property.geo_lat;
+  const geo_long = property.geo_long;
+
   const settings = {
     dots: false,
     infinite: true,
@@ -116,19 +120,30 @@ const Item = ({ property }) => {
           <span className="price-item">{price}</span>
         </div>
 
-        <Slider {...settings} className="image-wrapper">
-          {mainImages.map((img, index) => (
-            <div key={index}>
-              <img className="img-rounded" src={img.image} alt={`Slide ${index}`} />
-            </div>
-          ))}
-        </Slider>
+        <div 
+          className="image-container"
+        >
+          {showMap ? (
+            <MapaInteractivo className="image-wrapper" property={property} />
+          ) : (
+            <Slider {...settings} className="image-wrapper">
+              {mainImages.map((img, index) => (
+                <div key={index}>
+                  <img className="img-rounded" src={img.image} alt={`Slide ${index}`} />
+                </div>
+              ))}
+            </Slider>
+          )}
+        </div>
 
         <Card.Body className="py-4">
           <div className="card-header-item">
             <div className="direction-container">
               <h5 className="barrio-item">{barrio}</h5>
               <p className="direccion-item">{address}</p>
+            </div>
+            <div className="map-hover-icon" onMouseEnter={() => setShowMap(true)} onMouseLeave={() => setShowMap(false)}>
+              <FaMapMarkerAlt size={24} color="#7bdcb5" />
             </div>
           </div>
           <div className="property-info d-flex justify-content-around">
