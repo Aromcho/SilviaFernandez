@@ -111,9 +111,18 @@ const Item = ({ property }) => {
     prevArrow: <PrevArrow />,
     draggable: true,
   };
+  console.log(property.status);
+  const statusTag = property.status.toLowerCase() === "reservada"
+    ? "RESERVADA"
+    : property.status.toLowerCase() === "vendida"
+    ? "VENDIDA"
+    : null;
+
 
   return (
     <Card className="card-item shadow-lg overflow-hidden text-black">
+      {statusTag && <div className={`status-tag ${statusTag.toLowerCase()}`}>{statusTag}</div>}
+
       <Link to={`/propiedad/${propertyId}`} state={{ property }} className="link-full">
         <div className="head-prop">
           <span className="type-item">{operationType.toUpperCase()}</span>

@@ -72,12 +72,57 @@
     font-size: 16px;
     font-weight: 400;
 }
-
+.price-container {
+    position: relative;
+    display: inline-block;
+    
+  }
+  
+  /* Etiqueta diagonal */
+  .price-label {
+    width: 200px;
+    position: absolute;
+    top: -10px;
+    right: -40px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    transform: rotate(20deg);
+    text-transform: uppercase;
+    border-radius: 0px;
+    z-index: 2;
+    text-align: center;
+  }
+  
+  /* Colores para cada estado */
+  .price-label.reserved {
+    background-color: orange;
+  }
+  
+  .price-label.sold {
+    background-color: red;
+  }
 @media (max-width: 768px) {
 
     .nombre-precio-container, .barrio-compartir-container {
         flex-direction: column;
         align-items: flex-start;
     }
+    .price-label {
+        width: 150px;
+        position: absolute;
+        top: -10px;
+        right: -340px;
+        padding: 8px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+        transform: rotate(25deg);
+        text-transform: uppercase;
+        border-radius: 5px;
+        z-index: 2;
+        text-align: center;
+      }
 
 }
