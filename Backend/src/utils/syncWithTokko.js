@@ -3,7 +3,6 @@ import Property from '../models/Property.model.js';
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-// Función para dividir el array en lotes de un tamaño específico
 const chunkArray = (array, size) => {
   const chunks = [];
   for (let i = 0; i < array.length; i += size) {
@@ -16,7 +15,7 @@ export const syncWithTokko = async () => {
   const limit = 20;
   let offset = 0;
   let total_count = 0;
-  const syncedIds = new Set(); // Set para almacenar los IDs sincronizados
+  const syncedIds = new Set(); 
 
   try {
     console.log('Iniciando sincronización con Tokko...');
@@ -24,42 +23,53 @@ export const syncWithTokko = async () => {
     do {
       console.log(`Obteniendo propiedades con offset: ${offset}`);
 
-      const response = await axios.get('https://www.tokkobroker.com/api/v1/property/', {
+      const response = await axios.get('https://www.tokkobroker.com/api/v1/property/search/', {
         params: {
           key: process.env.TOKKO_TOKEN,
-          limit,
-          offset,
           lang: 'es_ar',
           format: 'json',
+          limit,
+          offset,
+          data: JSON.stringify({
+            with_custom_tags: [],
+            current_localization_id: 0,
+            current_localization_type: "country",
+            price_from: 0,
+            price_to: 999999999,
+            operation_types: [1, 2, 3], // Venta, Alquiler, Alquiler temporal
+            property_types: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24],
+            currency: "ANY",
+            filters: [],
+            only_available: false, // 🔥 Esto habilita traer todas las propiedades, no solo disponibles
+            append_available: "checked",
+          }),
         },
       });
 
-      const properties = response.data.objects.filter(property => property.id !== 4260629); // Excluir propiedad con ID 4260629
+      const properties = response.data.objects.filter(property => property.id !== 4260629);
       total_count = response.data.meta.total_count;
 
       console.log(`Obtenidas ${properties.length} propiedades de un total de ${total_count}.`);
 
-      // Preparar las operaciones para bulkWrite
       const operations = properties.map(property => {
-        syncedIds.add(property.id); // Almacena el ID de la propiedad sincronizada
+        syncedIds.add(property.id);
 
         // Procesamiento de imágenes
-if (property.photos && Array.isArray(property.photos)) {
-  property.photos = property.photos.map(img => ({
-    image: img.image || '',
-    description: img.description || '',
-    is_blueprint: img.is_blueprint || false,
-    is_front_cover: img.is_front_cover || false, // Agregar is_front_cover
-    order: img.order || 0, // Asegurar el orden de las imágenes
-    original: img.original || '',
-    thumb: img.thumb || '',
-  }));
-} else {
-  property.photos = [];
-}
+        if (property.photos && Array.isArray(property.photos)) {
+          property.photos = property.photos.map(img => ({
+            image: img.image || '',
+            description: img.description || '',
+            is_blueprint: img.is_blueprint || false,
+            is_front_cover: img.is_front_cover || false, 
+            order: img.order || 0, 
+            original: img.original || '',
+            thumb: img.thumb || '',
+          }));
+        } else {
+          property.photos = [];
+        }
 
-
-        // Validación y procesamiento de operations
+        // Procesamiento de operaciones
         if (property.operations && Array.isArray(property.operations)) {
           property.operations = property.operations.map(op => ({
             operation_type: op.operation_type || null,
@@ -73,7 +83,7 @@ if (property.photos && Array.isArray(property.photos)) {
           property.operations = [];
         }
 
-        // Otras validaciones para branch, location, etc.
+        // Validaciones de branch
         if (property.branch && typeof property.branch === 'object') {
           property.branch = {
             ...property.branch,
@@ -84,39 +94,50 @@ if (property.photos && Array.isArray(property.photos)) {
           };
         }
 
-        // Asegurarse de incluir la descripción completa
         property.description = property.description || '';
         property.rich_description = property.rich_description || '';
 
-        // Construir el objeto para la operación bulkWrite
+        // **Definir el estado de la propiedad**
+        let status = "disponible"; // Valor por defecto
+
+        // Convertimos `status` a número antes de evaluarlo
+        const propertyStatus = Number(property.status);
+
+        if (propertyStatus === 3) {
+          status = "reservada";
+        } else if (propertyStatus === 4) {
+          status = "vendida";
+        }
+
         return {
           updateOne: {
             filter: { id: property.id },
-            update: { $set: property },
+            update: { 
+              $set: { ...property, status } // Guardamos la propiedad con el nuevo `status`
+            },
             upsert: true,
           }
         };
       });
 
-      // Dividir las operaciones en lotes de 100 y ejecutar cada lote
       const operationsChunks = chunkArray(operations, 100);
       for (const chunk of operationsChunks) {
         const result = await Property.bulkWrite(chunk);
         console.log(`Actualizadas ${result.modifiedCount} propiedades, insertadas ${result.upsertedCount} propiedades.`);
-        await delay(1000); // Agregar una espera de 1 segundo entre lotes para evitar sobrecargar la base de datos
+        await delay(1000);
       }
 
       offset += limit;
 
     } while (offset < total_count);
 
-    // Después de la sincronización, eliminar las propiedades que no están en Tokko
+    // **Eliminar propiedades que ya no están en Tokko**
     await Property.deleteMany({
-      id: { $nin: Array.from(syncedIds) } // Elimina las propiedades que no fueron sincronizadas
+      id: { $nin: Array.from(syncedIds) }
     });
 
     console.log('Sincronización completada y propiedades eliminadas si es necesario.');
   } catch (error) {
     console.error('Error al sincronizar con Tokko:', error);
-  }
+  }  
 };

@@ -1,17 +1,23 @@
-import React, {useRef} from "react";
-import {
-  FaArrowLeft,
-  FaWhatsapp,
-} from "react-icons/fa";
-import {Card, Button} from "react-bootstrap";
+import React, { useRef } from "react";
+import { FaArrowLeft, FaWhatsapp } from "react-icons/fa";
+import { Card, Button } from "react-bootstrap";
 import { CiMail } from "react-icons/ci";
 import { FaPrint } from "react-icons/fa";
 import { Row, Col } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./PropertyHeader.css";
 
-const PropertyHeader = ({ address, operationType,property_type,barrio,operations,idTokko, handlePrint }) => {
-    const navigate = useNavigate();
+const PropertyHeader = ({
+  property,
+  address,
+  operationType,
+  property_type,
+  barrio,
+  operations,
+  idTokko,
+  handlePrint,
+}) => {
+  const navigate = useNavigate();
 
   const shareOnWhatsApp = () => {
     const message = `Mira esta propiedad: ${address}. Precio: ${operations[0].prices[0].currency} ${operations[0].prices[0].price} https://www.silviafernandezpropiedades.com.ar/propiedad/${idTokko}`;
@@ -28,8 +34,6 @@ const PropertyHeader = ({ address, operationType,property_type,barrio,operations
     window.location = mailtoLink;
   };
 
-  
-
   const goBack = () => navigate("/propertylist");
 
   return (
@@ -40,6 +44,15 @@ const PropertyHeader = ({ address, operationType,property_type,barrio,operations
             <div className="d-flex align-items-center">
               <h1 className="address-title-details">{address}</h1>
             </div>
+            <div className="price-container">
+              {property.status === "reservada" && (
+                <div className="price-label reserved">RESERVADA</div>
+              )}
+              {property.status === "vendida" && (
+                <div className="price-label sold">VENDIDA</div>
+              )}
+            </div>
+
             <h2 className="price-details">
               {operationType}
               {operationType === "Alquiler temporario" ? (
@@ -58,10 +71,10 @@ const PropertyHeader = ({ address, operationType,property_type,barrio,operations
             {property_type} en {barrio}
           </p>
           <div className="compartir-container">
-          <Button className="compartir-button" onClick={shareOnWhatsApp}>
-  <FaWhatsapp className="whatsapp-icon" />
-  <span>Compartir</span>
-</Button>
+            <Button className="compartir-button" onClick={shareOnWhatsApp}>
+              <FaWhatsapp className="whatsapp-icon" />
+              <span>Compartir</span>
+            </Button>
 
             <div>
               <FaPrint
