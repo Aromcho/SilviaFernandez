@@ -123,14 +123,7 @@ const Print = React.forwardRef(({ property, photoAmount }, ref) => {
                             <FaBath size={26} />
                           </div>
                         ),
-                        Math.round(property?.parking_lot_amount) > 0 && (
-                          <div className="icon-item" key="parking">
-                            <span className="icon-label">
-                              {Math.round(property?.parking_lot_amount)}
-                            </span>
-                            <FaCar size={26} />
-                          </div>
-                        ),
+                        
                       ]
                         .filter(Boolean) // Filtra los valores falsos para evitar elementos vacíos
                         .map((item, index, array) => (
