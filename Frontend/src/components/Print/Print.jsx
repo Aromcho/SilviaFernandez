@@ -2,11 +2,17 @@ import React from "react";
 import QRCode from "react-qr-code";
 import "./Print.css";
 import { formatToMoney } from "../../helpers/index.js";
-import { FaHeart, FaBed, FaBath, FaCar, FaRulerCombined,FaArrowsAltV, FaArrowsAltH  } from "react-icons/fa";
+import {
+  FaHeart,
+  FaBed,
+  FaBath,
+  FaCar,
+  FaRulerCombined,
+  FaArrowsAltV,
+  FaArrowsAltH,
+} from "react-icons/fa";
 import { MdPhoneAndroid } from "react-icons/md";
 import { IoIosMail, IoLogoWhatsapp } from "react-icons/io";
-
-
 
 const Print = React.forwardRef(({ property, photoAmount }, ref) => {
   const photoGallery = property?.photos
@@ -15,6 +21,7 @@ const Print = React.forwardRef(({ property, photoAmount }, ref) => {
       src: `${item.image}`,
       loading: "lazy",
     }));
+    console.log(property);
   return (
     <table className="property-pdf" id="pdfItem" ref={ref}>
       <thead>
@@ -42,29 +49,31 @@ const Print = React.forwardRef(({ property, photoAmount }, ref) => {
                 </div>
               </div>
               <div className="contact-new">
-                  <span className="">
+                <span className="">
                   <MdPhoneAndroid size={26} /> 2255463051
-                  </span>
-                  <span>
+                </span>
+                <span>
                   <IoLogoWhatsapp size={26} /> +5492255509408
-                  </span>
-                  <span className="">
+                </span>
+                <span className="">
                   <IoIosMail size={26} /> braicesfernandez@gmail.com
-                  </span>
-
+                </span>
               </div>
               <div className="grid-container">
                 <div className="main-image">
                   <img
                     src={photoGallery[0]?.src}
                     alt="Main property image"
-                    style={{ width: "100vw", height: "100vh" }}
+                    style={{ width: "100vw", height: "120vh" }}
                   />
                 </div>
               </div>
               <div className="center-header">
                 <span className="address-title">{property.address}</span>
-                <span className="header-subtitle-2"> {property.publication_title}</span>
+                <span className="header-subtitle-2">
+                  {" "}
+                  {property.publication_title}
+                </span>
                 <div className="main-price-container">
                   <span className="main-price">
                     <span className="main-price-coin">
@@ -74,64 +83,82 @@ const Print = React.forwardRef(({ property, photoAmount }, ref) => {
                     </span>
                     <span>|</span>
                     <p className="rooms">
-  {[
-    Math.round(property?.surface) > 0 && (
-      <div className="icon-item" key="surface">
-        <span className="icon-label">{Math.round(property?.surface)}</span>
-        <FaRulerCombined size={26} />
-      </div>
-    ),
-    Math.round(property?.suite_amount) > 0 && (
-      <div className="icon-item" key="suite">
-        <span className="icon-label">{Math.round(property?.suite_amount)}</span>
-        <FaBed size={26} />
-      </div>
-    ),
-    Math.round(property?.bathroom_amount) > 0 && (
-      <div className="icon-item" key="bathroom">
-        <span className="icon-label">{Math.round(property?.bathroom_amount)}</span>
-        <FaBath size={26} />
-      </div>
-    ),
-    Math.round(property?.parking_lot_amount) > 0 && (
-      <div className="icon-item" key="parking">
-        <span className="icon-label">{Math.round(property?.parking_lot_amount)}</span>
-        <FaCar size={26} />
-      </div>
-    ),
-  ]
-    .filter(Boolean) // Filtra los valores falsos para evitar elementos vacíos
-    .map((item, index, array) => (
-      <React.Fragment key={index}>
-        {item}
-        {index < array.length - 1 && <span className="sep">|</span>}
-      </React.Fragment>
-    ))}
-</p>
-
+                      {[
+                        Math.round(property?.surface) > 0 && (
+                          <div className="icon-item" key="surface">
+                            
+                            <span className="icon-label">
+                            <p>Sup. Total</p>
+                             {Math.round(property?.surface)}
+                            </span>
+                            
+                            <FaRulerCombined size={26} />
+                            
+                          </div>
+                        ),
+                        Math.round(property?.surface) > 0 && (
+                          <div className="icon-item" key="surface">
+                            
+                            <span className="icon-label">
+                              <p>Sup. Cub</p>
+                             {Math.round(property?.roofed_surface)}
+                            </span>
+                            <FaRulerCombined size={26} />
+                            
+                          </div>
+                        ),
+                        Math.round(property?.suite_amount) > 0 && (
+                          <div className="icon-item" key="suite">
+                            <span className="icon-label">
+                              {Math.round(property?.suite_amount)}
+                            </span>
+                            <FaBed size={26} />
+                          </div>
+                        ),
+                        Math.round(property?.bathroom_amount) > 0 && (
+                          <div className="icon-item" key="bathroom">
+                            <span className="icon-label">
+                              {Math.round(property?.bathroom_amount)}
+                            </span>
+                            <FaBath size={26} />
+                          </div>
+                        ),
+                        Math.round(property?.parking_lot_amount) > 0 && (
+                          <div className="icon-item" key="parking">
+                            <span className="icon-label">
+                              {Math.round(property?.parking_lot_amount)}
+                            </span>
+                            <FaCar size={26} />
+                          </div>
+                        ),
+                      ]
+                        .filter(Boolean) // Filtra los valores falsos para evitar elementos vacíos
+                        .map((item, index, array) => (
+                          <React.Fragment key={index}>
+                            {item}
+                            {index < array.length - 1 && (
+                              <span className="sep">|</span>
+                            )}
+                          </React.Fragment>
+                        ))}
+                    </p>
                   </span>
-                  <div className="icon-list">
-                  
-                </div>
-                  
+                  <div className="icon-list"></div>
                 </div>
                 <div className="small-images">
                   <div className="fondo-planco bg-white ">
-                   
-                  <QRCode
+                    <QRCode
                       size={160}
-                      value={`https://silviafernandez.mi-hogar.online/propiedad/${property.id.toString()}`}
+                      value={`https://www.silviafernandezpropiedades.com.ar/propiedad/${property.id.toString()}`}
                       style={{ marginBottom: "10px" }}
                     />
                   </div>
-                    
-                  </div>
+                </div>
               </div>
-              
             </div>
-            
           </td>
         </tr>
+        {/*
         <tr>
           <td colSpan={2}>
             <div className="content-wrapper">
@@ -207,11 +234,12 @@ const Print = React.forwardRef(({ property, photoAmount }, ref) => {
             </div>
           </td>
         </tr>
+        */}
       </tbody>
       <tfoot>
         <tr>
           <td colSpan={2}>
-            <div className="footer">{/* Footer content */}</div>
+            <div className="footer"></div>
           </td>
         </tr>
       </tfoot>
