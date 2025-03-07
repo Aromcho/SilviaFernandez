@@ -4,7 +4,7 @@ import './OperationTypeSelector.css';
 const operationTypeOptions = [
   { value: 'Venta', label: 'Venta' },
   { value: 'Alquiler', label: 'Alquiler', className: 'hide-on-mobile' }, // Clase para ocultarlo en mobile
-  { value: 'Alquiler temporario', label: 'Alquiler Temporario' },
+  //{ value: 'Alquiler temporario', label: 'Alquiler Temporario' },
 ];
 
 const OperationTypeSelector = ({ filters, updateFilters }) => {
