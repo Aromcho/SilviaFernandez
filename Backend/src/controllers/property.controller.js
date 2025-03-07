@@ -96,14 +96,16 @@ const getProperties = async (req, res) => {
       operation_type, property_type, minRooms, maxRooms, minPrice, maxPrice,
       barrio, searchQuery, minGarages, maxGarages, limit = 10, offset = 0, order = 'DESC', is_starred
     } = req.query;
-    
 
     // Crear un objeto con los filtros a aplicar
     const filterObj = {};
+ 
+    // Excluir propiedades con tipo "Alquiler temporario"
+    filterObj['operations.operation_type'] = { $ne: 'Alquiler temporario' };
 
     // Filtro por tipo de operación
     if (operation_type && operation_type.length > 0) {
-      filterObj['operations.operation_type'] = { $in: operation_type };
+      filterObj['operations.operation_type'].$in = operation_type;
     }
 
     // Filtro por tipo de propiedad
@@ -141,29 +143,29 @@ const getProperties = async (req, res) => {
     // Filtro de búsqueda general
     if (searchQuery && searchQuery.length > 0) {
       filterObj.$or = [
-        { address: { $regex: searchQuery, $options: 'i' } },  // Buscar por dirección
-        { 'location.full_location': { $regex: searchQuery, $options: 'i' } },  // Buscar por ubicación completa
-        { 'location.name': { $regex: searchQuery, $options: 'i' } },  // Buscar por barrio
-        { 'publication_title': { $regex: searchQuery, $options: 'i' } }, // Búsqueda por título
-        { 'real_address': { $regex: searchQuery, $options: 'i' } }, // Búsqueda por dirección real
+        { address: { $regex: searchQuery, $options: 'i' } },
+        { 'location.full_location': { $regex: searchQuery, $options: 'i' } },
+        { 'location.name': { $regex: searchQuery, $options: 'i' } },
+        { 'publication_title': { $regex: searchQuery, $options: 'i' } },
+        { 'real_address': { $regex: searchQuery, $options: 'i' } },
       ];
     }
 
     // Filtro por cocheras (garages)
-if (minGarages || maxGarages) {
-  filterObj['parking_lot_amount'] = {};
-  if (minGarages) {
-    filterObj['parking_lot_amount'].$gte = parseInt(minGarages);
-  }
-  if (maxGarages) {
-    filterObj['parking_lot_amount'].$lte = parseInt(maxGarages);
-  }
-}
-
+    if (minGarages || maxGarages) {
+      filterObj['parking_lot_amount'] = {};
+      if (minGarages) {
+        filterObj['parking_lot_amount'].$gte = parseInt(minGarages);
+      }
+      if (maxGarages) {
+        filterObj['parking_lot_amount'].$lte = parseInt(maxGarages);
+      }
+    }
 
     if (is_starred === 'true') {
       filterObj.is_starred_on_web = true;
     }
+
     // Ordenar por precio
     const sortObj = order === 'desc' ? { 'operations.prices.price': -1 } : { 'operations.prices.price': 1 };
 
@@ -174,8 +176,8 @@ if (minGarages || maxGarages) {
         limit: parseInt(limit, 10),
         offset: parseInt(offset, 10),
       },
-      projection: 'id address suite_amount operations.prices location.name', // Limitar los campos seleccionados
-      lean: true, // Optimizar las consultas con lean()
+      projection: 'id address suite_amount operations.prices location.name',
+      lean: true,
     });
 
     const total_count = properties.totalDocs;

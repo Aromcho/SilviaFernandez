@@ -77,7 +77,7 @@ console.log(property)
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen]);
-
+console.log(property)
   return (
     <Container className="my-5 text-dark property-detail">
       {/* Botón de regreso */}
