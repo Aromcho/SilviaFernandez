@@ -112,8 +112,8 @@ const Item = ({ property }) => {
     draggable: true,
   };
   console.log(property.status);
-  const statusTag = property.status.toLowerCase() === "reservada"
-    ? "RESERVADA"
+  const statusTag = property.status.toLowerCase() === "reservado"
+    ? "RESERVADO"
     : property.status.toLowerCase() === "vendida"
     ? "VENDIDA"
     : null;
