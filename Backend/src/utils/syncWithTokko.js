@@ -1,4 +1,4 @@
-import axios from 'axios';  
+import axios from 'axios';
 import Property from '../models/Property.model.js';
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -15,7 +15,7 @@ export const syncWithTokko = async () => {
   const limit = 20;
   let offset = 0;
   let total_count = 0;
-  const syncedIds = new Set(); 
+  const syncedIds = new Set();
 
   try {
     console.log('Iniciando sincronización con Tokko...');
@@ -46,7 +46,26 @@ export const syncWithTokko = async () => {
         },
       });
 
-      const properties = response.data.objects.filter(property => property.id !== 4260629);
+      // Primero filtras las propiedades excluidas para mostrarlas después
+      const excludedProperties = response.data.objects.filter(property =>
+        property.id === 4260629 || Number(property.status) === 1
+      );
+
+      // Luego, muestras las propiedades excluidas por consola
+      if (excludedProperties.length > 0) {
+        console.log('Propiedades excluidas en esta sincronización:', excludedProperties.map(p => ({
+          id: p.id,
+          status: p.status,
+          title: p.publication_title || 'Sin título'
+        })));
+      }
+
+      // Ahora sí filtras las propiedades que sí deseas sincronizar
+      const properties = response.data.objects.filter(property =>
+        property.id !== 4260629 && Number(property.status) !== 1
+      );
+
+
       total_count = response.data.meta.total_count;
 
       console.log(`Obtenidas ${properties.length} propiedades de un total de ${total_count}.`);
@@ -60,8 +79,8 @@ export const syncWithTokko = async () => {
             image: img.image || '',
             description: img.description || '',
             is_blueprint: img.is_blueprint || false,
-            is_front_cover: img.is_front_cover || false, 
-            order: img.order || 0, 
+            is_front_cover: img.is_front_cover || false,
+            order: img.order || 0,
             original: img.original || '',
             thumb: img.thumb || '',
           }));
@@ -104,7 +123,7 @@ export const syncWithTokko = async () => {
         const propertyStatus = Number(property.status);
 
         if (propertyStatus === 3) {
-          status = "reservada";
+          status = "reservado";
         } else if (propertyStatus === 4) {
           status = "vendida";
         }
@@ -112,7 +131,7 @@ export const syncWithTokko = async () => {
         return {
           updateOne: {
             filter: { id: property.id },
-            update: { 
+            update: {
               $set: { ...property, status } // Guardamos la propiedad con el nuevo `status`
             },
             upsert: true,
@@ -139,5 +158,5 @@ export const syncWithTokko = async () => {
     console.log('Sincronización completada y propiedades eliminadas si es necesario.');
   } catch (error) {
     console.error('Error al sincronizar con Tokko:', error);
-  }  
+  }
 };

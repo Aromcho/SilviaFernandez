@@ -45,10 +45,10 @@ const PropertyHeader = ({
               <h1 className="address-title-details">{address}</h1>
             </div>
             <div className="price-container">
-              {property.status === "reservada" && (
-                <div className="price-label reserved">RESERVADA</div>
+              {property.status.toLowerCase() === "reservado" && (
+                <div className="price-label reserved">RESERVADO</div>
               )}
-              {property.status === "vendida" && (
+              {property.status.toLowerCase() === "vendida" && (
                 <div className="price-label sold">VENDIDA</div>
               )}
             </div>
