@@ -128,6 +128,13 @@ export const Menu = () => {
 >
   Nosotros
 </Nav.Link>
+<Nav.Link
+  as={Link}
+  to="mapa"
+  className={`menu--link ${sticky || !isHome ? "black-line sticky-link" : ""}`}
+>
+  Mapa
+</Nav.Link>
           
           
         </Nav>
@@ -168,6 +175,11 @@ export const Menu = () => {
     <li className="burger-menu-item">
       <Link to="/nosotros" className="burger--menu-link" onClick={handleCloseMenu}>
         <span className="link-text">Nosotros</span>
+      </Link>
+    </li>
+    <li className="burger-menu-item">
+      <Link to="/mapa" className="burger--menu-link" onClick={handleCloseMenu}>
+        <span className="link-text">Mapa</span>
       </Link>
     </li>
   </ul>

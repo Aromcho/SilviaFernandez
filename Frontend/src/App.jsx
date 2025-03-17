@@ -28,6 +28,7 @@ import BlogDetail from "./pages/Blog/BlogDetail/BlogDetail.jsx";
 import Print from "./components/Print/Print.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Register from "./pages/Register/Register.jsx";
+import HomeMap from "./components/HomeMap/HomeMap.jsx";
 import ReactGA from 'react-ga4';
 
 function App() {
@@ -73,6 +74,7 @@ function App() {
               <Route path="/busquedas-guardadas" element={<BusquedasGuardadas />} />
               <Route path="/favorites" element={<Favorites />} />  
               <Route path="/destacados" element={<ItemListSelectedContainer/>} />
+              <Route path="/mapa" element={<HomeMap/>} />
             </Routes>
           <Footer />
         </FiltersProvider>
