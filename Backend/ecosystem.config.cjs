@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "belga-bern",
+      name: "silvia",
       script: "npm",
       args: "start",
       exec_mode: "cluster", // Modo clúster
