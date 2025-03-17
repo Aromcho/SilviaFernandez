@@ -68,7 +68,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/venta/:tipo" element={<ItemListContainer />} />
               <Route path="*" element={<Navigate to="/404" />} />
-              <Route path="/conoce-belga" element={<ConoceBelga />} />
+              <Route path="/nosotros" element={<ConoceBelga />} />
               <Route path="/terminos-y-condiciones" element={<TerminosYCondiciones />} />
               <Route path="/busquedas-guardadas" element={<BusquedasGuardadas />} />
               <Route path="/favorites" element={<Favorites />} />  

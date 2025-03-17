@@ -56,6 +56,10 @@ export const Menu = () => {
     }
   }, [location]);
   
+  const handleCloseMenu = () => {
+    setShowMenu(false);
+  };
+  
 
   const isHome = location.pathname === "/";
 
@@ -115,13 +119,18 @@ export const Menu = () => {
   to="complejos"
   className={`menu--link ${sticky || !isHome ? "black-line sticky-link" : ""}`}
 >
-  complejos
+  Complejos
+</Nav.Link>
+<Nav.Link
+  as={Link}
+  to="nosotros"
+  className={`menu--link ${sticky || !isHome ? "black-line sticky-link" : ""}`}
+>
+  Nosotros
 </Nav.Link>
           
           
         </Nav>
-
-        {/* Botón hamburguesa personalizado */}
         <div
           className={`burger-button ${showMenu ? "active" : ""}`}
           onClick={() => setShowMenu(!showMenu)}
@@ -140,40 +149,30 @@ export const Menu = () => {
       </div>
 
       <div className={`burger-menu ${showMenu ? "active" : ""}`}>
-        <ul className=" px-5 py-3 burger-menu-list">
-          
-          <li className="burger-menu-item">
-            <Link to="/favorites" className="burger--menu-link">
-            <FavoriteBorderIcon className="icon" />
-            <span className="link-text">Favoritas</span>
-            </Link>
-          </li>
-          <li className="burger-menu-item">
-            <Link to={PATHS.BUSQUEDAS} className="burger--menu-link">
-              <SearchIcon />
-              <span className="link-text">Búsquedas</span>
-            </Link>
-          </li>
-          <li className="burger-menu-item">
-            <Link to={PATHS.CONOCEBELGA} className="burger--menu-link">
-              <BelgaIsoIcon />
-              <span className="link-text" spellCheck="false">Conocenos</span>
-            </Link>
-          </li>
-          <li
-            className="burger-menu-item"
-            
-          >
-            <Link
-            to="/quiero-vender"
-              className="burger--menu-link"
-            >
-              <TelIcon />
-              <span className="link-text">Contáctanos</span>
-            </Link>
-          </li>
-        </ul>
-      </div>
+  <ul className="px-5 py-3 burger-menu-list">
+    <li className="burger-menu-item">
+      <Link to="/propertylist" className="burger--menu-link" onClick={handleCloseMenu}>
+        <span className="link-text">Propiedades</span>
+      </Link>
+    </li>
+    <li className="burger-menu-item">
+      <Link to="terrenos" className="burger--menu-link" onClick={handleCloseMenu}>
+        <span className="link-text">Lotes - Terrenos</span>
+      </Link>
+    </li>
+    <li className="burger-menu-item">
+      <Link to="complejos" className="burger--menu-link" onClick={handleCloseMenu}>
+        <span className="link-text">Complejos</span>
+      </Link>
+    </li>
+    <li className="burger-menu-item">
+      <Link to="/nosotros" className="burger--menu-link" onClick={handleCloseMenu}>
+        <span className="link-text">Nosotros</span>
+      </Link>
+    </li>
+  </ul>
+</div>
+
     </Navbar>
   );
 };
