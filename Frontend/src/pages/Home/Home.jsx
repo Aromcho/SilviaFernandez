@@ -3,12 +3,9 @@ import { useNavigate, Link, useLocation } from "react-router-dom"; // Corregir e
 import { FiltersContext } from '../../context/FiltersContext';
 import 'leaflet/dist/leaflet.css';
 import "./Home.css";
-import Title from "../../components/Title/Title.jsx";
-import BackToTop from "../../components/BackToTop/BackToTop.jsx";
 import SearchHomeForm from "../../components/SearchHomeForm/SearchHomeForm.jsx";
 import FeatureListContainer from "../../components/FeatureListContainer/FeatureListContainer.jsx";
 import HomeMap from "../../components/HomeMap/HomeMap.jsx";
-import FromContact from "../../components/FormContact/FormContact.jsx";
 import SuggestionCards from "../../components/SuggestionCards/SuggestionCards.jsx";
 import ChatBubble from "../../components/ChatBubble/ChatBubble.jsx";
 import ChatModal from "../../components/ChatModal/ChatModal.jsx";
@@ -76,6 +73,7 @@ const Home = () => {
         
         <div className="overlay"></div>
         <div className="container-form-serch align--center">
+          <h1 className="titulo-hero">Conseguí tu lugar ideal</h1>
           <SearchHomeForm formData={filters} setFormData={updateFilters} handleSubmit={handleSubmit} />
         </div>
       </div>

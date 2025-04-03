@@ -18,7 +18,7 @@ const TerrenosItemList = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/property/properties?limit=${limit}&offset=${offset}&property_type=Terreno`)
+    fetch(`/api/property/properties?limit=${limit}&offset=${offset}&property_type=Terreno&order='asc'`)
       .then(response => response.json())
       .then(data => {
         setProperties(data.objects);

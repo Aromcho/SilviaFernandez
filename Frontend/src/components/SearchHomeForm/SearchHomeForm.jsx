@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Form, Button, Row, Col, Container } from 'react-bootstrap';
 import { FiltersContext } from '../../context/FiltersContext';
 import OperationTypeSelector from './OperationTypeSelector/OperationTypeSelector';
@@ -15,29 +15,33 @@ const SearchHomeForm = ({ handleSubmit }) => {
   };
 
   return (
-    <Container className="search-form">
+    <div className="search-form">
       <Form onSubmit={handleSubmit} className="filter-form">
         
+        {/* Selector de Operación */}
         <OperationTypeSelector filters={filters} updateFilters={updateFilters} />
 
+        {/* Agrupamos PropertyTypeSelector, BedroomsSelector y SearchBar en la misma fila */}
         <Row className="filter-row mb-2">
-          <PropertyTypeSelector filters={filters} handleFormChange={handleFormChange} />
-
-          <BedroomsSelector filters={filters} handleFormChange={handleFormChange} />
-        </Row>
-
-        <SearchBar filters={filters} updateFilters={updateFilters} />
-
-        <Row className="filter-row">
-          <Col md="auto">
-            <Button className="search-button" type="submit">
-              BUSCAR
-            </Button>
+          <Col md={4}>
+            <PropertyTypeSelector filters={filters} handleFormChange={handleFormChange} />
+          </Col>
+          <Col md={4}>
+            <BedroomsSelector filters={filters} handleFormChange={handleFormChange} />
+          </Col>
+          <Col md={4}>
+            <SearchBar filters={filters} updateFilters={updateFilters} />
           </Col>
         </Row>
-        
+
+        {/* Botón de búsqueda */}
+        <Row className="filter-row-btn">
+          <Button className="search-button" type="submit">
+            BUSCAR
+          </Button>
+        </Row>
       </Form>
-    </Container>
+    </div>
   );
 };
 

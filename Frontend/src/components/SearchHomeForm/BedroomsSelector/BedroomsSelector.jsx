@@ -1,30 +1,28 @@
-import React from 'react';
-import { Form } from 'react-bootstrap';
-import { FaBed } from 'react-icons/fa';
-import { Col } from 'react-bootstrap';
-import "./BedroomsSelector.css";
+import { Form } from "react-bootstrap"
+import { FaBed } from "react-icons/fa"
+import { Col } from "react-bootstrap"
+import "./BedroomsSelector.css"
 
 const BedroomOptions = [...Array(6).keys()].map((num) => ({
   value: num + 1,
   label: num + 1,
-}));
+}))
 
 const BedroomsSelector = ({ filters, handleFormChange }) => (
-  <Col className="bedrooms-container">
+  <Col md={6} className="bedrooms-container">
     <div className="bedrooms-wrapper">
       <FaBed className="input-icon" />
       <div className="bedroom-selectors">
         <div className="bedroom-inputs">
-                    <label className="bedroom-label">Dorms.</label>
+          <label className="bedroom-label">Dorms.</label>
 
           <Form.Select
             className="min-max-input"
-            value={filters.min_rooms}
-            onChange={(e) => handleFormChange('min_rooms', e.target.value)}
+            value={filters.min_rooms || ""}
+            onChange={(e) => handleFormChange("min_rooms", e.target.value)}
           >
-            
             <option value="">Mín</option>
-            {BedroomOptions.map(option => (
+            {BedroomOptions.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -35,11 +33,11 @@ const BedroomsSelector = ({ filters, handleFormChange }) => (
 
           <Form.Select
             className="min-max-input"
-            value={filters.max_rooms}
-            onChange={(e) => handleFormChange('max_rooms', e.target.value)}
+            value={filters.max_rooms || ""}
+            onChange={(e) => handleFormChange("max_rooms", e.target.value)}
           >
             <option value="">Máx</option>
-            {BedroomOptions.map(option => (
+            {BedroomOptions.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -49,6 +47,7 @@ const BedroomsSelector = ({ filters, handleFormChange }) => (
       </div>
     </div>
   </Col>
-);
+)
 
-export default BedroomsSelector;
+export default BedroomsSelector
+

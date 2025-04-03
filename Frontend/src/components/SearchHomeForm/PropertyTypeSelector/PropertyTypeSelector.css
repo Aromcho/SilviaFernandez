@@ -13,8 +13,8 @@
   display: flex;
   align-items: center;
   background: white;
-  border-radius: 12px;
-  border: 2px solid #ddd;
+  border-radius: 4px;
+  border: 1px solid #ddd;
   transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
@@ -40,26 +40,21 @@
   padding-left: 40px;
   font-size: 16px;
   color: #333;
+  height: 45px;
+  background-color: transparent;
 }
-.bedroom-label {
-  font-size: 16px;
-  color: #888888;
+
+.property-type-select:focus {
+  box-shadow: none;
+  outline: none;
+  border-color: transparent;
 }
 
 /* Ajuste de Responsive */
 @media screen and (max-width: 768px) {
   .property-type-container {
-    margin-top: 10px;
-
+    margin-bottom: 10px;
     width: 100%;
   }
-
-  .property-type-wrapper {
-    border-radius: 10px;
-  }
-
-  .input-icon {
-    font-size: 16px;
-    left: 10px;
-  }
 }
+
