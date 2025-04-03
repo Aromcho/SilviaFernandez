@@ -67,6 +67,7 @@
 /* Form Container */
 .container-form-serch {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 85vh;
@@ -75,6 +76,14 @@
   z-index: 4;
 }
 
+.titulo-hero {
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 50px;
+  z-index: 5;
+}
 /* Contact Section */
 .contact-section {
   margin: 0 !important;
@@ -96,6 +105,8 @@
   }
   .hero-wrapper .overlay {
     background-color: rgba(0, 0, 0, 0.4);
+  }.hero-wrapper {
+    height: 90vh;
   }
 }
 
@@ -186,6 +197,9 @@
 }
 
 @media screen and (max-width: 740px) {
+  .titulo-hero {
+    display: none;
+  }
   .inversion-item {
     width: 100%;
   }

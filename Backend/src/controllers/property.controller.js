@@ -93,13 +93,25 @@ const getpropertyById = async (req, res) => {
 const getProperties = async (req, res) => {
   try {
     const {
-      operation_type, property_type, minRooms, maxRooms, minPrice, maxPrice,
-      barrio, searchQuery, minGarages, maxGarages, limit = 10, offset = 0, order = 'DESC', is_starred
+      operation_type,
+      property_type,
+      minRooms,
+      maxRooms,
+      minPrice,
+      maxPrice,
+      barrio,
+      searchQuery,
+      minGarages,
+      maxGarages,
+      limit = 10,
+      offset = 0,
+      order = 'DESC',
+      is_starred,
     } = req.query;
 
     // Crear un objeto con los filtros a aplicar
     const filterObj = {};
- 
+
     // Excluir propiedades con tipo "Alquiler temporario"
     filterObj['operations.operation_type'] = { $ne: 'Alquiler temporario' };
 
@@ -146,8 +158,8 @@ const getProperties = async (req, res) => {
         { address: { $regex: searchQuery, $options: 'i' } },
         { 'location.full_location': { $regex: searchQuery, $options: 'i' } },
         { 'location.name': { $regex: searchQuery, $options: 'i' } },
-        { 'publication_title': { $regex: searchQuery, $options: 'i' } },
-        { 'real_address': { $regex: searchQuery, $options: 'i' } },
+        { publication_title: { $regex: searchQuery, $options: 'i' } },
+        { real_address: { $regex: searchQuery, $options: 'i' } },
       ];
     }
 
@@ -162,12 +174,18 @@ const getProperties = async (req, res) => {
       }
     }
 
+    // Filtro por "destacados"
     if (is_starred === 'true') {
       filterObj.is_starred_on_web = true;
     }
 
-    // Ordenar por precio
-    const sortObj = order === 'desc' ? { 'operations.prices.price': -1 } : { 'operations.prices.price': 1 };
+    // Orden compuesto (multi-sort):
+    // 1) created_at DESC para que salgan primero las más nuevas
+    // 2) Luego, se ordena por precio asc o desc según "order"
+    const sortObj = {
+      created_at: -1,
+      'operations.prices.price': order.toLowerCase() === 'desc' ? -1 : 1,
+    };
 
     const properties = await PropertyManager.paginate({
       filter: filterObj,
@@ -176,7 +194,7 @@ const getProperties = async (req, res) => {
         limit: parseInt(limit, 10),
         offset: parseInt(offset, 10),
       },
-      projection: 'id address suite_amount operations.prices location.name',
+      projection: 'id address suite_amount operations.prices location.name created_at',
       lean: true,
     });
 
@@ -195,6 +213,7 @@ const getProperties = async (req, res) => {
     res.status(500).json({ message: 'Error al obtener propiedades', error });
   }
 };
+
 
 
 const getPropertyById = async (req, res) => {

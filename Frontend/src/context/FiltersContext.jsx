@@ -15,7 +15,7 @@ export const FiltersProvider = ({ children }) => {
     price_to: undefined,
     searchQuery: '',
     barrio: '',
-    order: 'desc',
+    order: 'asc',
     is_starred: undefined,
   });
 
