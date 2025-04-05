@@ -49,7 +49,7 @@ const PropertyHeader = ({
                 <div className="price-label reserved">RESERVADO</div>
               )}
               {property.status.toLowerCase() === "vendida" && (
-                <div className="price-label sold">VENDIDA</div>
+                <div className="price-label sold">VENDIDO</div>
               )}
             </div>
 

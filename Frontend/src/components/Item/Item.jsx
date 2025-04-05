@@ -115,7 +115,7 @@ const Item = ({ property }) => {
   const statusTag = property.status.toLowerCase() === "reservado"
     ? "RESERVADO"
     : property.status.toLowerCase() === "vendida"
-    ? "VENDIDA"
+    ? "VENDIDO"
     : null;
 
 
