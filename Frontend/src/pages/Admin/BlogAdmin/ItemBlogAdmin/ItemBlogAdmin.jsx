@@ -81,7 +81,7 @@ const ItemBlogAdmin = ({ id, title, createdAt, fakeDate, imageUrl, onDelete }) =
   };
 
   const handleView = () => {
-    navigate(`/blog/${id}`);
+    navigate(`/noticia/${id}`);
   };
 
   const handleUpdate = async () => {
