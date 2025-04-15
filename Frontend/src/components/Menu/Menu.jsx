@@ -135,7 +135,13 @@ export const Menu = () => {
 >
   Mapa
 </Nav.Link>
-          
+<Nav.Link
+  as={Link}
+  to="Noticia"
+  className={`menu--link ${sticky || !isHome ? "black-line sticky-link" : ""}`}
+>
+  Noticias
+</Nav.Link>
           
         </Nav>
         <div

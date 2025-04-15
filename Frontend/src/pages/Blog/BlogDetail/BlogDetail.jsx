@@ -41,7 +41,7 @@ const BlogDetail = () => {
   }, []);
 
   const handleShare = () => {
-    const shareUrl = `http://www.belga.com.ar:8080/noticia/${id}`;
+    const shareUrl = `https://www.silviafernandezpropiedades.com.ar/noticia/${id}`;
     const shareText = `¡Mira este artículo sobre "${article?.title}" en Belga Inmobiliaria! `;
     const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + shareUrl)}`;
 
@@ -49,11 +49,11 @@ const BlogDetail = () => {
   };
 
   const socialInfo = [
-    { link: `${SOCIAL.INSTA}`, icon: <InstaCircleIcon /> },
-        { link: `${SOCIAL.FACEBOOK}`, icon: <FacebookCircleIcon /> },
-        { link: `${SOCIAL.YOUTUBE}`, icon: <YoutubeCircleIcon /> },
-        { link: `${SOCIAL.LINKEDIN}`, icon: <LinkedinCircleIcon /> },
-        { link: `${SOCIAL.MESSENGER}`, icon: <MessengerCircleIcon /> },
+    { link: `https://www.instagram.com/silviafernandezpropiedades/`, icon: <InstaCircleIcon /> },
+        { link: `https://www.facebook.com/Silviafernadezpropiedades/`, icon: <FacebookCircleIcon /> },
+        { link: `https://www.youtube.com/channel/UCO6G5TLWSK7LUUew1j0SG9A`, icon: <YoutubeCircleIcon /> },
+        //{ link: `${SOCIAL.LINKEDIN}`, icon: <LinkedinCircleIcon /> },
+        //{ link: `${SOCIAL.MESSENGER}`, icon: <MessengerCircleIcon /> },
       ];
   if (loading) {
     return (
@@ -92,8 +92,8 @@ const BlogDetail = () => {
         <meta property="og:title" content={`${article.title} | Blog Belga Inmobiliaria`} />
         <meta property="og:description" content={article.subtitle} />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`http://www.belga.com.ar:8080/blog/${id}`} />
-        <meta property="og:image" content={article.photos?.[0] || "https://belga.com.ar/images/og_image.png"} />
+        <meta property="og:url" content={`https://www.silviafernandezpropiedades.com.ar/blog/${id}`} />
+        <meta property="og:image" content={article.photos?.[0] || "https://www.silviafernandezpropiedades.com.ar/images/og_image.png"} />
       </Helmet>
 
       <h1 className='mt-3'>{article.title}</h1>
@@ -138,9 +138,7 @@ const BlogDetail = () => {
       
       
       
-      <div>
-        <Register />
-      </div>
+     
     </div>
   );
 };

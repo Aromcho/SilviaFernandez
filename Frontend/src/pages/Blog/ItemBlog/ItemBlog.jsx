@@ -9,7 +9,7 @@ import './ItemBlog.css';
 const ItemBlog = ({ id, title, date, imageUrl, subtitle, isLoading, fakeDate }) => {
   return (
     <Card className="mb-4 custom-card">
-      <Link to={`/blog/${id}`} className="item-link-blog">
+      <Link to={`/noticia/${id}`} className="item-link-blog">
         <div className="image-overlay-container">
           {isLoading ? (
             <Skeleton variant="rectangular" height={200} className="custom-card-img" />
