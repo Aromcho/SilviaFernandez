@@ -55,7 +55,7 @@ const PropertyHeader = ({
 
             <h2 className="price-details">
               {operationType}
-              {operationType === "Alquiler temporario" ? (
+              {operationType === "Alquiler temporario" || operations[0].prices[0].price === 1 ? (
                 <span className="consultar-precio"> - Consultar precio</span>
               ) : (
                 <>

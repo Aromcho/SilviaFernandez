@@ -86,7 +86,7 @@ const Item = ({ property }) => {
     : property.operations[0]?.prices[0]?.price
       ? `${property.operations[0].prices[0].currency === "USD" ? "USD" : "$"} ${property.operations[0].prices[0].price.toLocaleString("es-ES")}`
       : "Precio no disponible";
-
+console.log(price);
   const bedrooms = property.suite_amount || 0;
   const bathrooms = property.bathroom_amount || 0;
   const parkingLots = property.parking_lot_amount || 0;
@@ -126,7 +126,7 @@ const Item = ({ property }) => {
       <Link to={`/propiedad/${propertyId}`} state={{ property }} className="link-full">
         <div className="head-prop">
           <span className="type-item">{operationType.toUpperCase()}</span>
-          <span className="price-item">{price}</span>
+          <span className="price-item">{price === "USD 1" || price === "$ 1" ? "CONSULTAR PRECIO" : price}</span>
         </div>
 
         <div 
