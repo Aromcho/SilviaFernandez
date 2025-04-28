@@ -17,7 +17,7 @@ const ComplejosItemList = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/property/properties?limit=${limit}&offset=${offset}&property_type=Hotel`)
+    fetch(`/api/property/properties?limit=${limit}&offset=${offset}&property_type=Hotel&order='asc'`)
       .then(response => response.json())
       .then(data => {
         setProperties(data.objects);
