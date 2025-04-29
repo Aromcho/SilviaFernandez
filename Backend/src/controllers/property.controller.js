@@ -112,12 +112,10 @@ const getProperties = async (req, res) => {
     // Crear un objeto con los filtros a aplicar
     const filterObj = {};
 
-    // Excluir propiedades con tipo "Alquiler temporario"
-    filterObj['operations.operation_type'] = { $ne: 'Alquiler temporario' };
-
     // Filtro por tipo de operación
     if (operation_type && operation_type.length > 0) {
-      filterObj['operations.operation_type'].$in = operation_type;
+      const ops = Array.isArray(operation_type) ? operation_type : [operation_type];
+      filterObj['operations.operation_type'] = { $in: ops };
     }
 
     // Filtro por tipo de propiedad
@@ -336,46 +334,7 @@ const getFavorites = async (req, res) => {
   }
 };
 
-const sendContactEmail = async (req, res) => {
-  try {
-    const { body } = req;
-    const mailjet = new Mailjet({
-      apiKey: process.env.MJ_APIKEY_PUBLIC,
-      apiSecret: process.env.MJ_APIKEY_PRIVATE,
-    });
 
-    const request = mailjet.post('send', { version: 'v3.1' }).request({
-      Messages: [
-        {
-          From: {
-            Email: "info@belga.com.ar",
-            Name: "Belga Inmobiliaria",
-          },
-          To: [
-            { email: 'info@belga.com.ar' },
-            { email: 'AR5054@resultadistas.com' },
-          ],
-          Subject: body.subject || "Contacto",
-          TextPart: `
-            Nueva consulta ${body.subject || "Contacto"}
-            URL: ${body.url}
-            Nombre: ${body.name}.
-            Teléfono de contacto: ${body.phone}.
-            E-mail: ${body.email}
-            Mensaje: ${body.message || body.message}
-            Tipo de Propiedad: ${body.property || body.property}
-            Dirección: ${body.direction || body.direction}
-          `,
-        },
-      ],
-    });
-
-    await request;
-    res.status(200).json({ code: 1 });
-  } catch (error) {
-    res.status(400).json({ code: 0, error: error.statusCode, body: error.body });
-  }
-};
 
 const getAllPropertyIds = async (req, res) => {
   try {
@@ -438,7 +397,6 @@ export {
   getRelatedProperties,
   getNeighborhoods,
   getFavorites,
-  sendContactEmail,
   getAllPropertyIds,
   getpropertyById,
   autocompleteProperties,

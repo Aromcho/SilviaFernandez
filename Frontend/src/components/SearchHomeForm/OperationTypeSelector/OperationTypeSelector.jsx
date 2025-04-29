@@ -5,6 +5,7 @@ import "./OperationTypeSelector.css"
 const operationTypeOptions = [
   { value: "Venta", label: "Venta" },
   { value: "Alquiler", label: "Alquiler", className: "hide-on-mobile" },
+  { value: "Alquiler temporario", label: "Alquiler Temporal", },
 ]
 
 const OperationTypeSelector = ({ filters, updateFilters }) => {

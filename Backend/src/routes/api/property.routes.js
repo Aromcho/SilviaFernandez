@@ -6,7 +6,6 @@ import {
   getRelatedProperties,
   getNeighborhoods,
   getFavorites,
-  sendContactEmail,
   getAllPropertyIds, // new function
 } from '../../controllers/property.controller.js';
 import { getpropertyById } from '../../controllers/property.controller.js';
@@ -24,7 +23,6 @@ propertyDetail.get('/neighborhoods', getNeighborhoods);
 propertyDetail.get('/:id', getPropertyById);
 propertyDetail.get('/propertyDetail/:id/related', getRelatedProperties);
 propertyDetail.get('/favorites', getFavorites);
-propertyDetail.post('/contact', sendContactEmail);
 propertyDetail.get('/properties/ids', getAllPropertyIds);
 
 // details routes
