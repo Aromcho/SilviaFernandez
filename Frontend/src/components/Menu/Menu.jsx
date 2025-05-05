@@ -104,16 +104,6 @@ export const Menu = () => {
 >
   Lotes - Terrenos
 </Nav.Link>
-
-
-<Nav.Link
-  as={Link}
-  to="temporal"
-  className={`menu--link ${sticky || !isHome ? "black-line sticky-link" : ""}`}
->
-  alquiler temporal
-</Nav.Link>
-
 <Nav.Link
   as={Link}
   to="complejos"
