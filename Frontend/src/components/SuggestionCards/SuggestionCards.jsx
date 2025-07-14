@@ -9,11 +9,10 @@ const SuggestionCards = () => {
     const { updateFilters } = useContext(FiltersContext);
 
     const cards = [
-        //{ title: 'Alquiler Temporal', icon: <FaKey />,  path: '/temporal' },
+        { title: 'Alquiler', icon: <FaKey />, filter:  { operation_type: ['Alquiler'] }, path: '/propertylist' },
         { title: 'Lotes - Terrenos', icon: <FaTree />, path: '/terrenos' },
         { title: 'Casas', icon: <FaHome />, filter: { property_type: ['Casa'] }, path: '/propertylist' },
         { title: 'Departamentos', icon: <FaBuilding />, filter: { property_type: ['Departamento'] }, path: '/propertylist' },
-        
         { title: 'Complejos', icon: <FaHotel />, filter: { property_type: ['Hotel'] }, path: '/propertylist' },
     ];
 

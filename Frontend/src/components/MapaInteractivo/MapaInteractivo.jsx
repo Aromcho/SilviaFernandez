@@ -35,7 +35,7 @@ const MapaInteractivo = ({ property }) => {
     <div>
       {/* Contenedor del Mapa */}
       <MapContainer
-      className="map-container"
+      className="map-item-container"
         center={[position.lat, position.lng]}
         zoom={17}
         style={{ width: window.innerWidth <= 768 ? "100%" : "100%" }}
