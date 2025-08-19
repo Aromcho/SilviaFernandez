@@ -181,8 +181,10 @@ const getProperties = async (req, res) => {
     // 1) created_at DESC para que salgan primero las más nuevas
     // 2) Luego, se ordena por precio asc o desc según "order"
     const sortObj = {
+      created_at: -1,
       'operations.prices.price': order.toLowerCase() === 'desc' ? -1 : 1,
     };
+
 
     const properties = await PropertyManager.paginate({
       filter: filterObj,
