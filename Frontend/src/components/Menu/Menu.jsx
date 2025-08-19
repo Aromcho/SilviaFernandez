@@ -106,6 +106,13 @@ export const Menu = () => {
 </Nav.Link>
 <Nav.Link
   as={Link}
+  to="temporal"
+  className={`menu--link ${sticky || !isHome ? "black-line sticky-link" : ""}`}
+>
+  Alquiler Temporario
+</Nav.Link>
+<Nav.Link
+  as={Link}
   to="complejos"
   className={`menu--link ${sticky || !isHome ? "black-line sticky-link" : ""}`}
 >

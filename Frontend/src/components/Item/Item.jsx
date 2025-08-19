@@ -125,7 +125,11 @@ console.log(price);
 
       <Link to={`/propiedad/${propertyId}`} state={{ property }} className="link-full">
         <div className="head-prop">
-          <span className="type-item">{operationType.toUpperCase()}</span>
+          <div className="id-container">
+            <span className="type-item">{operationType.toUpperCase()}</span>
+            <span className="id-text">ID:{propertyId}</span>
+          </div>
+          
           <span className="price-item">{price === "USD 1" || price === "$ 1" ? "CONSULTAR PRECIO" : price}</span>
         </div>
 
@@ -148,7 +152,7 @@ console.log(price);
         <Card.Body className="py-4">
           <div className="card-header-item">
             <div className="direction-container">
-              <h5 className="barrio-item">{barrio}</h5>
+              <h5 className="barrio-item">{barrio} </h5>
               <p className="direccion-item">{address}</p>
             </div>
             <div className="map-hover-icon" onMouseEnter={() => setShowMap(true)} onMouseLeave={() => setShowMap(false)}>

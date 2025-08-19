@@ -69,13 +69,21 @@ const PropertyHeader = ({
         <Col className="barrio-compartir-container">
           <p className="property-type-details mt">
             {property_type} en {barrio}
+            {idTokko && (
+              <div className="info-details-item">
+
+                <span className="strong">ID:</span> {idTokko}
+              </div>
+            )}
           </p>
+          
           <div className="compartir-container">
             <Button className="compartir-button" onClick={shareOnWhatsApp}>
               <FaWhatsapp className="whatsapp-icon" />
               <span>Compartir</span>
-            </Button>
 
+            </Button>
+            
             <div>
               <FaPrint
                 className="mx-4"
