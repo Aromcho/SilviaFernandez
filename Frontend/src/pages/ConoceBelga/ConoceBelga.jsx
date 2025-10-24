@@ -135,9 +135,18 @@ const ConoceBelga = observer(() => {
               <div className="cb-main-office-img" style={{ backgroundImage: `url(/images/local.png)` }}></div>
               <div className="cb-office-main-text">
                 <div className="cb-office-text-wrapper">
-                  <div className="cb-office-text-name">Sucursal Principal</div>
+                  <div className="cb-office-text-name">Central</div>
                   <div className="cb-office-text-loc">Calle 34, Mar del Plata &, Mar Azul</div>
                   <div className="cb-office-text">En el centro Mar Azul ¡Vení a conocerla!</div>
+                </div>
+              </div>
+            </div>
+             <div className="cb-main-office">
+              <div className="cb-main-office-img" style={{ backgroundImage: `url(/images/oficina-sucursal.jpg)` }}></div>
+              <div className="cb-office-main-text">
+                <div className="cb-office-text-wrapper">
+                  <div className="cb-office-text-name">Sucursal </div>
+                  <div className="cb-office-text-loc">Av del Plata y Uritorco - Mar de las Pampas</div>
                 </div>
               </div>
             </div>

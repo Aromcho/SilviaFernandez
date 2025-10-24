@@ -10,10 +10,12 @@ import BookingCalendar from '../BookingCalendar/BookingCalendar.jsx';
 import {
   FaWhatsapp
 } from "react-icons/fa";
+import MapaInteractivo from "../../MapaInteractivo/MapaInteractivo";
 
 import './Contenido.css';
 
 const Contenido = ({
+  property,
   operationType,
     age,
     total_surface,
@@ -52,7 +54,7 @@ const Contenido = ({
         setSelectedImageIndex((prevIndex) => (prevIndex === planos.length - 1 ? 0 : prevIndex + 1));
     };
     const handleWhatsApp = () => {
-      const phoneNumber = "5492255626092"; // Cambia esto por el número de WhatsApp de la inmobiliaria
+      const phoneNumber = "5492255622841"; // Cambia esto por el número de WhatsApp de la inmobiliaria
       const message = `Hola, quisiera consultar la disponibilidad de esta propiedad https://www.silviafernandezpropiedades.com.ar/propiedad/${idTokko}.`;
       const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, "_blank");
@@ -142,6 +144,8 @@ const Contenido = ({
   </div>
 )}
 
+      </div><div>
+        <MapaInteractivo property={property} />
       </div>
       {/* Botón para abrir el modal de planos */}
       {planos && planos.length > 0 && (
@@ -202,7 +206,7 @@ const Contenido = ({
       </DialogContent>
       </Dialog>
       </div>
-
+      
       {/* Información de detalles y descripción */}
       <div className="property-details p-0">
   {/* 🔹 INFORMACIÓN */}
@@ -287,12 +291,19 @@ const Contenido = ({
           </button>
         </div>
       )}
-      <div className="info-section mb-5 card">
-        <p className='mb-3 text-info-cont'>DESCRIPCION</p>
-      <p dangerouslySetInnerHTML={{ __html: rich_description }}></p>
-      </div>
-        
-      </div>
+          <div className="info-section mb-5 card">
+            <p className='mb-3 text-info-cont'>DESCRIPCION</p>
+            <p dangerouslySetInnerHTML={{ __html: rich_description }}></p>
+            <br />
+            <p>¡Seguimos creciendo para estar más cerca tuyo!</p>
+            <br />
+            <p>Ahora también podés encontrarnos en nuestra nueva sucursal de Mar de las Pampas, ubicada en Av. del Plata y Cerro Uritorco.</p>
+            <br />
+            <p>Y, como siempre, seguimos atendiéndote en Av. Mar del Plata y Calle 34, Mar Azul.</p>
+            <br />
+            <p>Te esperamos para acompañarte en el camino hacia la casa de tus sueños.</p>
+          </div>
+        </div>
       </div>
     );
   };

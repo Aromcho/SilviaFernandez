@@ -94,11 +94,12 @@ const Home = () => {
 </div>
 
       <div id="contact-section" className="contact-section">
-      <HomeMap/>
         <ContactForm />
+      <HomeMap/>
+        
       </div>
       <div className="floating-icons">
-        <a href="https://wa.me/542255509408" target="_blank" rel="noopener noreferrer" className="whatsapp-float">
+        <a href="https://wa.me/542255626092" target="_blank" rel="noopener noreferrer" className="whatsapp-float">
         <FaWhatsapp />
         </a>
       </div>

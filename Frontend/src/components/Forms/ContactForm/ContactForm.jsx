@@ -147,10 +147,16 @@ const ContactForm = () => {
                         <FaEnvelope size={20} /> Correo: <span>braicesfernandez@gmail.com</span>
                     </button>
                     <button className="info-button">
-                        <FaPhone size={20} /> Teléfono: <span>+542255509408</span>
+                        <FaPhone size={20} /> Alquileres: <span>+54 9 2255 62-2841</span>
                     </button>
                     <button className="info-button">
-                        <FaMapMarkerAlt size={20} /> Dirección: <span>Calle 34 y Mar del Plata - Mar Azul- Galeria Plaza del Lucero 1° p. Local 9 - Mar de las Pampas</span>
+                        <FaPhone size={20} /> Ventas: <span>+54 9 2255 62-6092</span>
+                    </button>
+                    <button className="info-button">
+                        <FaMapMarkerAlt size={20} /> Central: <span>Calle 34 y Mar del Plata - Mar Azul</span>
+                    </button>
+                    <button className="info-button">
+                        <FaMapMarkerAlt size={20} /> Sucursal: <span>Av del Plata y Uritorco - Mar de las Pampas</span>
                     </button>
 
                     {/* 🌟 Redes Sociales */}
