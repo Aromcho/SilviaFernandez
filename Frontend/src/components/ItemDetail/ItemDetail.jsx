@@ -116,7 +116,7 @@ console.log(property)
         disposition={disposition}
         orientation={orientation}
         property_condition={property_condition}
-        property
+        property={property}
         planos={planos}
         operationType={operationType}
         occupation={occupation}
@@ -124,10 +124,7 @@ console.log(property)
         front_measure={front_measure}
       />
       
-      {/* Ubicación */}
-      <Row className="mt-3">
-        <MapaInteractivo property={property} />
-      </Row>
+      
 
       {/* Nuestra Selección */}
       <Row>

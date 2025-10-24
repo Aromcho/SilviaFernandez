@@ -9,7 +9,7 @@ const ChatModal = ({ show, onHide }) => {
   const [message, setMessage] = useState('');
 
   const handleSendMessage = () => {
-    const whatsappURL = `https://wa.me/542255509408?text=${encodeURIComponent(message)}`;
+    const whatsappURL = `https://wa.me/542255626092?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
     onHide();
   };
@@ -28,6 +28,20 @@ return (
                 <div className="message received">
                     <p>Hola! ¿En qué puedo ayudarte?</p>
                 </div>
+            </div>
+            <div className="quick-actions mb-3">
+                <Button 
+                    className="alquileres-button"
+                    onClick={() => window.open('https://wa.me/5492255622841', '_blank')}
+                >
+                    Alquileres
+                </Button>
+                <Button 
+                    className="ventas-button"
+                    onClick={() => window.open('https://wa.me/542255626092', '_blank')}
+                >
+                    Ventas
+                </Button>
             </div>
             <Form.Group controlId="message" className="message-input-container d-flex flex-row">
                 <Form.Control

@@ -32,6 +32,31 @@
     padding-right: 10px;
   }
   
+  .quick-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  .alquileres-button,
+  .ventas-button {
+    background-color: #128C7E;
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+  
+  .alquileres-button:hover,
+  .ventas-button:hover {
+    background-color: #075E54;
+    color: white;
+  }
+  
   .message {
     max-width: 80%;
     padding: 8px 12px;
