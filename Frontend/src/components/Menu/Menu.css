@@ -106,8 +106,8 @@
   padding: 0 20px;
 }
 
-.logo-img {
-  width: 250px;
+.logo-img {padding-top: 10px;
+  width: 140px;
 }
 .logo-scrolled {
   width: 75px;
@@ -371,6 +371,7 @@
   }
 
   .logo-img {
+    padding-top: 0px;
     width: 120px;
   }
 
