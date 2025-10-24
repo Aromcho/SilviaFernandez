@@ -77,13 +77,13 @@ export const Menu = () => {
           {!sticky  ? (
             <img
               className="logo-img"
-              src="/images/logo-sf.png"
+              src="/images/logo-sf.jpg"
               alt="Silvia Fernandez"
             />
           ) : (
             <img
               className="logo-scrolled"
-              src="/images/icon-logo-sf.png"
+              src="/images/logo-sf.jpg"
               alt="Silvia Fernandez"
             />
           )}
